@@ -82,7 +82,7 @@
 		@if $key == c{@include columns($val);}
 		@if $key == ap{$val:replace_values($val,$apvals);@include appearance($val);}
 		@if $key == as{$val:map-get($asvals,$val);}
-		@if map-has-key($keys,$key){#{map-get($keys,$key)}:$val;}
+		@if map-has-key($keys,$key){#{map-get($keys,$key)}:#{$val};}
 	}
 }
 
