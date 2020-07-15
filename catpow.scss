@@ -16,9 +16,9 @@ $shd:rgba(0,0,0,.3);
 
 @import "src/_usr.scss";
 
-@import "src/_counter.scss";
+@import "src/_cnt.scss";
 
-@import "src/_fontawesome.scss";
+@import "src/_ico.scss";
 
 @import "src/_bp.scss";
 @import "src/_clr.scss";
@@ -38,4 +38,4 @@ $shd:rgba(0,0,0,.3);
 
 @import "src/_svg.scss";
 
-@import "src/wp/_admin.scss";
+@import "src/_wp.scss";
