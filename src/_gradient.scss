@@ -28,12 +28,12 @@
 @mixin shade($color:#fff,$contrust:6.25%){
 	@include linear_gradient(180deg,$color,darken($color,$contrust));
 }
-@mixin glass($color:#666,$contrust:40%){
+@mixin glass($color:#666,$contrust:40){
 	@include linear_gradient(180deg,
-		tint($color,100%-$contrust),
-		tint($color,100%-$contrust/2) 49%,
+		tint($color,100-$contrust),
+		tint($color,100-$contrust/2) 49%,
 		$color 50%,
-		tint($color,100%-$contrust/2)
+		tint($color,100-$contrust/2)
 	);
 }
 
