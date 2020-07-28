@@ -56,15 +56,13 @@
 }
 
 @function replace_values($vals,$dct){
-	@if type-of($vals) == 'list'{
-		$rtn:false;
-		@each $v in $vals{
-			@if map-has-key($dct,$v){$v:map-get($dct,$v);}
-			@if type-of($rtn) == 'list'{$rtn:append($rtn,$v);}
-			@else if $rtn == false{$rtn:$v;}
-			@else {$rtn:$rtn $v;}
+	@if type-of($vals) == 'list' or type-of($vals) == 'arglist'{
+		@for $i from 1 through length($vals){
+			$v:nth($vals,$i);
+			@if type-of($v) == 'list'{$vals:set-nth($vals,$i,replace_values($v,$dct));}
+			@else if map-has-key($dct,$v){$vals:set-nth($vals,$i,map-get($dct,$v));}
 		}
-		@return $rtn;
+		@return $vals;
 	}
 	@else{
 		@if map-has-key($dct,$vals){@return map-get($dct,$vals);}
