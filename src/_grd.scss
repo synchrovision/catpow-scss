@@ -37,6 +37,47 @@
 				$val:repeat(auto-fill,minmax($val,1fr));
 			}
 		}
+		@if $key == r{
+			$rc:nth($val,1);
+			@if(length($val)==2){
+				$w:auto;
+				$rr:nth($val,2);
+			}
+			@else{
+				$w:nth($val,2);
+				$rr:nth($val,3);
+			}
+			@if(length($val)==4){
+				$h:nth($val,4);
+			}
+			@else{
+				$h:auto;
+			}
+			-ms-grid-columns:unquote('(#{$w})[#{$rc}]');
+			grid-template-columns:repeat(#{$rc},#{$w});
+			-ms-grid-rows:unquote('(#{$h})[#{$rr}]');
+			grid-template-rows:repeat(#{$rr},#{$h});
+			@for $x from 1 through $rc - 1{
+				&>*:nth-child(#{$rr}n + #{$x}){
+					-ms-grid-column:#{$x};
+					grid-column:#{$x};
+				}
+			}
+			&>*:nth-child(#{$rr}n){
+				-ms-grid-column:#{$rc};
+				grid-column:#{$rc};
+			}
+			&>*:nth-child(-n + #{$rc}){
+				-ms-grid-row:1;
+				grid-row:1;
+			}
+			@for $y from 2 through $rr{
+				&>*:nth-child(n + #{$y * $rc - $rc + 1}){
+					-ms-grid-row:#{$y};
+					grid-row:#{$y};
+				}
+			}
+		}
 		@if $key == tc or $key == tr or
 			$key == ac or $key == ar
 			{$val:cp_get_size_values($val);}
