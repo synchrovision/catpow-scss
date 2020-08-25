@@ -59,7 +59,8 @@
 		@if $key == w or $key == h{
 			@if type-of($val) == 'list'{
 				@if length($val) == 2{
-					@if nth($val,1) == auto or (index(('%','vw','vh','vmax','vmin'),unit(nth($val,1))) != false and nth($val,2) != auto){
+					@if (index((auto,min-content,max-content,fit-content),nth($val,1)) != false) or
+						(index(('%','vw','vh','vmax','vmin'),unit(nth($val,1))) != false and nth($val,2) != auto){
 						max-#{map-get($keys,$key)}:nth($val,2);
 						$val:nth($val,1);
 					}
