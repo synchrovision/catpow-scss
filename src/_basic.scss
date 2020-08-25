@@ -74,7 +74,7 @@
 	@if type-of($sizes) == 'map' {
 		@if map-has-key($sizes,$val){$val:map-get($sizes,$val);}
 	}
-	$svals:(f:100%,a:auto,i:inherit);
+	$svals:(f:100%,a:auto,i:inherit,min:min-content,max:max-content,fit:fit-content);
 	@if map-has-key($svals,$val){@return map-get($svals,$val);}
 	@if type-of($val) == 'number' and unitless($val){@return $val + px;}
 	@return $val;
