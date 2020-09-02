@@ -40,6 +40,8 @@
 	$ofvals:(f:fill,c:cover,i:contain,cvr:cover,cnt:contain,sd:scale-down);
 	$asvals:(f:stretch,c:center,e:end,s:start);
 	$opvals:(c:center);
+	
+	$abstractSize:('auto','min-content','max-content','fit-content');
 	@each $key,$val in $bnd{
 		@if $key == p{$val:map-get($pvals,$val);}
 		@if $key == d{$val:map-get($dvals,$val);}
@@ -59,8 +61,13 @@
 		@if $key == w or $key == h{
 			@if type-of($val) == 'list'{
 				@if length($val) == 2{
-					@if (index((auto,min-content,max-content,fit-content),nth($val,1)) != false) or
-						(index(('%','vw','vh','vmax','vmin'),unit(nth($val,1))) != false and nth($val,2) != auto){
+					@if (
+						index($abstractSize,nth($val,1)) != null or
+						(
+							index(('%','vw','vh','vmax','vmin'),unit(nth($val,1))) != null and
+							index($abstractSize,nth($val,2)) == null
+						)
+					){
 						max-#{map-get($keys,$key)}:nth($val,2);
 						$val:nth($val,1);
 					}
