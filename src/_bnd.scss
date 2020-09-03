@@ -41,7 +41,7 @@
 	$asvals:(f:stretch,c:center,e:end,s:start);
 	$opvals:(c:center);
 	
-	$abstractSize:('auto','min-content','max-content','fit-content');
+	$abstractSize:(auto,min-content,max-content,fit-content);
 	@each $key,$val in $bnd{
 		@if $key == p{$val:map-get($pvals,$val);}
 		@if $key == d{$val:map-get($dvals,$val);}
