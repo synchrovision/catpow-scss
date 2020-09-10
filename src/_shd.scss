@@ -21,7 +21,11 @@
 					@if $key == 'bb'{$tx:0;$ty:$blur * -1;}
 					@if $key == 'bl'{$tx:$blur;$ty:0;}
 					@if $key == 'br'{$tx:$blur * -1;$ty:0;}
+					@if $key == 'bc'{$tx:0;$ty:0;}
 					$val:#{$tx}px #{$ty}px #{$blur}px #{$spr}px #{clr($clr)} inset;
+				}
+				@elseif $key == 'bc' or $key == 'tc'{
+					$val:0 0 #{$blur}px #{clr($clr)} inset;
 				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)} inset;}
 			}
@@ -32,15 +36,19 @@
 					@if $key == 'bb'{$tx:0;$ty:$blur;}
 					@if $key == 'bl'{$tx:$blur * -1;$ty:0;}
 					@if $key == 'br'{$tx:$blur;$ty:0;}
+					@if $key == 'bc'{$tx:0;$ty:0;}
 					$val:#{$tx}px #{$ty}px #{$blur}px #{$spr}px #{clr($clr)};
+				}
+				@elseif $key == 'bc' or $key == 'tc'{
+					$val:0 0 #{$blur}px #{clr($clr)};
 				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)};}
 			}
 		}
 		@if map-has-key($btvals,$val){$val:map-get($btvals,$val);}
-		@if $key == 'b' or $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br'
+		@if $key == 'b' or $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br' or $key == 'bc'
 		{box-shadow:$val;}
-		@if $key == 't'{text-shadow:$val;}
+		@if $key == 't' or $key == 'tc'{text-shadow:$val;}
 	}
 }
 
