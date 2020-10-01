@@ -5,7 +5,7 @@
 		s:scale,sx:scaleX,sy:scaleY,
 		k:skew,kx:skewX,ky:skewY
 	);
-	$ffncs:(hue:hue-rotate,str:saturate,brt:brightness,inv:invert,shd:drop-shadow,blr:blur,cnt:contrast);
+	$ffncs:(hue:hue-rotate,str:saturate,brt:brightness,inv:invert,shd:drop-shadow,blr:blur,cnt:contrast,gry:grayscale);
 	$bfvals:(h:hidden,v:visible);
 	$avals:(i:infinite,r:reverse,a:alternate,e:ease,l:linear,fw:forwards,bw:backwards,b:both);
 	$bmvals:(n:normal,m:multiply,d:darken,s:screen,l:lighten,o:overlay,cd:color-dodge,cb:color-burn,hl:hard-light,sl:soft-light,hue:hue,str:saturation,clr:color,lmn:luminosity,df:difference,ex:exclusion);
