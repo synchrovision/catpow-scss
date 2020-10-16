@@ -5,6 +5,7 @@
 		t:letter-spacing,ls:letter-spacing,c:color,
 		w:font-weight,fw:font-weight,fs:font-style,
 		td:text-decoration,to:text-oriantation,
+		o:text-overflow,
 		l:list-style,
 		whs:white-space,wds:word-spacing,wb:word-break,b:word-break,ffs:font-feature-settings
 	);
@@ -18,6 +19,7 @@
 	$lvals:(n:none,ds:disc,cr:circle,sq:square,alp:upper-alpha,dec:decimal,rom:upper-roman,hira:hiragana);
 	$mvals:(h:horizontal-tb,vr:vertical-rl,vl:vertical-lr);
 	$tovals:(m:mixed,s:sideway,u:upright);
+	$ovals:(c:clip,e:ellipsis);
 	$ffsvals:(p:"palt",t:"trad",n:"nalt");
 	@each $key,$val in $txt{
 		@if $key == p or $key == h{$val:cp_get_size_value($val);}
@@ -32,6 +34,7 @@
 		@if $key == m{@include writing-mode(replace_values($val,$mvals));}
 		@if $key == t{$val:cp_get_size_value($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
+		@if $key == o{$val:replace_values($val,$ovals);}
 		@if $key == ffs{$val:replace_values($val,$ffsvals);}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:$val;}
 	}
