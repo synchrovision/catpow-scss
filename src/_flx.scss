@@ -86,50 +86,53 @@
 }
 
 @mixin flex_equalize($cols) {
+	$id:random(10000);
 	&>*{
 		flex-grow: 1;
 		box-sizing: border-box;
 	}
 	@if $cols > 1{
 		@for $l from 1 through $cols * 2{
-			%c#{$l}{
+			%c#{$l}c#{$id}{
 				flex-basis: percentage(floor(100 / $l) / 100);
 			}
 		}
 
 		&>*{
-			@extend %c#{$cols - 1};
+			@extend %c#{$cols - 1}c#{$id};
 		}
 		&>*:first-child:nth-last-child(#{$cols}n) {
 			&,&~*{
-				@extend %c#{$cols};
+				@extend %c#{$cols}c#{$id};
 			}
 		}
-		&>*:nth-child(#{$cols - 1}n):nth-last-child(#{$cols}n + 1)~*{
-			@extend %c#{$cols};
-		}
-		$max_len: ($cols - 1) * ($cols - 2) - 1;
-		@for $len from ceil($cols / 2) through $max_len {
-			$r: ceil($len / $cols);
-			$mod:$len % $cols;
-			$mgn:$cols - $r - $mod;
-			@if $mod < $mgn{
-				$r: floor($len / $cols);
+		@if $cols > 2{
+			&>*:nth-child(#{$cols - 1}n):nth-last-child(#{$cols}n + 1)~*{
+				@extend %c#{$cols}c#{$id};
 			}
-			$l: ceil($len / $r);
-			@if $l!=$cols {
-				&>*:first-child:nth-last-child(#{$len}) {
-					@if $len % $l == 0{
-						&,&~*{
-							@extend %c#{$l};
+			$max_len: ($cols - 1) * ($cols - 2) - 1;
+			@for $len from ceil($cols / 2) through $max_len {
+				$r: ceil($len / $cols);
+				$mod:$len % $cols;
+				$mgn:$cols - $r - $mod;
+				@if $mod < $mgn{
+					$r: floor($len / $cols);
+				}
+				$l: ceil($len / $r);
+				@if $l!=$cols {
+					&>*:first-child:nth-last-child(#{$len}) {
+						@if $len % $l == 0{
+							&,&~*{
+								@extend %c#{$l}c#{$id};
+							}
 						}
-					}
-					@else{
-						&,&~*{
-							@extend %c#{$l - 1};
-						}
-						&~*:nth-child(#{$l - 1}n):nth-last-child(#{$l}n + 1)~*{
-							@extend %c#{$l};
+						@else{
+							&,&~*{
+								@extend %c#{$l - 1}c#{$id};
+							}
+							&~*:nth-child(#{$l - 1}n):nth-last-child(#{$l}n + 1)~*{
+								@extend %c#{$l}c#{$id};
+							}
 						}
 					}
 				}
