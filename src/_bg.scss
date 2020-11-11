@@ -4,7 +4,7 @@
 		r:background-repeat,a:background-attachment,
 		s:background-size,p:background-position
 	);
-	$rvals:(n:no-repeat,x:repeat-x,y:repeat-y,xy:repeat,r:repeat);
+	$rvals:(n:no-repeat,x:repeat-x,y:repeat-y,xy:repeat,r:round,s:space);
 	$avals:(f:fixed,s:scroll);
 	$svals:(fit:100% 100%,cnt:contain,cvr:cover,f:100% 100%,c:cover,i:contain);
 	$pvals:(l:left,r:right,t:top,b:bottom,c:center);
