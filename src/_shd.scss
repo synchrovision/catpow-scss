@@ -42,13 +42,33 @@
 				@elseif $key == 'bc' or $key == 'tc'{
 					$val:0 0 #{$blur}px #{clr($clr)};
 				}
+				@elseif $key == 'ts'{
+					$c:clr($clr);
+					$b:$val / 2;
+					$l1:$val * 3 /5;
+					$l2:$val * 4 /5;
+					$val:(
+						0px #{$val}px #{$b}px #{$c},
+						#{$l1}px #{$l2}px #{$b}px #{$c},
+						#{$l2}px #{$l1}px #{$b}px #{$c},
+						#{$val}px 0px #{$b}px #{$c},
+						#{$l2}px -#{$l1}px #{$b}px #{$c},
+						#{$l1}px -#{$l2}px #{$b}px #{$c},
+						0px -#{$val}px #{$b}px #{$c},
+						-#{$l1}px -#{$l2}px #{$b}px #{$c},
+						-#{$l2}px -#{$l1}px #{$b}px #{$c},
+						-#{$val}px 0px #{$b}px #{$c},
+						-#{$l2}px #{$l1}px #{$b}px #{$c},
+						-#{$l1}px #{$l2}px #{$b}px #{$c}
+					);
+				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)};}
 			}
 		}
 		@if map-has-key($btvals,$val){$val:map-get($btvals,$val);}
 		@if $key == 'b' or $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br' or $key == 'bc'
 		{box-shadow:$val;}
-		@if $key == 't' or $key == 'tc'{text-shadow:$val;}
+		@if $key == 't' or $key == 'tc' or $key == 'ts'{text-shadow:$val;}
 	}
 }
 
