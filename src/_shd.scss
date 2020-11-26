@@ -45,21 +45,23 @@
 				@elseif $key == 'ts'{
 					$c:clr($clr);
 					$b:$val / 2;
+					$l0:0;
 					$l1:$val * 3 /5;
 					$l2:$val * 4 /5;
+					$l3:$val;
 					$val:(
-						0px #{$val}px #{$b}px #{$c},
-						#{$l1}px #{$l2}px #{$b}px #{$c},
-						#{$l2}px #{$l1}px #{$b}px #{$c},
-						#{$val}px 0px #{$b}px #{$c},
-						#{$l2}px -#{$l1}px #{$b}px #{$c},
-						#{$l1}px -#{$l2}px #{$b}px #{$c},
-						0px -#{$val}px #{$b}px #{$c},
-						-#{$l1}px -#{$l2}px #{$b}px #{$c},
-						-#{$l2}px -#{$l1}px #{$b}px #{$c},
-						-#{$val}px 0px #{$b}px #{$c},
-						-#{$l2}px #{$l1}px #{$b}px #{$c},
-						-#{$l1}px #{$l2}px #{$b}px #{$c}
+						(#{$l0}px #{$l3}px #{$b}px #{$c}),
+						(#{$l1}px #{$l2}px #{$b}px #{$c}),
+						(#{$l2}px #{$l1}px #{$b}px #{$c}),
+						(#{$l3}px #{$l0}px #{$b}px #{$c}),
+						(#{$l2}px -#{$l1}px #{$b}px #{$c}),
+						(#{$l1}px -#{$l2}px #{$b}px #{$c}),
+						(#{$l0}px -#{$l3}px #{$b}px #{$c}),
+						(-#{$l1}px -#{$l2}px #{$b}px #{$c}),
+						(-#{$l2}px -#{$l1}px #{$b}px #{$c}),
+						(-#{$l3}px #{$l0}px #{$b}px #{$c}),
+						(-#{$l2}px #{$l1}px #{$b}px #{$c}),
+						(-#{$l1}px #{$l2}px #{$b}px #{$c})
 					);
 				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)};}
