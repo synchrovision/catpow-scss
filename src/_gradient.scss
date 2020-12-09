@@ -8,6 +8,7 @@
 	}
 }
 @mixin linear_gradient($deg,$colors...){
+	$drc:false;
 	$drcs:(0deg:top,90deg:left,180deg:bottom,270deg:right);
 	@if(map-has-key($drcs,$deg)){$drc:map-get($drcs,$deg);}
 	@else{$drc:top;}
