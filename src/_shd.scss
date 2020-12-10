@@ -1,6 +1,8 @@
 @mixin shd($shd){
 	$btvals:(n:none);
 	@each $key,$val in $shd{
+		$clr:false;
+		$blur:false;
 		@if type-of($val) == 'list' and length($val) == 2{
 			$clr:nth($val,2);
 			$val:nth($val,1);
