@@ -2,6 +2,13 @@
 	*{margin:0;padding:0;background:transparent;text-decoration:none;font-style:normal;}
 	img{vertical-align:bottom;border:none;}
 }
+@mixin hide_scrollbar(){
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar{
+		display:none;
+	}
+}
 
 @mixin clear_float(){
 	content:"";display:block;clear:both;height:0;margin:0;padding:0;line-height:0;
