@@ -2,7 +2,7 @@
 @mixin cal_large($clr1:#080,$event_colors:()){
 	table.calendar{
 		width:100%;border-collapse:collapse;vertical-align:top;
-		*{@include text-shadow(none);margin:0;padding:0;border:none;}
+		*{@include shd((t:n));margin:0;padding:0;border:none;}
 		caption{
 			position:relative;
 			*{color:$clr1;}
@@ -29,7 +29,7 @@
 				div.events{
 					div.event label{
 						padding:2px 3px;margin:1px;text-align:center;cursor:pointer;
-						@include border-radius(10px);@include text_style(10px,#fff,bold,gothic);
+						@include bdr((r:10));@include text_style(10px,#fff,bold,gothic);
 						width:auto;height:auto;display:block;overflow:hidden;text-indent:0;
 					}
 				}
@@ -82,7 +82,7 @@
 						background:tint($clr1,20%);
 						div.events{
 							background-color:#fff;display:block;width:120px;
-							left:50%;top:30px;margin-left:-65px;position:absolute;z-index:9999;padding:5px;@include box-shadow;
+							left:50%;top:30px;margin-left:-65px;position:absolute;z-index:9999;padding:5px;@include shd((b:3));
 							div.event{display:block;}
 						}
 					}
@@ -96,7 +96,7 @@
 @mixin cal_mini($clr1:#080,$event_colors:()){
 	table.calendar{
 		width:100%;border-collapse:collapse;vertical-align:top;
-		*{@include text-shadow(none);margin:0;padding:0;border:none;}
+		*{@include shd((t:n));margin:0;padding:0;border:none;}
 		caption{
 			position:relative;padding:2px 5px;
 			*{color:$clr1;}
@@ -128,16 +128,16 @@
 					p.holiday{
 						background-color:red;display:block;@include text_style(12px,#fff,bold,gothic);text-align:center;
 						left:50%;top:-18px;margin-left:-50px;width:80px;position:absolute;
-						z-index:999;padding:2px 10px;@include box-shadow;@include border-radius(10px);
+						z-index:999;padding:2px 10px;@include shd((b:3));@include bdr((r:10));
 					}
 					div.events{
-						background-color:#fff;display:block;@include border-radius(10px);
-						left:50%;top:20px;margin-left:-65px;width:120px;position:absolute;z-index:999;padding:5px;@include box-shadow;
+						background-color:#fff;display:block;@include bdr((r:10));
+						left:50%;top:20px;margin-left:-65px;width:120px;position:absolute;z-index:999;padding:5px;@include shd((b:3));
 						div.event{
 							margin-bottom:3px;
 							label{
 								background-color:tint($clr1,30%);@include text_style(12px,#fff,bold,gothic);text-align:center;
-								width:110px;height:auto;padding:2px 3px;display:block;overflow:hidden;text-indent:0;@include border-radius(10px);
+								width:110px;height:auto;padding:2px 3px;display:block;overflow:hidden;text-indent:0;@include bdr((r:10));
 							}
 						}
 					}
@@ -147,7 +147,7 @@
 		&.single tbody,&.multi tbody{
 			td{
 				&.event{
-					p.date{background:tint($clr1,80%);color:#fff;@include border-radius(10px);margin:2px;}
+					p.date{background:tint($clr1,80%);color:#fff;@include bdr((r:10));margin:2px;}
 					@if length($event_colors)>0{@each $list in $event_colors{
 						&.#{nth($list,1)}{
 							p.date{background:nth($list,2);}
