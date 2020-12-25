@@ -39,6 +39,20 @@
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:$val;}
 	}
 }
+@mixin plh($txt){
+	&:placeholder{
+		@include txt($txt);
+	}
+	&::-webkit-input-placeholder{
+		@include txt($txt);
+	}
+	&:-ms-input-placeholder{
+		@include txt($txt);
+	}
+	&::-moz-placeholder{
+		@include txt($txt);
+	}
+}
 
 @mixin link-colors($args...){
 	&:normal{color:nth($args,1);}
@@ -56,26 +70,8 @@
 	        writing-mode:$mode;
 }
 
-@mixin paragraph_style($align:left,$lineheight:150%,$indent:0,$letterspacing:inherit,$wordspacing:inherit){
-	text-align:$align;line-height:$lineheight;text-indent:$indent;letter-spacing:$letterspacing;word-spacing:$wordspacing;
-}
-
 @mixin text_style($size:12px,$color:#888,$weight:normal,$font:inherit,$style:inherit,$decoration:inherit){
 	font-size:$size;color:$color;font-weight:$weight;font-style:$style;text-decoration:$decoration;font-family:$font;
-}
-@mixin placeholder_style($size:inherit,$color:#ccc,$weight:normal,$font:inherit,$style:inherit,$decoration:inherit,$opacity:1){
-	&:placeholder{
-		font-size:$size;color:$color;font-weight:$weight;font-style:$style;text-decoration:$decoration;font-family:$font;opacity:$opacity;
-	}
-	&::-webkit-input-placeholder{
-		font-size:$size;color:$color;font-weight:$weight;font-style:$style;text-decoration:$decoration;font-family:$font;opacity:$opacity;
-	}
-	&:-ms-input-placeholder{
-		font-size:$size;color:$color;font-weight:$weight;font-style:$style;text-decoration:$decoration;font-family:$font;opacity:$opacity;
-	}
-	&::-moz-placeholder{
-		font-size:$size;color:$color;font-weight:$weight;font-style:$style;text-decoration:$decoration;font-family:$font;opacity:$opacity;
-	}
 }
 
 @mixin text_combine(){
