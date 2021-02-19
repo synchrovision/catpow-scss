@@ -29,6 +29,13 @@
 				@elseif $key == 'bc' or $key == 'tc'{
 					$val:0 0 #{$blur}px #{clr($clr)} inset;
 				}
+				@elseif $key == 'bv'{
+					$val:
+						-#{$blur}px -#{$blur}px #{$blur}px -#{$blur}px rgba(255,255,255,.5) inset,
+						#{$blur}px #{$blur}px #{$blur}px -#{$blur}px rgba(255,255,255,.5),
+						#{$blur}px #{$blur}px #{$blur}px -#{$blur}px #{clr($clr)} inset,
+						-#{$blur}px -#{$blur}px #{$blur}px -#{$blur}px #{clr($clr)};
+				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)} inset;}
 			}
 			@else{
@@ -43,6 +50,13 @@
 				}
 				@elseif $key == 'bc' or $key == 'tc'{
 					$val:0 0 #{$blur}px #{clr($clr)};
+				}
+				@elseif $key == 'bv'{
+					$val:
+						-#{$blur}px -#{$blur}px #{$blur}px -#{$blur}px #{clr($clr)} inset,
+						#{$blur}px #{$blur}px #{$blur}px -#{$blur}px #{clr($clr)},
+						#{$blur}px #{$blur}px #{$blur}px -#{$blur}px rgba(255,255,255,.5) inset,
+						-#{$blur}px -#{$blur}px #{$blur}px -#{$blur}px rgba(255,255,255,.5);
 				}
 				@elseif $key == 'ts'{
 					$c:clr($clr);
@@ -70,7 +84,7 @@
 			}
 		}
 		@if map-has-key($btvals,$val){$val:map-get($btvals,$val);}
-		@if $key == 'b' or $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br' or $key == 'bc'
+		@if $key == 'b' or $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br' or $key == 'bc' or $key == 'bv'
 		{box-shadow:$val;}
 		@if $key == 't' or $key == 'tc' or $key == 'ts'{text-shadow:$val;}
 	}
