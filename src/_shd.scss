@@ -29,13 +29,6 @@
 				@elseif $key == 'bc' or $key == 'tc'{
 					$val:0 0 #{$blur}px #{clr($clr)} inset;
 				}
-				@elseif $key == 'bv'{
-					$val:
-						-#{$blur}px -#{$blur}px #{$blur}px -#{$blur}px rgba(255,255,255,.5) inset,
-						#{$blur}px #{$blur}px #{$blur}px -#{$blur}px rgba(255,255,255,.5),
-						#{$blur}px #{$blur}px #{$blur}px -#{$blur}px #{clr($clr)} inset,
-						-#{$blur}px -#{$blur}px #{$blur}px -#{$blur}px #{clr($clr)};
-				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)} inset;}
 			}
 			@else{
@@ -50,13 +43,6 @@
 				}
 				@elseif $key == 'bc' or $key == 'tc'{
 					$val:0 0 #{$blur}px #{clr($clr)};
-				}
-				@elseif $key == 'bv'{
-					$val:
-						-#{$blur}px -#{$blur}px #{$blur}px -#{$blur}px #{clr($clr)} inset,
-						#{$blur}px #{$blur}px #{$blur}px -#{$blur}px #{clr($clr)},
-						#{$blur}px #{$blur}px #{$blur}px -#{$blur}px rgba(255,255,255,.5) inset,
-						-#{$blur}px -#{$blur}px #{$blur}px -#{$blur}px rgba(255,255,255,.5);
 				}
 				@elseif $key == 'ts'{
 					$c:clr($clr);
@@ -82,11 +68,47 @@
 				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)};}
 			}
+			@if $key == 'tbv'{
+				$b:$blur;
+				$c1:clr(lt);
+				$c2:clr(sh);
+				@if $inset{
+					$c1:clr(sh);
+					$c2:clr(lt);
+				}
+				$val:
+					-#{$b}px -#{$b}px #{$b}px #{$c1},
+					#{$b}px #{$b}px #{$b}px #{$c2};
+
+			}
+			@if $key == 'bv' or $key == 'bvi' or $key == 'bvo' or $key == 'bve'{
+				$bi:$blur;
+				$bo:$blur;
+				$ci1:clr(lt);
+				$ci2:clr(sh);
+				$co1:clr(lt);
+				$co2:clr(sh);
+				@if $key == 'bvi'{$bo:1;}
+				@if $key == 'bvo'{$bi:1;}
+				@if $inset{
+					$ci1:clr(sh);
+					$ci2:clr(lt);
+					$co1:clr(sh);
+					$co2:clr(lt);
+				}
+				@if $key == 'bve'{$ci1:$co2;$ci2:$co1;}
+				
+				$val:
+					#{$bi}px #{$bi}px #{$bi}px #{$ci1} inset,
+					-#{$bo}px -#{$bo}px #{$bo}px #{$co1},
+					-#{$bi}px -#{$bi}px #{$bi}px #{$ci2} inset,
+					#{$bo}px #{$bo}px #{$bo}px #{$co2};
+			}
 		}
 		@if map-has-key($btvals,$val){$val:map-get($btvals,$val);}
-		@if $key == 'b' or $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br' or $key == 'bc' or $key == 'bv'
+		@if $key == 'b' or $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br' or $key == 'bc' or $key == 'bv' or $key == 'bvi' or $key == 'bvo' or $key == 'bve'
 		{box-shadow:$val;}
-		@if $key == 't' or $key == 'tc' or $key == 'ts'{text-shadow:$val;}
+		@if $key == 't' or $key == 'tc' or $key == 'ts' or $key == 'tbv'{text-shadow:$val;}
 	}
 }
 
