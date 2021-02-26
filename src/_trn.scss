@@ -20,6 +20,14 @@
 		@if map-has-key($ffncs,$key){
 			$fl:append($fl,(map-get($ffncs,$key) + '(' + $val + ')'));
 		}
+		@if $key == 'clr'{
+			$clr:clr($val);
+			$fl:append($fl,brightness(lightness($clr)*.9));
+			$fl:append($fl,sepia(100%));
+			$fl:append($fl,saturate(1000%));
+			$fl:append($fl,saturate(saturation($clr)*.7));
+			$fl:append($fl,hue-rotate(hue($clr) - 34deg));
+		}
 		@if $key == 'p'{perspective:$val;}
 		@if $key == 'd'{transition-delay:$val;}
 		@if $key == 'e'{transition-timing-function:ease($val);}
