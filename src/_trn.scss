@@ -22,7 +22,8 @@
 		}
 		@if $key == 'clr'{
 			$clr:clr($val);
-			$fl:append($fl,brightness(lightness($clr)*.9));
+			$fl:append($fl,invert(50%));
+			$fl:append($fl,brightness(lightness($clr)*1.7));
 			$fl:append($fl,sepia(100%));
 			$fl:append($fl,saturate(1000%));
 			$fl:append($fl,saturate(saturation($clr)*.7));
