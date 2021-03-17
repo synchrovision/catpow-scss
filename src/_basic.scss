@@ -106,8 +106,19 @@
 }
 @function cp_get_image($img){
 	@if $img == n{@return none;}
+	$clr:false;
+	@if type-of($img) == 'list' {
+		$clr:clr(nth($img,2));
+		@if(str-slice($clr,0,1) == '#'){
+			$clr:'%23' + str-slice($clr,1);
+		}
+		$img:nth($img,1);
+	}
 	@if type-of($images) == 'map' {
 		@if map-has-key($images,$img){$img:map-get($images,$img);}
+	}
+	@if $clr{
+		$img:$img + '?color=' + $clr;
 	}
 	@return url($img);
 }
