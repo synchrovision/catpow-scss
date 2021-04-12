@@ -1,9 +1,9 @@
 @mixin gradient($colorA:#666,$colorB:#888,$orientation:vertical){
-	@if($orientation==vertical || $orientation==v){
+	@if($orientation==vertical or $orientation==v){
 		@include linear_gradient(180deg,$colorA,$colorB);
-	}@elseif($orientation==horizontal || $orientation==h){
+	}@elseif($orientation==horizontal or $orientation==h){
 		@include linear_gradient(90deg,$colorA,$colorB);
-	}@elseif($orientation==radial || $orientation==r){
+	}@elseif($orientation==radial or $orientation==r){
 		background-image:radial-gradient($colorA,$colorB);
 	}
 }
