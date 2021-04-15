@@ -38,7 +38,7 @@
 	$apvals:(n:none,b:button);
 	$bivals:(n:auto,a:avoid,b:always,p:avoid-page,c:avoid-column);
 	$ofvals:(f:fill,c:cover,i:contain,cvr:cover,cnt:contain,sd:scale-down);
-	$asvals:(f:stretch,c:center,e:end,s:start);
+	$asvals:(f:stretch,c:center,e:flex-end,s:flex-start);
 	$opvals:(c:center);
 	
 	$abstractSize:(auto,min-content,max-content,fit-content);
