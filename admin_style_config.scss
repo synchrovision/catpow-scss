@@ -7,6 +7,12 @@ $selectors:(
 	u:'#profile-page,#cpcf_custom_box .inside'
 );
 
+$heading_font:$gothic;
+$text_font:$gothic;
+$caption_font:$gothic;
+$decoration_font:$gothic;
+$strong_font:$gothic;
+
 $st:60;
 $lt:60;
 
@@ -25,11 +31,11 @@ $colors:(
 	12:hsl(330,$st,$lt),
 	a:#36c,
 	m:#007cba,
-	b:#fefefe,
+	b:#f8f8f8,
 	t:#444,
 	i:#fff,
-	lt:rgba(255,255,255,.7),
-	sh:rgba(0,0,0,.2),
+	lt:rgba(255,255,255,.8),
+	sh:rgba(0,0,0,.1),
 	shd:rgba(0,0,0,.3),
 	n:transparent
 );
@@ -42,7 +48,12 @@ $images:(
 $fonts:(
 	g:$gothic,
 	m:$mincho,
-	e:'times'
+	e:'times',
+	h:$heading_font,
+	t:$text_font,
+	c:$caption_font,
+	d:$decoration_font,
+	s:$strong_font,
 );
 
 $sizes:(
