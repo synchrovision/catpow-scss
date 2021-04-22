@@ -83,7 +83,10 @@
 	}
 	$svals:(f:100%,a:auto,i:inherit,min:min-content,max:max-content,fit:fit-content);
 	@if map-has-key($svals,$val){@return map-get($svals,$val);}
-	@if type-of($val) == 'number' and unitless($val){@return $val + px;}
+	@if type-of($val) == 'number' and unitless($val){
+		@if global-variable-exists("sizeUnit"){@return $val*$sizeUnit;}
+		@return $val + px;
+	}
 	@return $val;
 }
 @function cp_get_size_values($vals){
