@@ -1,10 +1,10 @@
-# cawpow-scss
+# catpow-scss
 
 catpow-scssはscssのコードを短く手早く書くことを目的としたmixin集です。
 catpow-scssはmixinは2〜3文字の短い名前で、複数のプロパティを同じく2〜3文字の短い名前で指定して設定できます。
 
 ```command
-git submodule add https://github.com/synchrovision/cawpow-scss.git scss/catpow
+git submodule add https://github.com/synchrovision/catpow-scss.git scss/catpow
 ```
 
 ## sample
