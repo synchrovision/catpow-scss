@@ -26,7 +26,7 @@
 					@if $key == 'bc'{$tx:0;$ty:0;}
 					$val:#{$tx}px #{$ty}px #{$blur}px #{$spr}px #{clr($clr)} inset;
 				}
-				@elseif $key == 'bc' or $key == 'tc'{
+				@else if $key == 'bc' or $key == 'tc'{
 					$val:0 0 #{$blur}px #{clr($clr)} inset;
 				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)} inset;}
@@ -41,10 +41,10 @@
 					@if $key == 'bc'{$tx:0;$ty:0;}
 					$val:#{$tx}px #{$ty}px #{$blur}px #{$spr}px #{clr($clr)};
 				}
-				@elseif $key == 'bc' or $key == 'tc'{
+				@else if $key == 'bc' or $key == 'tc'{
 					$val:0 0 #{$blur}px #{clr($clr)};
 				}
-				@elseif $key == 'ts'{
+				@else if $key == 'ts'{
 					$c:clr($clr);
 					$b:$val / 2;
 					$l0:0;
