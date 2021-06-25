@@ -18,7 +18,8 @@
 		g:grid-area,
 		gr:grid-row,
 		gc:grid-column,
-		nth:order
+		nth:order,
+		sst:scroll-snap-type
 	);
 	$dvals:(
 		b:block,f:flex,g:grid,
@@ -40,6 +41,7 @@
 	$ofvals:(f:fill,c:cover,i:contain,cvr:cover,cnt:contain,sd:scale-down);
 	$asvals:(f:stretch,c:center,e:flex-end,s:flex-start);
 	$opvals:(c:center);
+	$sstvals:(n:none,m:mandatory,p:proximity)
 	
 	$abstractSize:(auto,min-content,max-content,fit-content);
 	@each $key,$val in $bnd{
@@ -90,6 +92,7 @@
 		@if $key == c{@include columns($val);}
 		@if $key == ap{$val:replace_values($val,$apvals);@include appearance($val);}
 		@if $key == as{$val:map-get($asvals,$val);}
+		@if $key == sst{$val:replace_values($val,$sstvals);}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:#{$val};}
 	}
 }
