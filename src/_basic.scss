@@ -77,6 +77,30 @@
 	}
 }
 
+@function fill_4_values($vals){
+	@if type-of($vals) == 'list' or type-of($vals) == 'arglist'{
+		@if length($vals) == 1{
+			$v:nth($vals,1);
+			@return ($v,$v,$v,$v);
+		}
+		@if length($vals) == 2{
+			$v1:nth($vals,1);
+			$v2:nth($vals,2);
+			@return ($v1,$v2,$v1,$v2);
+		}
+		@if length($vals) == 3{
+			$v1:nth($vals,1);
+			$v2:nth($vals,2);
+			$v3:nth($vals,3);
+			@return ($v1,$v2,$v3,$v2);
+		}
+		@return $vals;
+	}
+	@else{
+		@return ($vals,$vals,$vals,$vals);
+	}
+}
+
 @function cp_get_size_value($val){
 	@if type-of($sizes) == 'map' {
 		@if map-has-key($sizes,$val){$val:map-get($sizes,$val);}
