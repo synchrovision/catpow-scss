@@ -1,7 +1,8 @@
 @mixin bnd($bnd){
 	$keys:(
 		d:display,p:position,w:width,h:height,
-		l:left,r:right,t:top,b:bottom,x:left,y:bottom,z:z-index,
+		l:left,r:right,t:top,b:bottom,i:inset,
+		x:left,y:bottom,z:z-index,
 		pd:padding,mg:margin,
 		pdt:padding-top,mgt:margin-top,
 		pdb:padding-bottom,mgb:margin-bottom,
@@ -41,7 +42,7 @@
 	$ofvals:(f:fill,c:cover,i:contain,cvr:cover,cnt:contain,sd:scale-down);
 	$asvals:(f:stretch,c:center,e:flex-end,s:flex-start);
 	$opvals:(c:center);
-	$sstvals:(n:none,m:mandatory,p:proximity)
+	$sstvals:(n:none,m:mandatory,p:proximity);
 	
 	$abstractSize:(auto,min-content,max-content,fit-content);
 	@each $key,$val in $bnd{
@@ -53,13 +54,20 @@
 		@if $key == bi or $key == pbb or $key == pbi or $key == pba
 			{$val:map-get($bivals,$val);}
 		@if $key == w or $key == h or $key == x or $key == y or 
-			$key == l or $key == r or $key == t or $key == b or 
+			$key == l or $key == r or $key == t or $key == b or $key == i or 
 			$key == pd or $key == mg or
 			$key == pdt or $key == mgt or
 			$key == pdb or $key == mgb or
 			$key == pdl or $key == mgl or
 			$key == pdr or $key == mgr
 			{$val:cp_get_size_values($val);}
+		@if $key == i{
+			$vals:fill_4_values($val);
+			top:nth($vals,1);
+			right:nth($vals,2);
+			bottom:nth($vals,3);
+			left:nth($vals,4);
+		}
 		@if $key == w or $key == h{
 			@if type-of($val) == 'list'{
 				@if length($val) == 2{
