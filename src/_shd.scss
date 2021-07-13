@@ -19,6 +19,7 @@
 			@if $inset{
 				@if $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br'{
 					$spr:$blur * -1;
+					$tx:0;$ty:0;
 					@if $key == 'bt'{$tx:0;$ty:$blur;}
 					@if $key == 'bb'{$tx:0;$ty:$blur * -1;}
 					@if $key == 'bl'{$tx:$blur;$ty:0;}
@@ -34,6 +35,7 @@
 			@else{
 				@if $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br'{
 					$spr:$blur * -1;
+					$tx:0;$ty:0;
 					@if $key == 'bt'{$tx:0;$ty:$blur * -1;}
 					@if $key == 'bb'{$tx:0;$ty:$blur;}
 					@if $key == 'bl'{$tx:$blur * -1;$ty:0;}
