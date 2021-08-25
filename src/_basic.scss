@@ -1,6 +1,7 @@
 @mixin default_break(){
 	*{margin:0;padding:0;background:transparent;text-decoration:none;font-style:normal;}
 	img{vertical-align:bottom;border:none;}
+	html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 }
 @mixin hide_scrollbar(){
 	-ms-overflow-style: none;
