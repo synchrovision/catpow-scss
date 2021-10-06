@@ -110,7 +110,7 @@
 	@if map-has-key($svals,$val){@return map-get($svals,$val);}
 	@if type-of($val) == 'number' and unitless($val){
 		@if global-variable-exists("sizeUnit"){@return $val*$sizeUnit;}
-		@return $val + px;
+		@return $val * 1px;
 	}
 	@return $val;
 }
