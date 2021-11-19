@@ -37,6 +37,9 @@
 			-webkit-flex-direction:map-get($dvals,$val);
 			flex-direction:map-get($dvals,$val);
 		}
+		@if $key == g{
+			gap:cp_get_size_values($val);
+		}
 		@if $key == c{
 			@if type-of($val) == 'list'{
 				@include flex_equalize(nth($val,1),nth($val,2));
