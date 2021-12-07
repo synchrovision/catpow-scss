@@ -64,6 +64,7 @@
 		mg:margin,mgl:margin-left,mgr:margin-right,mgt:margin-top,mgb:margin-bottom,
 		w:width,mnw:min-width,mxw:max-width,
 		h:height,mnh:min-height,mxh:max-height,
+		bg:background,c:color
 	);
 	$trn:replace_values($trn,$trvals);
 	-webkit-transition:$trn;
