@@ -26,7 +26,7 @@
 	@each $key,$val in $grd{
 		@if $key == rc or $key == rr{
 			@if(type-of($val) == 'list'){
-				$v:minmax(nth($val,1),1fr);
+				$v:minmax(cp_get_size_values(nth($val,1)),1fr);
 				$vals:();
 				@for $i from 1 through nth($val,2){
 					$vals:append($vals,$v);
@@ -34,7 +34,7 @@
 				$val:repeat(auto-fill,$vals)
 			}
 			@else{
-				$val:repeat(auto-fill,minmax($val,1fr));
+				$val:repeat(auto-fill,minmax(cp_get_size_values($val),1fr));
 			}
 		}
 		@if $key == r{
