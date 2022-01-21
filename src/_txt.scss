@@ -20,6 +20,7 @@
 	$mvals:(h:horizontal-tb,vr:vertical-rl,vl:vertical-lr);
 	$tovals:(m:mixed,s:sideway,u:upright);
 	$ovals:(c:clip,e:ellipsis);
+	$whsvals:(n:normal,nw:nowrap,p:pre,pw:pre-wrap,pl:pre-line,bs:break-space);
 	$ffsvals:(p:"palt",t:"trad",n:"nalt");
 	@each $key,$val in $txt{
 		@if $key == p or $key == h{$val:cp_get_size_value($val);}
@@ -35,6 +36,7 @@
 		@if $key == t{$val:cp_get_size_value($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
 		@if $key == o{$val:replace_values($val,$ovals);}
+		@if $key == whs{$val:replace_values($val,$whsvals);}
 		@if $key == ffs{$val:replace_values($val,$ffsvals);}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:$val;}
 	}
