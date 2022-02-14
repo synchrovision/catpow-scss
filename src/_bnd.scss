@@ -33,7 +33,7 @@
 		tr:table-row,tc:table-cell,
 		n:none
 	);
-	$pvals:(s:static,r:relative,a:absolute,f:fixed);
+	$pvals:(s:static,r:relative,a:absolute,f:fixed,st:sticky);
 	$bsvals:(b:border-box,c:content-box);
 	$ovals:(v:visible,h:hidden,s:scroll,a:auto);
 	$flvals:(l:left,r:right,n:none);
