@@ -25,9 +25,10 @@
 				$tone:extract_color_tone($val);
 				@if $tone {
 					$fl:append($fl,invert(50%));
+					$fl:append($fl,unquote('brightness(calc('+map-get($tone,l)+' * 1.7))'));
 					$fl:append($fl,sepia(100%));
-					$fl:append($fl,unquote('saturate(calc('+map-get($tone,s)+' * 3))'));
-					$fl:append($fl,unquote('brightness(calc('+map-get($tone,b)+' * 1.5))'));
+					$fl:append($fl,saturate(1000%));
+					$fl:append($fl,unquote('saturate(calc('+map-get($tone,s)+' * 0.7))'));
 					$fl:append($fl,unquote('hue-rotate(calc('+map-get($tone,h)+' - 34deg))'));
 				}
 			}
