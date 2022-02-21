@@ -187,17 +187,21 @@
 @function clr($clr){
 	@if type-of($clr) == 'color'{@return $clr;}
 	@if $clr == n{@return transparent;}
-	$trans:false;
+	$alpha:false;
 	$tint:false;
 	@if type-of($clr) =='list'{
-		@if length($clr) >2{$trans:nth($clr,3);}
+		@if length($clr) >2{$alpha:nth($clr,3);}
 		@if length($clr) >1{$tint:nth($clr,2);@if $tint <= 1{$tint:$tint*100};}
 		$clr:nth($clr,1);
+	}
+	@if function-exists('translate_color') {
+		$color:translate_color($clr,$tint,$alpha);
+		@if $color{@return $color;}
 	}
 	@if type-of($colors) == 'map' {
 		@if map-has-key($colors,$clr){$clr:map-get($colors,$clr);}
 	}
-	@if type-of($trans) == 'number'{@return rgba(tint($clr,$tint),$trans);}
+	@if type-of($alpha) == 'number'{@return rgba(tint($clr,$tint),$alpha);}
 	@if type-of($tint) == 'number'{@return tint($clr,$tint);}
 	@return $clr;
 }
