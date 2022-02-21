@@ -21,13 +21,27 @@
 			$fl:append($fl,(map-get($ffncs,$key) + '(' + $val + ')'));
 		}
 		@if $key == 'clr'{
-			$clr:clr($val);
-			$fl:append($fl,invert(50%));
-			$fl:append($fl,brightness(lightness($clr)*1.7));
-			$fl:append($fl,sepia(100%));
-			$fl:append($fl,saturate(1000%));
-			$fl:append($fl,saturate(saturation($clr)*.7));
-			$fl:append($fl,hue-rotate(hue($clr) - 34deg));
+			@if function-exists('extract_color_tone') {
+				$tone:extract_color_tone($val);
+				@if $tone {
+					$fl:append($fl,invert(50%));
+					$fl:append($fl,sepia(100%));
+					$fl:append($fl,unquote('saturate(calc('+map-get($tone,s)+' * 3))'));
+					$fl:append($fl,unquote('brightness(calc('+map-get($tone,b)+' * 1.5))'));
+					$fl:append($fl,unquote('hue-rotate(calc('+map-get($tone,h)+' - 34deg))'));
+				}
+			}
+			@else{
+				$clr:clr($val);
+				@if type-of($clr) == 'color'{
+					$fl:append($fl,invert(50%));
+					$fl:append($fl,brightness(lightness($clr)*1.7));
+					$fl:append($fl,sepia(100%));
+					$fl:append($fl,saturate(1000%));
+					$fl:append($fl,saturate(saturation($clr)*.7));
+					$fl:append($fl,hue-rotate(hue($clr) - 34deg));
+				}
+			}
 		}
 		@if $key == 'p'{perspective:$val;}
 		@if $key == 'd'{transition-delay:$val;}
