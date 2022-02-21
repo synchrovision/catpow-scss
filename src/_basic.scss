@@ -151,6 +151,10 @@
 	@return url($img);
 }
 @function cp_get_font($fnt){
+	@if function-exists('translate_font') {
+		$font:translate_font($fnt);
+		@if $font{@return $font;}
+	}
 	@if type-of($fonts) == 'map' {
 		@if map-has-key($fonts,$fnt){$fnt:map-get($fonts,$fnt);}
 	}
