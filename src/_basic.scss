@@ -209,3 +209,17 @@
 	@if type-of($tint) == 'number'{@return tint($clr,$tint);}
 	@return $clr;
 }
+
+@function slice($list,$start:1,$end:length($list)){
+	$rtn:();
+	@if $start < 0 {
+		$start: length($list) + $start;
+	}
+	@if $end < 1 {
+		$end: length($list) + $end;
+	}
+	@for $i from $start through $end {
+		$rtn:append($rtn,nth($list,$i));
+	}
+	@return $rtn;
+}
