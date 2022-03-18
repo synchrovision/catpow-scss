@@ -151,12 +151,12 @@
 	@return url($img);
 }
 @function cp_get_font($fnt){
-	@if function-exists('translate_font') {
+	@if global-variable-exists("fonts") and type-of($fonts) == 'map' and map-has-key($fonts,$fnt){
+		$fnt:map-get($fonts,$fnt);
+	}
+	@else if function-exists('translate_font') {
 		$font:translate_font($fnt);
 		@if $font{@return $font;}
-	}
-	@if type-of($fonts) == 'map' {
-		@if map-has-key($fonts,$fnt){$fnt:map-get($fonts,$fnt);}
 	}
 	@return $fnt;
 }
@@ -198,12 +198,12 @@
 		@if length($clr) >1{$tint:nth($clr,2);@if $tint <= 1{$tint:$tint*100};}
 		$clr:nth($clr,1);
 	}
-	@if function-exists('translate_color') {
+	@if global-variable-exists("colors") and type-of($colors) == 'map' and map-has-key($colors,$clr){
+		$clr:map-get($colors,$clr);
+	}
+	@else if function-exists('translate_color') {
 		$color:translate_color($clr,$tint,$alpha);
 		@if $color{@return $color;}
-	}
-	@if type-of($colors) == 'map' {
-		@if map-has-key($colors,$clr){$clr:map-get($colors,$clr);}
 	}
 	@if type-of($alpha) == 'number'{@return rgba(tint($clr,$tint),$alpha);}
 	@if type-of($tint) == 'number'{@return tint($clr,$tint);}
