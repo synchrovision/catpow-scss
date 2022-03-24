@@ -33,7 +33,7 @@
 		tr:table-row,tc:table-cell,
 		n:none
 	);
-	$pvals:(s:static,r:relative,a:absolute,f:fixed,st:sticky);
+	$pvals:(n:static,r:relative,a:absolute,f:fixed,s:sticky);
 	$bsvals:(b:border-box,c:content-box);
 	$ovals:(v:visible,h:hidden,s:scroll,a:auto);
 	$flvals:(l:left,r:right,n:none);
@@ -98,7 +98,10 @@
 		@if $key == of{$val:map-get($ofvals,$val);}
 		@if $key == op{$val:map-get($opvals,$val);}
 		@if $key == f{@include flex($val);}
-		@if $key == c{@include columns($val);}
+		@if $key == c{
+			@if(is-unitless($val) && $val > 20){$val:cp_get_size_values($val);}
+			@include columns($val);
+		}
 		@if $key == ap{$val:replace_values($val,$apvals);@include appearance($val);}
 		@if $key == as{$val:map-get($asvals,$val);}
 		@if $key == sst{$val:replace_values($val,$sstvals);}
