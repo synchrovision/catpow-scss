@@ -5,7 +5,7 @@
 		t:letter-spacing,ls:letter-spacing,c:color,
 		w:font-weight,fw:font-weight,fs:font-style,
 		td:text-decoration,to:text-orientation,
-		o:text-overflow,
+		o:text-overflow,uo:text-underline-offset,
 		l:list-style,
 		whs:white-space,wds:word-spacing,wb:word-break,b:word-break,ffs:font-feature-settings
 	);
@@ -23,7 +23,7 @@
 	$whsvals:(n:normal,nw:nowrap,p:pre,pw:pre-wrap,pl:pre-line,bs:break-space);
 	$ffsvals:(p:"palt",t:"trad",n:"nalt");
 	@each $key,$val in $txt{
-		@if $key == p or $key == h{$val:cp_get_size_value($val);}
+		@if $key == p or $key == h or $key == uo{$val:cp_get_size_value($val);}
 		@if $key == c{$val:cp_get_color($val);}
 		@if $key == f{$val:cp_get_font($val);}
 		@if $key == b{$val:replace_values($val,$bvals);}
