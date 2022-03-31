@@ -103,7 +103,7 @@
 }
 
 @function cp_get_size_value($val){
-	@if type-of($sizes) == 'map' {
+	@if global-variable-exists("sizes") and type-of($sizes) == 'map' {
 		@if map-has-key($sizes,$val){$val:map-get($sizes,$val);}
 	}
 	$svals:(f:100%,a:auto,i:inherit,min:min-content,max:max-content,fit:fit-content);
@@ -167,7 +167,7 @@
 
 
 @function bp($bp){
-	@if type-of($breakpoints) == 'map' {
+	@if global-variable-exists("breakpoints") and type-of($breakpoints) == 'map' {
 		@if map-has-key($breakpoints,$bp){$bp:map-get($breakpoints,$bp);}
 	}
 	@return $bp;
@@ -175,7 +175,7 @@
 
 
 @function sel($sels){
-	@if type-of($selectors) == 'map' {
+	@if global-variable-exists("selectors") and type-of($selectors) == 'map' {
 		@if type-of($sels) == 'list' {
 			$rtn:false;
 			@each $sel in $sels{
