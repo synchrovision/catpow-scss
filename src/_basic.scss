@@ -142,7 +142,7 @@
 		}
 		$img:nth($img,1);
 	}
-	@if type-of($images) == 'map' {
+	@if global-variable-exists("images") and type-of($images) == 'map' {
 		@if map-has-key($images,$img){$img:map-get($images,$img);}
 	}
 	@if $clr{
