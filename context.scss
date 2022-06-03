@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+@mixin color_context{
+	:root,.color0{
+		@each $r in (b,s,t,m,a,i){
+			--cp-context-color-#{$r}:hsla(var(--cp-tones-context-#{$r}-h),var(--cp-tones-context-#{$r}-s),var(--cp-tones-context-#{role}-l),1);
+			@each $k in (h,s,l,t){
+				--cp-context-tones-#{$r}-#{$k}:var(--cp-tones-#{$r}-#{$k});
+			}
+		}
+	}
+	@for $i from 1 through 12{
+		.color#{$i}{
+			$c:$i - 6;
+			@each $r in (b,s,t,m,a,i){
+				--cp-context-tones-#{$r}-h:calc(var(--cp-tones-#{$r}-h) + var(--cp-tones-hr) * #{$c} + var(--cp-tones-hs));
+			}
+		}
+	}
+}
