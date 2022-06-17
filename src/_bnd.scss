@@ -23,10 +23,12 @@
 		sst:scroll-snap-type
 	);
 	$dvals:(
-		b:block,f:flex,g:grid,
+		b:block,ib:inline-block,
+		f:flex,if:inline-flex,
+		g:grid,
 		c:contents,
-		ib:inline-block,i:inline,
-		it:inline-table,t:table,
+		i:inline,
+		t:table,it:inline-table,
 		th:table-header-group,
 		tb:table-row-group,
 		tf:table-footer-group,
