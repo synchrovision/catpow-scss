@@ -74,7 +74,7 @@
 
 @mixin transition($trn...){
 	$trvals:(
-		tf:transform,o:opacity,
+		tf:transform,o:opacity,v:visibility,
 		l:left,r:right,t:top,b:bottom,
 		pd:padding,pdl:padding-left,pdr:padding-right,pdt:padding-top,pdb:padding-bottom,
 		mg:margin,mgl:margin-left,mgr:margin-right,mgt:margin-top,mgb:margin-bottom,

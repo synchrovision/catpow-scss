@@ -1,6 +1,6 @@
 @mixin bnd($bnd){
 	$keys:(
-		d:display,p:position,w:width,h:height,
+		d:display,p:position,w:width,h:height,v:visibility,
 		l:left,r:right,t:top,b:bottom,i:inset,
 		x:left,y:bottom,z:z-index,
 		pd:padding,mg:margin,
@@ -35,6 +35,11 @@
 		tr:table-row,tc:table-cell,
 		n:none
 	);
+	$vvals:(
+		v:visible,
+		h:hidden,
+		c:collapse
+	);
 	$pvals:(n:static,r:relative,a:absolute,f:fixed,s:sticky);
 	$bsvals:(b:border-box,c:content-box);
 	$ovals:(v:visible,h:hidden,s:scroll,a:auto);
@@ -51,6 +56,7 @@
 	@each $key,$val in $bnd{
 		@if $key == p{$val:map-get($pvals,$val);}
 		@if $key == d{$val:map-get($dvals,$val);}
+		@if $key == v{$val:map-get($vvals,$val);}
 		@if $key == fl{$val:map-get($flvals,$val);}
 		@if $key == cl{$val:map-get($clvals,$val);}
 		@if $key == bs{$val:map-get($bsvals,$val);}
