@@ -212,7 +212,7 @@
 	$tint:false;
 	@if type-of($clr) =='list'{
 		@if length($clr) >2{$alpha:nth($clr,3);}
-		@if length($clr) >1{$tint:nth($clr,2);@if $tint <= 1{$tint:$tint*100};}
+		@if length($clr) >1{$tint:nth($clr,2);@if type-of($tint) == 'number' and $tint <= 1{$tint:$tint*100};}
 		$clr:nth($clr,1);
 	}
 	@if global-variable-exists("colors") and type-of($colors) == 'map' and map-has-key($colors,$clr){
