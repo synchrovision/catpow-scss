@@ -19,6 +19,38 @@
 			@if map-has-key($svals,$val){$val:map-get($svals,$val);}
 			@else {$val:cp_get_size_values($val);}
 		}
+		@if $key == l{
+			$mxn:$val;
+			$vol:1;
+			@if type-of($val) == 'list'{
+				$mxn:nth($val,1);
+				$vol:nth($val,2);
+			}
+			@if $mxn == s{
+				@include linear_gradient(
+					180deg,
+					clr((sh,false,0)),
+					clr((sh,false,$vol))
+				);
+			}
+			@if $mxn == g{
+				@include linear_gradient(
+					180deg,
+					clr((lt,false,$vol)),
+					clr((lt,false,$vol / 2)) 49%,
+					clr((lt,false,0)) 50%,
+					clr((lt,false,$vol / 2))
+				);
+			}
+			@if $mxn == m{
+				@include linear_gradient(
+					180deg,
+					clr((lt,false,0)),
+					clr((lt,false,$vol)) 50%,
+					clr((lt,false,0))
+				);
+			}
+		}
 		@if $key == g{
 			$mxn:nth($val,1);
 			@if $mxn == v or $mxn == h or $mxn == r{
