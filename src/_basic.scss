@@ -24,7 +24,24 @@
 	display:inline;float:right;
 }
 
-@function tint($color,$tint){
+@function tint($color,$tint,$alpha:false){
+	@if type-of($color) =='list'{
+		$a:false;
+		$t:100;
+		@if length($color) >2{$a:nth($color,3);}
+		@if length($color) >1{$t:nth($color,2);@if $t <= 1{$t:$t*100};}
+		$t:$t * $tint / 100;
+		$c:nth($color,1);
+		@if type-of($alpha) == 'number'{
+			@if type-of($a) == 'number'{
+				$a:$a * $alpha;
+			}
+			@else{
+				$a:$alpha;
+			}
+		}
+		@return clr(($c,$t,$a));
+	}
 	$tint:$tint*0.01;$ff:255;
 	$r:$ff+$tint*(red($color)-$ff);
 	$g:$ff+$tint*(green($color)-$ff);
