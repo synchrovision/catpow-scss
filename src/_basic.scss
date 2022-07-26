@@ -151,6 +151,9 @@
 }
 @function cp_get_image($img){
 	@if $img == n{@return none;}
+	@if type-of($img) == 'string' and str-index($img,'var(') == 1{
+		@return $img;
+	}
 	$clr:false;
 	@if type-of($img) == 'list' {
 		$clr:clr(nth($img,2));
