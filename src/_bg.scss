@@ -56,7 +56,7 @@
 			@if $mxn == v or $mxn == h or $mxn == r{
 				@include gradient(clr(nth($val,2)),clr(nth($val,3)),$mxn);
 			}
-			@elseif $mxn == l{
+			@else if $mxn == l{
 				$colors:();
 				@each $color in slice($val,3){
 					$colors:append($colors,cp_get_color($color),comma);
