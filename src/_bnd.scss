@@ -104,7 +104,7 @@
 		}
 		@if $key == o or $key == ox or $key == oy{$val:map-get($ovals,$val);}
 		@if $key == of{$val:map-get($ofvals,$val);}
-		@if $key == op{$val:map-get($opvals,$val);}
+		@if $key == op{$val:replace_values($val,$opvals);}
 		@if $key == f{@include flex($val);}
 		@if $key == c{
 			@if(is-unitless($val) && $val > 20){$val:cp_get_size_values($val);}
