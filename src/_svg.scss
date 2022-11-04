@@ -1,5 +1,14 @@
 @mixin svg($svg){
-	$keys:(f:fill,s:stroke,w:stroke-width,ta:text-anchor,db:dominant-baseline,po:paint-order);
+	$keys:(
+		f:fill,fo:fill-opacity,
+		s:stroke,w:stroke-width,so:stroke-opacity,
+		sda:stroke-dasharray,sdo:stroke-dashoffset,
+		slc:stroke-linecap,slj:stroke-linejoin,
+		sml:stroke-miterlimit,
+		ta:text-anchor,
+		db:dominant-baseline,
+		po:paint-order
+	);
 	$cvals:(m:square,b:butt,r:round);
 	$jvals:(m:miter,b:bevel,r:round);
 	$tavals:(l:start,c:middle,r:end);
@@ -11,12 +20,14 @@
 		@if $key == ta{$val:replace_values($val,$tavals);}
 		@if $key == db{$val:replace_values($val,$dbvals);}
 		@if $key == po{$val:replace_values($val,$povals);}
+		@if $key == slc{$val:replace_values($val,$cvals);}
+		@if $key == slj{$val:replace_values($val,$jvals);}
 		@if $key == e{
 			stroke-linecap:replace_values($val,$cvals);
 			stroke-linejoin:replace_values($val,$jvals);
 		}
 		@if $key == d{
-			@if type-of($val) =='list'{
+			@if type-of($val) =='list' and type-of(nth($val,1)) == 'list'{
 				stroke-dasharray:nth($val,1);
 				stroke-dashoffset:nth($val,2);
 			}
