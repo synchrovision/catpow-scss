@@ -2,19 +2,22 @@
 	$keys:(
 		i:background-image,c:background-color,
 		r:background-repeat,a:background-attachment,
-		s:background-size,p:background-position
+		s:background-size,p:background-position,
+		bm:background-blend-mode
 	);
 	$rvals:(n:no-repeat,x:repeat-x,y:repeat-y,xy:repeat,r:round,s:space);
 	$avals:(f:fixed,s:scroll);
 	$svals:(fit:100% 100%,cnt:contain,cvr:cover,f:100% 100%,c:cover,i:contain);
 	$pvals:(l:left,r:right,t:top,b:bottom,c:center);
 	$clvals:(b:border-box,p:padding-box,c:content-box,t:text);
+	$bmvals:(n:normal,m:multiply,d:darken,s:screen,l:lighten,o:overlay,cd:color-dodge,cb:color-burn,hl:hard-light,sl:soft-light,hue:hue,str:saturation,clr:color,lmn:luminosity,df:difference,ex:exclusion);
 	
 	@each $key,$val in $bg{
 		@if $key == i{$val:cp_get_image($val);}
 		@if $key == c{$val:cp_get_color($val);}
 		@if $key == r{$val:map-get($rvals,$val);}
 		@if $key == a{$val:map-get($avals,$val);}
+		@if $key == bm{$val:map-get($bmvals,$val);}
 		@if $key == s{
 			@if map-has-key($svals,$val){$val:map-get($svals,$val);}
 			@else {$val:cp_get_size_values($val);}
