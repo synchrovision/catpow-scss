@@ -10,6 +10,16 @@
 		display:none;
 	}
 }
+@mixin define_color_vars(){
+	@if function-exists('get_color_vars'){
+		$vars:get_color_vars($colors);
+		:root{
+			@each $key,$val in $vars{
+				#{$key}:$val;
+			}
+		}
+	}
+}
 
 @mixin clear_float(){
 	content:"";display:block;clear:both;height:0;margin:0;padding:0;line-height:0;
