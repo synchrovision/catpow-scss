@@ -20,6 +20,19 @@
 		}
 	}
 }
+@mixin define_color_classes(){
+	@if function-exists('get_color_classes'){
+		$classes:get_color_classes($colors);
+		@each $class,$vars in $classes{
+			#{$class}{
+				@each $key,$val in $vars{
+					#{$key}:$val;
+				}
+			}
+			
+		}
+	}
+}
 
 @mixin clear_float(){
 	content:"";display:block;clear:both;height:0;margin:0;padding:0;line-height:0;
