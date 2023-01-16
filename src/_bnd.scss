@@ -20,7 +20,12 @@
 		gr:grid-row,
 		gc:grid-column,
 		nth:order,
-		sst:scroll-snap-type
+		sst:scroll-snap-type,
+		spd:scroll-padding,smg:scroll-margin,
+		spdt:scroll-padding-top,smgt:scroll-margin-top,
+		spdb:scroll-padding-bottom,smgb:scroll-margin-bottom,
+		spdl:scroll-padding-left,smgl:scroll-margin-left,
+		spdr:scroll-padding-right,smgr:scroll-margin-right
 	);
 	$dvals:(
 		b:block,ib:inline-block,
@@ -69,7 +74,12 @@
 			$key == pdt or $key == mgt or
 			$key == pdb or $key == mgb or
 			$key == pdl or $key == mgl or
-			$key == pdr or $key == mgr
+			$key == pdr or $key == mgr or
+			$key == spd or $key == smg or
+			$key == spdt or $key == smgt or
+			$key == spdb or $key == smgb or
+			$key == spdl or $key == smgl or
+			$key == spdr or $key == smgr
 			{$val:cp_get_size_values($val);}
 		@if $key == i{
 			$vals:fill_4_values($val);

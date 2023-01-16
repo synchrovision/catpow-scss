@@ -22,7 +22,13 @@
 }
 @mixin define_color_classes(){
 	@if function-exists('get_color_classes'){
-		$classes:get_color_classes($colors);
+		$classes:false;
+		@if global-variable-exists("colors"){
+			$classes:get_color_classes($colors);
+		}
+		@else{
+			$classes:get_color_classes();
+		}
 		@each $class,$vars in $classes{
 			#{$class}{
 				@each $key,$val in $vars{
