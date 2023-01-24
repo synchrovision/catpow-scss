@@ -149,16 +149,7 @@
 }
 
 @function cp_get_size_value($val){
-	@if global-variable-exists("sizes") and type-of($sizes) == 'map' {
-		@if map-has-key($sizes,$val){$val:map-get($sizes,$val);}
-	}
-	$svals:(f:100%,a:auto,i:inherit,min:min-content,max:max-content,fit:fit-content);
-	@if map-has-key($svals,$val){@return map-get($svals,$val);}
-	@if type-of($val) == 'number' and unitless($val){
-		@if global-variable-exists("sizeUnit"){@return $val*$sizeUnit;}
-		@return $val * 1px;
-	}
-	@return $val;
+	@return sz($val);
 }
 @function cp_get_size_values($vals){
 	@if type-of($vals) == 'list'{
@@ -171,7 +162,7 @@
 		@return $rtn;
 	}
 	@else{
-		@return cp_get_size_value($vals);
+		@return sz($vals);
 	}
 }
 
@@ -200,14 +191,7 @@
 	@return url($img);
 }
 @function cp_get_font($fnt){
-	@if global-variable-exists("fonts") and type-of($fonts) == 'map' and map-has-key($fonts,$fnt){
-		$fnt:map-get($fonts,$fnt);
-	}
-	@else if function-exists('translate_font') {
-		$font:translate_font($fnt);
-		@if $font{@return $font;}
-	}
-	@return $fnt;
+	@return fnt($fnt);
 }
 
 @function cp_get_breakpoint($bp){
@@ -258,6 +242,32 @@
 	@if type-of($tint) == 'number'{@return tint($clr,$tint);}
 	@return $clr;
 }
+@function sz($val){
+	@if global-variable-exists("sizes") and type-of($sizes) == 'map' {
+		@if map-has-key($sizes,$val){$val:map-get($sizes,$val);}
+	}
+	@else if function-exists('translate_size') {
+		$val:translate_size($val);
+	}
+	$svals:(f:100%,a:auto,i:inherit,min:min-content,max:max-content,fit:fit-content);
+	@if map-has-key($svals,$val){@return map-get($svals,$val);}
+	@if type-of($val) == 'number' and unitless($val){
+		@if global-variable-exists("sizeUnit"){@return $val*$sizeUnit;}
+		@return $val * 1px;
+	}
+	@return $val;
+}
+@function fnt($fnt){
+	@if global-variable-exists("fonts") and type-of($fonts) == 'map' and map-has-key($fonts,$fnt){
+		$fnt:map-get($fonts,$fnt);
+	}
+	@else if function-exists('translate_font') {
+		$font:translate_font($fnt);
+		@if $font{@return $font;}
+	}
+	@return $fnt;
+}
+
 
 @function slice($list,$start:1,$end:length($list)){
 	$rtn:();
