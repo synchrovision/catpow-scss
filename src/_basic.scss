@@ -247,7 +247,8 @@
 		@if map-has-key($sizes,$val){$val:map-get($sizes,$val);}
 	}
 	@else if function-exists('translate_size') {
-		$val:translate_size($val);
+		$size:translate_size($val);
+		@if($size != false){$val:$size;}
 	}
 	$svals:(f:100%,a:auto,i:inherit,min:min-content,max:max-content,fit:fit-content);
 	@if map-has-key($svals,$val){@return map-get($svals,$val);}
