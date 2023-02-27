@@ -48,7 +48,7 @@
 	);
 	$pvals:(n:static,r:relative,a:absolute,f:fixed,s:sticky);
 	$bsvals:(b:border-box,c:content-box);
-	$ovals:(v:visible,h:hidden,s:scroll,a:auto);
+	$ovals:(v:visible,h:hidden,c:clip,s:scroll,a:auto,o:overlay);
 	$flvals:(l:left,r:right,n:none);
 	$clvals:(l:left,r:right,b:both);
 	$apvals:(n:none,b:button);
