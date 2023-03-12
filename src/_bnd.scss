@@ -20,7 +20,7 @@
 		gr:grid-row,
 		gc:grid-column,
 		nth:order,
-		sst:scroll-snap-type,
+		sss:scroll-snap-stop,ssa:scroll-snap-align,sst:scroll-snap-type,
 		spd:scroll-padding,smg:scroll-margin,
 		spdt:scroll-padding-top,smgt:scroll-margin-top,
 		spdb:scroll-padding-bottom,smgb:scroll-margin-bottom,
@@ -56,6 +56,8 @@
 	$ofvals:(f:fill,c:cover,i:contain,cvr:cover,cnt:contain,sd:scale-down);
 	$asvals:(f:stretch,c:center,e:flex-end,s:flex-start);
 	$opvals:(c:center);
+	$sssvals:(n:normal,a:always);
+	$ssavals:(n:none,s:start,e:end,c:center);
 	$sstvals:(n:none,m:mandatory,p:proximity);
 	
 	$abstractSize:(auto,min-content,max-content,fit-content);
@@ -123,6 +125,8 @@
 		}
 		@if $key == ap{$val:replace_values($val,$apvals);@include appearance($val);}
 		@if $key == as{$val:map-get($asvals,$val);}
+		@if $key == sss{$val:replace_values($val,$sssvals);}
+		@if $key == ssa{$val:replace_values($val,$ssavals);}
 		@if $key == sst{$val:replace_values($val,$sstvals);}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:#{$val};}
 	}
