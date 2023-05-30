@@ -4,8 +4,11 @@
 		f:font-family,p:font-size,
 		t:letter-spacing,ls:letter-spacing,c:color,
 		w:font-weight,fw:font-weight,fs:font-style,
-		td:text-decoration,to:text-orientation,
-		o:text-overflow,uo:text-underline-offset,
+		td:text-decoration,tds:text-decoration-style,tdl:text-decoration-line,
+		tdc:text-decoration-color,tdt:text-decoration-thickness,
+		to:text-orientation,
+		o:text-overflow,
+		uo:text-underline-offset,
 		l:list-style,
 		whs:white-space,wds:word-spacing,wb:word-break,b:word-break,ffs:font-feature-settings
 	);
