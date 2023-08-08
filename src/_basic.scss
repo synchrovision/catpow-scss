@@ -155,9 +155,9 @@
 	@if type-of($vals) == 'list'{
 		$rtn:false;
 		@each $v in $vals{
-			@if type-of($rtn) == 'list'{$rtn:append($rtn,cp_get_size_value($v));}
-			@else if $rtn == false{$rtn:cp_get_size_value($v);}
-			@else {$rtn:$rtn cp_get_size_value($v);}
+			@if type-of($rtn) == 'list'{$rtn:append($rtn,sz($v));}
+			@else if $rtn == false{$rtn:sz($v);}
+			@else {$rtn:$rtn sz($v);}
 		}
 		@return $rtn;
 	}
