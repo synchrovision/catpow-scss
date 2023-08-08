@@ -4,7 +4,7 @@
 		f:font-family,p:font-size,
 		t:letter-spacing,ls:letter-spacing,c:color,
 		w:font-weight,fw:font-weight,fs:font-style,
-		td:text-decoration,tds:text-decoration-style,tdl:text-decoration-line,
+		tds:text-decoration-style,tdl:text-decoration-line,
 		tdc:text-decoration-color,tdt:text-decoration-thickness,
 		to:text-orientation,
 		o:text-overflow,
@@ -38,6 +38,7 @@
 		@if $key == m{@include writing-mode(replace_values($val,$mvals));}
 		@if $key == t{$val:cp_get_size_value($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
+		@if $key == td{@include text_decoration($val);}
 		@if $key == o{$val:replace_values($val,$ovals);}
 		@if $key == whs{$val:replace_values($val,$whsvals);}
 		@if $key == ffs{$val:replace_values($val,$ffsvals);}
@@ -73,6 +74,30 @@
 	    -ms-writing-mode:$mode;
 	     -o-writing-mode:$mode;
 	        writing-mode:$mode;
+}
+@mixin text_decoration($vals){
+	$lvals:(u:underline,o:overline,t:line-through);
+	$svals:(s:solid,d:dotted,ds:dashed,w:double,r:ridge,g:groove,i:inset,o:outset);
+	@each $val in $vals{
+		@if map-has-key($lvals,$val){
+			text-decoration-line:map-get($lvals,$val);
+		}
+		@else if index($lvals,$val) != null{
+			text-decoration-line:$val;
+		}
+		@else if map-has-key($svals,$val){
+			text-decoration-style:map-get($svals,$val);
+		}
+		@else if index($svals,$val) != null{
+			text-decoration-style:$val;
+		}
+		@else if type-of($val) == 'number'{
+			text-decoration-thickness:sz($val);
+		}
+		@else{
+			text-decoration-color:clr($val);
+		}
+	}
 }
 
 @mixin text_style($size:12px,$color:#888,$weight:normal,$font:inherit,$style:inherit,$decoration:inherit){
