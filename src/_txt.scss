@@ -19,7 +19,6 @@
 	$vvals:(t:top,m:middle,b:bottom,l:baseline);
 	$svals:(r:normal,b:bold,l:lighter,i:italic,n:none,u:underline,o:overline,s:line-through);
 	$skeys:(r:fw,b:fw,l:fw,i:fs,n:td,u:td,o:td,s:td);
-	$wvals:(t:100,e:200,l:300,r:400,m:500,d:600,b:700,u:800,h:900);
 	$lvals:(n:none,ds:disc,cr:circle,sq:square,alp:upper-alpha,dec:decimal,rom:upper-roman,hira:hiragana);
 	$mvals:(h:horizontal-tb,vr:vertical-rl,vl:vertical-lr);
 	$tovals:(m:mixed,s:sideway,u:upright);
@@ -35,7 +34,7 @@
 		@if $key == v{$val:replace_values($val,$vvals);}
 		@if $key == s{$key:replace_values($val,$skeys);$val:replace_values($val,$svals);}
 		@if $key == l{$val:replace_values($val,$lvals);}
-		@if $key == w{$val:replace_values($val,$wvals);}
+		@if $key == w{$val:wt($vals);}
 		@if $key == m{@include writing-mode(replace_values($val,$mvals));}
 		@if $key == t{$val:cp_get_size_value($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}

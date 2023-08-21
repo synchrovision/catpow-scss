@@ -258,6 +258,18 @@
 	}
 	@return $val;
 }
+@function wt($val){
+	@if global-variable-exists("weights") and type-of($weights) == 'map' {
+		@if map-has-key($weights,$val){$val:map-get($weights,$val);}
+	}
+	@else if function-exists('translate_weight') {
+		$weight:translate_weight($val);
+		@if($weight != false){$val:$weight;}
+	}
+	$wvals:(t:100,e:200,l:300,r:400,m:500,d:600,b:700,u:800,h:900);
+	@if map-has-key($wvals,$val){@return map-get($wvals,$val);}
+	@return $val;
+}
 @function fnt($fnt){
 	@if global-variable-exists("fonts") and type-of($fonts) == 'map' and map-has-key($fonts,$fnt){
 		$fnt:map-get($fonts,$fnt);
