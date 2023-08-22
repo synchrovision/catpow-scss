@@ -87,6 +87,7 @@
 @mixin text_decoration($vals){
 	$lvals:(u:underline,o:overline,t:line-through);
 	$svals:(s:solid,d:dotted,ds:dashed,w:double,r:ridge,g:groove,i:inset,o:outset);
+	$countNumberValue:0;
 	@each $val in $vals{
 		@if map-has-key($lvals,$val){
 			text-decoration-line:map-get($lvals,$val);
@@ -101,7 +102,13 @@
 			text-decoration-style:$val;
 		}
 		@else if type-of($val) == 'number'{
-			text-decoration-thickness:sz($val);
+			@if $countNumberValue == 0{
+				text-decoration-thickness:sz($val);
+			}
+			@else if $countNumberValue == 1 {
+				text-underline-offset:sz($val);
+			}
+			$countNumberValue:$countNumberValue + 1;
 		}
 		@else{
 			text-decoration-color:clr($val);
