@@ -34,7 +34,7 @@
 		@if $key == v{$val:replace_values($val,$vvals);}
 		@if $key == s{$key:replace_values($val,$skeys);$val:replace_values($val,$svals);}
 		@if $key == l{$val:replace_values($val,$lvals);}
-		@if $key == w{$val:wt($vals);}
+		@if $key == w{$val:wt($val);}
 		@if $key == m{@include writing-mode(replace_values($val,$mvals));}
 		@if $key == t{$val:cp_get_size_value($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
