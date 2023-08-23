@@ -85,11 +85,18 @@
 	        writing-mode:$mode;
 }
 @mixin text_decoration($vals){
+	$tvals:(n:none);
 	$lvals:(u:underline,o:overline,t:line-through);
 	$svals:(s:solid,d:dotted,ds:dashed,w:double,r:ridge,g:groove,i:inset,o:outset);
 	$countNumberValue:0;
 	@each $val in $vals{
-		@if map-has-key($lvals,$val){
+		@if map-has-key($tvals,$val){
+			text-decoration:map-get($tvals,$val);
+		}
+		@else if index($tvals,$val) != null{
+			text-decoration:$val;
+		}
+		@else if map-has-key($lvals,$val){
 			text-decoration-line:map-get($lvals,$val);
 		}
 		@else if index($lvals,$val) != null{
