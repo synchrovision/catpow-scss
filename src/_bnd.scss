@@ -26,7 +26,8 @@
 		spdt:scroll-padding-top,smgt:scroll-margin-top,
 		spdb:scroll-padding-bottom,smgb:scroll-margin-bottom,
 		spdl:scroll-padding-left,smgl:scroll-margin-left,
-		spdr:scroll-padding-right,smgr:scroll-margin-right
+		spdr:scroll-padding-right,smgr:scroll-margin-right,
+		sb:scroll-behavior
 	);
 	$dvals:(
 		b:block,ib:inline-block,
@@ -60,6 +61,7 @@
 	$sssvals:(n:normal,a:always);
 	$ssavals:(n:none,s:start,e:end,c:center);
 	$sstvals:(n:none,m:mandatory,p:proximity);
+	$sbvals:(a:auto,s:smooth);
 	
 	$abstractSize:(auto,min-content,max-content,fit-content);
 	@each $key,$val in $bnd{
@@ -129,6 +131,7 @@
 		@if $key == sss{$val:replace_values($val,$sssvals);}
 		@if $key == ssa{$val:replace_values($val,$ssavals);}
 		@if $key == sst{$val:replace_values($val,$sstvals);}
+		@if $key == sb{$val:replace_values($val,$sbvals);}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:#{$val};}
 	}
 }
