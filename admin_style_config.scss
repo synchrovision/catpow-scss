@@ -1,33 +1,12 @@
 @charset "utf-8";
 @import "catpow.scss";
 
-$selectors:(
-	m:'body .site_main .page_main .page_content',
-	e:'body.mce-content-body,.gutenberg .editor-block-list__layout',
-	u:'#profile-page,#cpcf_custom_box .inside'
-);
 $sizeUnit:0.0625rem;
-
-$heading_font:$gothic;
-$text_font:$gothic;
-$caption_font:$gothic;
-$decoration_font:$gothic;
-$strong_font:$gothic;
-
-$images:(
-	logo:'images/logo.png',
-	bg:'images/bg.png',
-);
 
 $fonts:(
 	g:$gothic,
 	m:$mincho,
 	e:'times',
-	h:$heading_font,
-	t:$text_font,
-	c:$caption_font,
-	d:$decoration_font,
-	s:$strong_font,
 	i:'Material Icons'
 );
 
