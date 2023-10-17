@@ -68,6 +68,21 @@
 						(-#{$l1}px #{$l2}px #{$b}px #{$c})
 					);
 				}
+				@else if $key == 'tg'{
+					$c:clr($clr);
+					$b1:$val / 16;
+					$b2:$val / 8;
+					$b3:$val / 4;
+					$b4:$val / 2;
+					$b5:$val;
+					$val:(
+						(0 0 #{$b1}px #{$c}),
+						(0 0 #{$b2}px #{$c}),
+						(0 0 #{$b3}px #{$c}),
+						(0 0 #{$b4}px #{$c}),
+						(0 0 #{$b5}px #{$c})
+					);
+				}
 				@else{$val:0 #{abs($val)}px #{$blur}px #{clr($clr)};}
 			}
 			@if $key == 'tbv'{
@@ -110,7 +125,7 @@
 		@if map-has-key($btvals,$val){$val:map-get($btvals,$val);}
 		@if $key == 'b' or $key == 'bt' or $key == 'bb' or $key == 'bl' or $key == 'br' or $key == 'bc' or $key == 'bv' or $key == 'bvi' or $key == 'bvo' or $key == 'bve'
 		{box-shadow:$val;}
-		@if $key == 't' or $key == 'tc' or $key == 'ts' or $key == 'tbv'{text-shadow:$val;}
+		@if $key == 't' or $key == 'tc' or $key == 'ts' or $key == 'tg' or $key == 'tbv'{text-shadow:$val;}
 	}
 }
 
