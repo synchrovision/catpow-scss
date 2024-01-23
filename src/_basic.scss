@@ -20,6 +20,12 @@
 		}
 	}
 }
+@function is_quoted($string){
+	@if function-exists('get_real_type'){
+		@return get_real_type($string) == 'string';
+	}
+	@return type-of($string) == 'string';
+}
 @mixin define_color_classes(){
 	@if function-exists('get_color_classes'){
 		$classes:false;
@@ -35,7 +41,6 @@
 					#{$key}:$val;
 				}
 			}
-			
 		}
 	}
 }
