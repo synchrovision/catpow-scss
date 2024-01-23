@@ -39,6 +39,7 @@
 		@if $key == t{$val:cp_get_size_value($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
 		@if $key == td{@include text_decoration($val);}
+		@if $key == te{@include text_emphasis($val);}
 		@if $key == o{$val:replace_values($val,$ovals);}
 		@if $key == whs{$val:replace_values($val,$whsvals);}
 		@if $key == ffs{$val:replace_values($val,$ffsvals);}
@@ -121,6 +122,42 @@
 			text-decoration-color:clr($val);
 		}
 	}
+}
+
+@mixin text_emphasis($vals){
+	$tvals:(n:none);
+	$s1vals:(f:filled,o:open);
+	$s2vals:(d:dot,c:circle,dc:double-circle,t:triangle,s:sesami);
+	$s1:false;
+	$s2:false;
+	$s:();
+	@each $val in $vals{
+		@if(is_quoted($val)){
+			$s1:true;
+			$s2:true;
+			$s:append($s,$val);
+		}
+		@else if ($s1 == false and map-has-key($s1vals,$val)){
+			$s1:true;
+			$s:append($s,map-get($s1vals,$val));
+		}
+		@else if ($s1 == false and index(map-values($s1vals),$val) != null){
+			$s1:true;
+			$s:append($s,$val);
+		}
+		@else if ($s2 == false and map-has-key($s2vals,$val)){
+			$s2:true;
+			$s:append($s,map-get($s2vals,$val));
+		}
+		@else if ($s2 == false and index(map-values($s2vals),$val) != null){
+			$s2:true;
+			$s:append($s,$val);
+		}
+		@else{
+			text-emphasis-color:clr($val);
+		}
+	}
+	text-emphasis-style:$s;
 }
 
 @mixin text_style($size:12px,$color:#888,$weight:normal,$font:inherit,$style:inherit,$decoration:inherit){
