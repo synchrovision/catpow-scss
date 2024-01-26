@@ -7,7 +7,7 @@ catpow-scssは色やサイズの設定設定値を複数のscssファイルで�
 ## Install
 
 ```command
-git submodule add https://github.com/synchrovision/catpow-scss.git scss/catpow
+git submodule add https://github.com/synchro-vision/catpow-scss.git scss/catpow
 ```
 
 ## Document
