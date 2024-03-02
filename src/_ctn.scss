@@ -1,0 +1,29 @@
+@mixin ctn($cnd){
+	@if type-of($cnd) == 'list'{
+		@for $i from 1 through length($cnd) {
+			$c:nth($cnd,$i);
+			@if type-of($c) == 'number'{
+				@if $c < 0{
+					$c:'(width < ' + abs($c) + 'px)';
+				}
+				@else if $cnd > 0{
+					$c:'(width > ' + $c + 'px)';
+				}
+			}
+			$cnd:set-nth($cnd,$i,$c);
+		}
+	}
+	@else{
+		@if type-of($cnd) == 'number'{
+			@if $cnd < 0{
+				$cnd:'(width < ' + abs($cnd) + 'px)';
+			}
+			@else if $cnd > 0{
+				$cnd:'(width > ' + $cnd + 'px)';
+			}
+		}
+	}
+	@container #{$cnd} {
+		&{@content;}
+	}
+}

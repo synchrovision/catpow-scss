@@ -62,6 +62,7 @@
 	$ssavals:(n:none,s:start,e:end,c:center);
 	$sstvals:(n:none,m:mandatory,p:proximity);
 	$sbvals:(a:auto,s:smooth);
+	$ctnvals:(s:size,i:inline-size,n:normal);
 	
 	$abstractSize:(auto,min-content,max-content,fit-content);
 	@each $key,$val in $bnd{
@@ -97,10 +98,10 @@
 			@if type-of($val) == 'list'{
 				@if length($val) == 2{
 					@if (
-						index($abstractSize,nth($val,1)) != null or
+						type-of(nth($val,1)) != 'number' or
 						(
 							index(('%','vw','vh','vmax','vmin'),unit(nth($val,1))) != null and
-							index($abstractSize,nth($val,2)) == null
+							type-of(nth($val,2)) == 'number'
 						)
 					){
 						max-#{map-get($keys,$key)}:nth($val,2);
@@ -132,10 +133,29 @@
 		@if $key == ssa{$val:replace_values($val,$ssavals);}
 		@if $key == sst{$val:replace_values($val,$sstvals);}
 		@if $key == sb{$val:replace_values($val,$sbvals);}
+		@if $key == ctn{
+			@if type-of($val) == 'list' {
+				@each $v in $val{
+					@if map-has-key($ctnvals,$v){
+						container-type:map-get($ctnvals,$v);
+					}
+					@else{
+						container-name:$v;
+					}
+				}
+			}
+			@else{
+				@if map-has-key($ctnvals,$val){
+					container-type:map-get($ctnvals,$val);
+				}
+				@else{
+					container-name:$val;
+				}
+			}
+		}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:#{$val};}
 	}
 }
-
 @mixin columns($col){
 	-webkit-columns:$col;
 	   -moz-columns:$col;
