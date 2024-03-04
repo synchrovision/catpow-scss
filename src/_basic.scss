@@ -255,7 +255,13 @@
 		$size:translate_size($val);
 		@if($size != false){$val:$size;}
 	}
-	$svals:(f:100%,a:auto,i:inherit,min:min-content,max:max-content,fit:fit-content);
+	$svals:(
+		f:100%,a:auto,i:inherit,
+		min:min-content,max:max-content,
+		fit:fit-content,
+		siat:env(safe-area-inset-top),
+		saib:env(safe-area-inset-bottom)
+	);
 	@if map-has-key($svals,$val){@return map-get($svals,$val);}
 	@if type-of($val) == 'number' and unitless($val){
 		@if global-variable-exists("sizeUnit"){@return $val*$sizeUnit;}
