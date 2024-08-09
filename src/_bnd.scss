@@ -16,6 +16,7 @@
 		o:overflow,ox:overflow-x,oy:overflow-y,
 		of:object-fit,op:object-position,
 		as:align-self,
+		ac:align-content,
 		g:gap,
 		ga:grid-area,
 		gr:grid-row,grs:grid-row-start,gr:grid-row-end,
@@ -57,6 +58,7 @@
 	$bivals:(n:auto,a:avoid,b:always,p:avoid-page,c:avoid-column);
 	$ofvals:(f:fill,c:cover,i:contain,cvr:cover,cnt:contain,sd:scale-down);
 	$asvals:(f:stretch,c:center,e:flex-end,s:flex-start);
+	$acvals:(f:stretch,c:center,e:end,s:start,fe:flex-end,fs:flex-start,n:normal,b:baseline,sb:space-between,sa:space-around);
 	$opvals:(c:center);
 	$sssvals:(n:normal,a:always);
 	$ssavals:(n:none,s:start,e:end,c:center);
@@ -129,6 +131,7 @@
 		}
 		@if $key == ap{$val:replace_values($val,$apvals);@include appearance($val);}
 		@if $key == as{$val:map-get($asvals,$val);}
+		@if $key == ac{$val:map-get($acvals,$val);}
 		@if $key == sss{$val:replace_values($val,$sssvals);}
 		@if $key == ssa{$val:replace_values($val,$ssavals);}
 		@if $key == sst{$val:replace_values($val,$sstvals);}
