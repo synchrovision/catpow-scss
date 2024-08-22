@@ -41,3 +41,6 @@
 @mixin mist($color:#fff,$min:0.4,$max:0.8,$deg:90deg){
 	@include linear_gradient($deg,tint($color,1,$max),tint($color,1,$min),tint($color,1,$max));
 }
+@mixin stripe($color1,$color2:transparent,$deg:0deg,$width:50){
+	@include linear_gradient($deg,$color1,$color1 $width * 1%,$color2 $width * 1% + .1%,$color2);
+}
