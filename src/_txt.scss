@@ -13,8 +13,8 @@
 		l:list-style,
 		whs:white-space,wds:word-spacing,wb:word-break,b:word-break,ffs:font-feature-settings
 	);
-	$avals:(l:left,r:right,c:center,j:justify,n:nowrap);
-	$akeys:(l:a,r:a,c:a,j:a,n:whs);
+	$avals:(l:left,r:right,c:center,j:justify,n:nowrap,wc:-webkit-center);
+	$akeys:(l:a,r:a,c:a,j:a,n:whs,wc:a);
 	$bvals:(k:keep-all,b:break-all,n:normal);
 	$vvals:(t:top,m:middle,b:bottom,l:baseline);
 	$svals:(r:normal,b:bold,l:lighter,i:italic,n:none,u:underline,o:overline,s:line-through);
