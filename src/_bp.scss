@@ -4,10 +4,13 @@
 	}
 	@if type-of($bp) == 'number'{
 		@if $bp < 0{
-			$bp:'max-width:' + abs($bp) + 'px';
+			$bp:'max-width:' + abs($bp);
 		}
 		@else if $bp > 0{
-			$bp:'min-width:' + $bp + 'px';
+			$bp:'min-width:' + $bp;
+		}
+		@if unitless($bp){
+			$bp:$bp + 'px';
 		}
 	}
 	@media(#{$bp}){
