@@ -34,6 +34,13 @@
 			"@include bdr((p:b,s:s,w:1,c:t));"
 		]
 	},
+	"catpow-scss cnt":{
+		"scope":"scss",
+		"prefix":"cnt",
+		"body":[
+			"@include cnt((f:n ':',s:li));"
+		]
+	},
 	"catpow-scss txt":{
 		"scope":"scss",
 		"prefix":"txt",
@@ -59,7 +66,14 @@
 		"scope":"scss",
 		"prefix":"bp",
 		"body":[
-			"@include bp($0);"
+			"@include bp(${1:-960}){","\t$2","}"
+		]
+	},
+	"catpow-scss ctn":{
+		"scope":"scss",
+		"prefix":"ctn",
+		"body":[
+			"@include ctn(${1:-960}){","\t$2","}"
 		]
 	}
 }
