@@ -3,11 +3,14 @@
 		@for $i from 1 through length($cnd) {
 			$c:nth($cnd,$i);
 			@if type-of($c) == 'number'{
+				@if unitless($cnd){
+					$c:$c * 1px;
+				}
 				@if $c < 0{
-					$c:'(width < ' + abs($c) + 'px)';
+					$c:'(width < ' + abs($c) + ')';
 				}
 				@else if $cnd > 0{
-					$c:'(width > ' + $c + 'px)';
+					$c:'(width > ' + $c + ')';
 				}
 			}
 			$cnd:set-nth($cnd,$i,$c);
@@ -15,11 +18,14 @@
 	}
 	@else{
 		@if type-of($cnd) == 'number'{
+			@if unitless($cnd){
+				$cnd:$cnd * 1px;
+			}
 			@if $cnd < 0{
-				$cnd:'(width < ' + abs($cnd) + 'px)';
+				$cnd:'(width < ' + abs($cnd) + ')';
 			}
 			@else if $cnd > 0{
-				$cnd:'(width > ' + $cnd + 'px)';
+				$cnd:'(width > ' + $cnd + ')';
 			}
 		}
 	}
