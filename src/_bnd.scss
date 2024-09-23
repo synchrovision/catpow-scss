@@ -102,6 +102,7 @@
 					@if (
 						type-of(nth($val,1)) != 'number' or
 						(
+							type-of(nth($val,1)) == 'number' and
 							index(('%','vw','vh','vmax','vmin'),unit(nth($val,1))) != null and
 							type-of(nth($val,2)) == 'number'
 						)
