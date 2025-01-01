@@ -3,7 +3,7 @@
 		@for $i from 1 through length($cnd) {
 			$c:nth($cnd,$i);
 			@if type-of($c) == 'number'{
-				@if unitless($cnd){
+				@if unitless($c){
 					$c:$c * 1px;
 				}
 				@if $c < 0{
