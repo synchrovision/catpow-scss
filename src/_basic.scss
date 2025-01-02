@@ -269,6 +269,20 @@
 	}
 	@return $val;
 }
+@function szs($vals){
+	@if type-of($vals) == 'list'{
+		$rtn:false;
+		@each $v in $vals{
+			@if type-of($rtn) == 'list'{$rtn:append($rtn,sz($v));}
+			@else if $rtn == false{$rtn:sz($v);}
+			@else {$rtn:$rtn sz($v);}
+		}
+		@return $rtn;
+	}
+	@else{
+		@return sz($vals);
+	}
+}
 @function wt($val){
 	@if global-variable-exists("weights") and type-of($weights) == 'map' {
 		@if map-has-key($weights,$val){$val:map-get($weights,$val);}
