@@ -13,14 +13,14 @@
 	$bmvals:(n:normal,m:multiply,d:darken,s:screen,l:lighten,o:overlay,cd:color-dodge,cb:color-burn,hl:hard-light,sl:soft-light,hue:hue,str:saturation,clr:color,lmn:luminosity,df:difference,ex:exclusion);
 	
 	@each $key,$val in $bg{
-		@if $key == i{$val:cp_get_image($val);}
-		@if $key == c{$val:cp_get_color($val);}
+		@if $key == i{$val:img($val);}
+		@if $key == c{$val:clr($val);}
 		@if $key == r{$val:map-get($rvals,$val);}
 		@if $key == a{$val:map-get($avals,$val);}
 		@if $key == bm{$val:map-get($bmvals,$val);}
 		@if $key == s{
 			@if map-has-key($svals,$val){$val:map-get($svals,$val);}
-			@else {$val:cp_get_size_values($val);}
+			@else {$val:szs($val);}
 		}
 		@if $key == l{
 			$mxn:$val;
@@ -62,7 +62,7 @@
 			@else if $mxn == l{
 				$colors:();
 				@each $color in slice($val,3){
-					$colors:append($colors,cp_get_color($color),comma);
+					$colors:append($colors,clr($color),comma);
 				}
 				@include linear_gradient(nth($val,2),$colors);
 			}
@@ -73,7 +73,7 @@
 				@if $mxn == m{@include mist($clr);}
 			}
 		}
-		@if $key == p{$val:replace_values($val,$pvals);$val:cp_get_size_values($val);}
+		@if $key == p{$val:replace_values($val,$pvals);$val:szs($val);}
 		@if $key == 'cl'{
 			@include background-clip(map-get($clvals,$val));
 		}

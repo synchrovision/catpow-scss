@@ -13,7 +13,7 @@
 	$tf:();
 	$fl:();
 	@each $key,$val in $trn{
-		@if $key == 'x' or $key == 'y' or $key == 'z' or $key == 'p'{$val:cp_get_size_value($val);}
+		@if $key == 'x' or $key == 'y' or $key == 'z' or $key == 'p'{$val:sz($val);}
 		@if map-has-key($tfncs,$key){
 			$tf:append($tf,(map-get($tfncs,$key) + '(' + $val + ')'));
 		}

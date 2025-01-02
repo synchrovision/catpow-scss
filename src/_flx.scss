@@ -38,7 +38,7 @@
 			flex-direction:map-get($dvals,$val);
 		}
 		@if $key == g{
-			gap:cp_get_size_values($val);
+			gap:szs($val);
 		}
 		@if $key == c{
 			@if type-of($val) == 'list'{
@@ -68,7 +68,7 @@
 		flex-grow:nth($val,1);
 		flex-shrink: nth($val,2);
 		@if length($val) > 2{
-			flex-basis:cp_get_size_value(nth($val,3));
+			flex-basis:sz(nth($val,3));
 		}
 		@if length($val) > 3{
 			-webkit-order:nth($val,4);

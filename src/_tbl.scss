@@ -13,11 +13,11 @@
 		}
 	}
 	@if($s == 0 and $r == 0){border-collapse:collapse;border-spacing:0px;}
-	@else{border-collapse:separate;border-spacing:cp_get_size_value($s);}
+	@else{border-collapse:separate;border-spacing:sz($s);}
 }
 
 @mixin round_table($r:5){
-	$r:cp_get_size_value($r);
+	$r:sz($r);
 	@include bdr((r:$r));
 	tr:first-of-type{
 		th,td{

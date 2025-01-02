@@ -26,7 +26,7 @@
 	@each $key,$val in $grd{
 		@if $key == rc or $key == rr{
 			@if(type-of($val) == 'list'){
-				$v:minmax(cp_get_size_values(nth($val,1)),1fr);
+				$v:minmax(szs(nth($val,1)),1fr);
 				$vals:();
 				@for $i from 1 through nth($val,2){
 					$vals:append($vals,$v);
@@ -34,7 +34,7 @@
 				$val:repeat(auto-fill,$vals)
 			}
 			@else{
-				$val:repeat(auto-fill,minmax(cp_get_size_values($val),1fr));
+				$val:repeat(auto-fill,minmax(szs($val),1fr));
 			}
 		}
 		@if $key == r{
@@ -80,7 +80,7 @@
 		}
 		@if $key == tc or $key == tr or
 			$key == ac or $key == ar or $key == g
-			{$val:cp_get_size_values($val);}
+			{$val:szs($val);}
 		@if $key == j or $key == a or
 			$key == ji or $key == ai
 			{$val:map-get($jvals,$val);}

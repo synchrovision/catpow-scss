@@ -17,8 +17,8 @@
 	$dbvals:(t:baseline,m:middle,b:hanging);
 	$povals:(s:stroke,f:fill,m:markers);
 	@each $key,$val in $svg{
-		@if $key == c or $key == f or $key == s or $key == sc{$val:cp_get_color($val);}
-		@if $key == w{$val:cp_get_size_value($val);}
+		@if $key == c or $key == f or $key == s or $key == sc{$val:clr($val);}
+		@if $key == w{$val:sz($val);}
 		@if $key == ta{$val:replace_values($val,$tavals);}
 		@if $key == db{$val:replace_values($val,$dbvals);}
 		@if $key == po{$val:replace_values($val,$povals);}

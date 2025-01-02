@@ -26,9 +26,9 @@
 	$whsvals:(n:normal,nw:nowrap,p:pre,pw:pre-wrap,pl:pre-line,bs:break-space);
 	$ffsvals:(p:"palt",t:"trad",n:"nalt");
 	@each $key,$val in $txt{
-		@if $key == p or $key == h or $key == uo{$val:cp_get_size_value($val);}
-		@if $key == c{$val:cp_get_color($val);}
-		@if $key == f{$val:cp_get_font($val);}
+		@if $key == p or $key == h or $key == uo{$val:sz($val);}
+		@if $key == c{$val:clr($val);}
+		@if $key == f{$val:fnt($val);}
 		@if $key == b{$val:replace_values($val,$bvals);}
 		@if $key == a{$key:replace_values($val,$akeys);$val:replace_values($val,$avals);}
 		@if $key == v{$val:replace_values($val,$vvals);}
@@ -36,7 +36,7 @@
 		@if $key == l{$val:replace_values($val,$lvals);}
 		@if $key == w{$val:wt($val);}
 		@if $key == m{@include writing-mode(replace_values($val,$mvals));}
-		@if $key == t{$val:cp_get_size_value($val);}
+		@if $key == t{$val:sz($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
 		@if $key == td{@include text_decoration($val);}
 		@if $key == te{@include text_emphasis($val);}

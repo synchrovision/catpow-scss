@@ -88,7 +88,7 @@
 			$key == spdb or $key == smgb or
 			$key == spdl or $key == smgl or
 			$key == spdr or $key == smgr
-			{$val:cp_get_size_values($val);}
+			{$val:szs($val);}
 		@if $key == i{
 			$vals:fill_4_values($val);
 			top:nth($vals,1);
@@ -127,7 +127,7 @@
 		@if $key == op{$val:replace_values($val,$opvals);}
 		@if $key == f{@include flex($val);}
 		@if $key == c{
-			@if(is-unitless($val) and $val > 20){$val:cp_get_size_values($val);}
+			@if(is-unitless($val) and $val > 20){$val:szs($val);}
 			@include columns($val);
 		}
 		@if $key == ap{$val:replace_values($val,$apvals);@include appearance($val);}
