@@ -106,14 +106,6 @@
 	@return $ease;
 }
 
-@mixin opacity($trn...){
-	-webkit-opacity:$trn;
-	   -moz-opacity:$trn;
-	    -ms-opacity:$trn;
-	     -o-opacity:$trn;
-	        opacity:$trn;
-}
-
 @function replace_values($vals,$dct){
 	@if type-of($vals) == 'list' or type-of($vals) == 'arglist'{
 		@for $i from 1 through length($vals){
