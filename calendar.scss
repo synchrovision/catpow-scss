@@ -29,7 +29,8 @@
 				div.events{
 					div.event label{
 						padding:2px 3px;margin:1px;text-align:center;cursor:pointer;
-						@include bdr((r:10));@include text_style(10px,#fff,bold,gothic);
+						@include bdr((r:10));
+						@include txt((p:10,c:white,w:b,f:g));
 						width:auto;height:auto;display:block;overflow:hidden;text-indent:0;
 					}
 				}
@@ -119,25 +120,32 @@
 			th,td{
 				width:20px;height:20px;overflow:visible;text-align:left;vertical-align:top;padding:1px;
 				position:relative;
-				p.date{padding:2px;margin:0;@include text_style(11px,#666,normal,gothic);text-align:center;}
+				p.date{padding:2px;margin:0;
+				@include txt((a:c,p:11,c:#666,w:r,f:g));
 				&.holiday p.date,&.Sunday p.date{color:#cc4444;}
 				p.holiday{display:none;}
 				div.events{display:none;}
 				&:hover{
 					cursor:pointer;
 					p.holiday{
-						background-color:red;display:block;@include text_style(12px,#fff,bold,gothic);text-align:center;
+						background-color:red;display:block;
+						@include txt((a:c,p:12,c:white,w:b,f:g));
 						left:50%;top:-18px;margin-left:-50px;width:80px;position:absolute;
-						z-index:999;padding:2px 10px;@include shd((b:3));@include bdr((r:10));
+						z-index:999;padding:2px 10px;
+						@include shd((b:3));
+						@include bdr((r:10));
 					}
 					div.events{
 						background-color:#fff;display:block;@include bdr((r:10));
-						left:50%;top:20px;margin-left:-65px;width:120px;position:absolute;z-index:999;padding:5px;@include shd((b:3));
+						left:50%;top:20px;margin-left:-65px;width:120px;position:absolute;z-index:999;padding:5px;
+						@include shd((b:3));
 						div.event{
 							margin-bottom:3px;
 							label{
-								background-color:tint($clr1,30%);@include text_style(12px,#fff,bold,gothic);text-align:center;
-								width:110px;height:auto;padding:2px 3px;display:block;overflow:hidden;text-indent:0;@include bdr((r:10));
+								background-color:tint($clr1,30%);
+								@include txt((a:c,p:12,c:white,w:b,f:g));
+								width:110px;height:auto;padding:2px 3px;display:block;overflow:hidden;text-indent:0;
+								@include bdr((r:10));
 							}
 						}
 					}
@@ -218,7 +226,7 @@
 		padding:5px 15px; margin:15px 5px;
 		border:1px solid #666;
 		li{
-			@include text_style(10px,#666,normal,$gothic);
+			@include txt((p:10,c:#666,w:r,f:g));
 			display:inline-block;margin-right:10px;width:120px;padding:2px 5px;
 			&:before{content:'■';margin-right:5px;color:$clr1;}
 			@if length($event_colors)>0{@each $list in $event_colors{
