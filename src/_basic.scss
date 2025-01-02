@@ -152,28 +152,6 @@
 		@return ($vals,$vals,$vals,$vals);
 	}
 }
-
-@function cp_get_size_value($val){
-	@return sz($val);
-}
-@function cp_get_size_values($vals){
-	@if type-of($vals) == 'list'{
-		$rtn:false;
-		@each $v in $vals{
-			@if type-of($rtn) == 'list'{$rtn:append($rtn,sz($v));}
-			@else if $rtn == false{$rtn:sz($v);}
-			@else {$rtn:$rtn sz($v);}
-		}
-		@return $rtn;
-	}
-	@else{
-		@return sz($vals);
-	}
-}
-
-@function cp_get_color($clr){
-	@return clr($clr);
-}
 @function img($img){
 	@if $img == n{@return none;}
 	@if type-of($img) == 'string' and str-index($img,'var(') == 1{
@@ -195,15 +173,6 @@
 	}
 	@return url($img);
 }
-@function cp_get_font($fnt){
-	@return fnt($fnt);
-}
-
-@function cp_get_breakpoint($bp){
-	@return bp($bp);
-}
-
-
 @function bp($bp){
 	@if global-variable-exists("breakpoints") and type-of($breakpoints) == 'map' {
 		@if map-has-key($breakpoints,$bp){$bp:map-get($breakpoints,$bp);}
@@ -305,8 +274,6 @@
 	}
 	@return $fnt;
 }
-
-
 @function slice($list,$start:1,$end:length($list)){
 	$rtn:();
 	@if $start < 0 {
