@@ -173,12 +173,6 @@
 	}
 	@return url($img);
 }
-@function bp($bp){
-	@if global-variable-exists("breakpoints") and type-of($breakpoints) == 'map' {
-		@if map-has-key($breakpoints,$bp){$bp:map-get($breakpoints,$bp);}
-	}
-	@return $bp;
-}
 
 
 @function sel($sels){
