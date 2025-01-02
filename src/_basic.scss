@@ -174,7 +174,7 @@
 @function cp_get_color($clr){
 	@return clr($clr);
 }
-@function cp_get_image($img){
+@function img($img){
 	@if $img == n{@return none;}
 	@if type-of($img) == 'string' and str-index($img,'var(') == 1{
 		@return $img;
