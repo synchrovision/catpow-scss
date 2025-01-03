@@ -125,7 +125,31 @@
 		@if $key == o or $key == ox or $key == oy{$val:map-get($ovals,$val);}
 		@if $key == of{$val:map-get($ofvals,$val);}
 		@if $key == op{$val:replace_values($val,$opvals);}
-		@if $key == f{@include flex($val);}
+		@if $key == f{
+			@if type-of($val) == 'list'{
+				-webkit-box-flex:nth($val,1);
+				flex-grow:nth($val,1);
+				flex-shrink: nth($val,2);
+				@if length($val) > 2{
+					flex-basis:sz(nth($val,3));
+				}
+				@if length($val) > 3{
+					-webkit-order:nth($val,4);
+					order:nth($val,4);
+				}
+			}
+			@else{
+				@if unitless($val){
+					-webkit-box-flex:$val;
+					flex-grow:$val;
+					flex-shrink:$val;
+					flex-basis:$val + px;
+				}
+				@else{
+					flex-basis:$val;
+				}
+			}
+		}
 		@if $key == c{
 			@if(is-unitless($val) and $val > 20){$val:szs($val);}
 			-webkit-columns:$val;
