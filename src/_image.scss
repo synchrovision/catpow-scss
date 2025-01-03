@@ -53,13 +53,6 @@
 	@include flex_box($w $h);
 }
 
-@mixin icon($img){
-	&:before{content:' ';display:inline-block;background:url($img);background-size:contain;width:image-width($img);height:image-height($img);}
-}
-@mixin icon_x2($img){
-	&:before{content:' ';display:inline-block;background:url($img);background-size:contain;width:image-width($img)/2;height:image-height($img)/2;}
-}
-
 @mixin image_bar($img1,$img2,$img3){
 	@include image_belt_x($img2);
 	margin:0 image-width($fol+$img3) 0 image-width($fol+$img1);
