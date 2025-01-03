@@ -128,9 +128,16 @@
 		@if $key == f{@include flex($val);}
 		@if $key == c{
 			@if(is-unitless($val) and $val > 20){$val:szs($val);}
-			@include columns($val);
+			-webkit-columns:$val;
+			   -moz-columns:$val;
+					columns:$val;
 		}
-		@if $key == ap{$val:replace_values($val,$apvals);@include appearance($val);}
+		@if $key == ap{
+			$val:replace_values($val,$apvals);
+			-webkit-appearance:$val;
+			   -moz-appearance:$val;
+					appearance:$val;
+		}
 		@if $key == as{$val:map-get($asvals,$val);}
 		@if $key == ac{$val:map-get($acvals,$val);}
 		@if $key == sss{$val:replace_values($val,$sssvals);}
@@ -159,15 +166,4 @@
 		}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:#{$val};}
 	}
-}
-@mixin columns($col){
-	-webkit-columns:$col;
-	   -moz-columns:$col;
-			columns:$col;
-}
-
-@mixin appearance($app){
-	-webkit-appearance:$app;
-	   -moz-appearance:$app;
-			appearance:$app;
 }
