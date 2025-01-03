@@ -75,14 +75,12 @@
 		}
 		@if $key == p{$val:replace_values($val,$pvals);$val:szs($val);}
 		@if $key == 'cl'{
-			@include background-clip(map-get($clvals,$val));
+			$val:map-get($clvals,$val);
+			-webkit-background-clip:$val;
+			-moz-background-clip:$val;
+			-ms-background-clip:$val;
+			background-clip:$val;
 		}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:$val;}
 	}
-}
-@mixin background-clip($val){
-	-webkit-background-clip:$val;
-	-moz-background-clip:$val;
-	-ms-background-clip:$val;
-	background-clip:$val;
 }
