@@ -128,10 +128,3 @@
 		@if $key == 't' or $key == 'tc' or $key == 'ts' or $key == 'tg' or $key == 'tbv'{text-shadow:$val;}
 	}
 }
-
-
-@mixin bevel($opacity:.2,$depth:1px,$blur:2px){
-	box-shadow:
-		inset $depth $depth $blur $depth rgba(255,255,255,$opacity),
-		inset $depth*-1 $depth*-1 $blur $depth rgba(0,0,0,$opacity)
-}
