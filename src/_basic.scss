@@ -10,9 +10,12 @@
 		display:none;
 	}
 }
-@mixin define_color_vars(){
+@mixin define_color_vars($color_map:false){
 	@if function-exists('get_color_vars'){
-		$vars:get_color_vars($colors);
+		@if global-variable-exists("colors") and $color_map == false{
+			$color_map:$colors;
+		}
+		$vars:get_color_vars($color_map);
 		:root{
 			@each $key,$val in $vars{
 				#{$key}:$val;
