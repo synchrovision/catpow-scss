@@ -30,14 +30,14 @@
 				$vol:nth($val,2);
 			}
 			@if $mxn == s{
-				@include linear_gradient(
+				@include linear-gradient(
 					180deg,
 					clr((sh,false,0)),
 					clr((sh,false,$vol))
 				);
 			}
 			@if $mxn == g{
-				@include linear_gradient(
+				@include linear-gradient(
 					180deg,
 					clr((lt,false,$vol)),
 					clr((lt,false,$vol / 2)) 49%,
@@ -46,7 +46,7 @@
 				);
 			}
 			@if $mxn == m{
-				@include linear_gradient(
+				@include linear-gradient(
 					180deg,
 					clr((lt,false,0)),
 					clr((lt,false,$vol)) 50%,
@@ -64,7 +64,7 @@
 				@each $color in slice($val,3){
 					$colors:append($colors,clr($color),comma);
 				}
-				@include linear_gradient(nth($val,2),$colors);
+				@include linear-gradient(nth($val,2),$colors);
 			}
 			@else{
 				$clr:slice($val,2);

@@ -38,8 +38,8 @@
 		@if $key == m{@include writing-mode(replace_values($val,$mvals));}
 		@if $key == t{$val:sz($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
-		@if $key == td{@include text_decoration($val);}
-		@if $key == te{@include text_emphasis($val);}
+		@if $key == td{@include text-decoration($val);}
+		@if $key == te{@include text-emphasis($val);}
 		@if $key == o{$val:replace_values($val,$ovals);}
 		@if $key == whs{$val:replace_values($val,$whsvals);}
 		@if $key == ffs{$val:replace_values($val,$ffsvals);}
@@ -85,7 +85,7 @@
 	     -o-writing-mode:$mode;
 	        writing-mode:$mode;
 }
-@mixin text_decoration($vals){
+@mixin text-decoration($vals){
 	$tvals:(n:none);
 	$lvals:(u:underline,o:overline,t:line-through);
 	$svals:(s:solid,d:dotted,ds:dashed,w:double,r:ridge,g:groove,i:inset,o:outset);
@@ -124,7 +124,7 @@
 	}
 }
 
-@mixin text_emphasis($vals){
+@mixin text-emphasis($vals){
 	$tvals:(n:none);
 	$s1vals:(f:filled,o:open);
 	$s2vals:(d:dot,c:circle,dc:double-circle,t:triangle,s:sesami);
@@ -161,7 +161,7 @@
 }
 
 
-@mixin text_combine(){
+@mixin text-combine(){
 	-webkit-text-combine: horizontal;
 	-ms-text-combine-horizontal: all;
 	text-combine-upright: all;
