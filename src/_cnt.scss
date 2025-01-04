@@ -50,7 +50,3 @@
 		}
 	}
 }
-
-@mixin counter($id,$prefix:'',$suffix:''){
-	content:$prefix counter(#{$id}) $suffix;counter-increment:$id;
-}
