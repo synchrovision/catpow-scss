@@ -65,10 +65,12 @@
 		@if $key == 'to'{@include transform-origin($val);}
 	}
 	@if length($fl) > 0{
-		@include filter($fl);
+		-webkit-filter:$fl;
+				filter:$fl;
 	}
 	@if length($tf) > 0{
-		@include transform($tf);
+		transform:-webkit-$tf;
+		transform:        $tf;
 	}
 }
 
@@ -94,55 +96,6 @@
 	}
 }
 
-@mixin transform($trn...){
-	transform:-webkit-$trn;
-	transform:        $trn;
-}
-
-@mixin translateX($trn...){
-	transform:-webkit-translateX($trn);
-	transform:        translateX($trn);
-}
-@mixin translateY($trn...){
-	transform:-webkit-translateY($trn);
-	transform:        translateY($trn);
-}
-@mixin translateZ($trn...){
-	transform:-webkit-translateZ($trn);
-	transform:        translateZ($trn);
-}
-@mixin translate3d($trn...){
-	transform:-webkit-translate3d($trn);
-	transform:        translate3d($trn);
-}
-@mixin rotateX($trn...){
-	transform:-webkit-rotateX($trn);
-	transform:        rotateX($trn);
-}
-@mixin rotateY($trn...){
-	transform:-webkit-rotateY($trn);
-	transform:        rotateY($trn);
-}
-@mixin rotateZ($trn...){
-	transform:-webkit-rotateZ($trn);
-	transform:        rotateZ($trn);
-}
-@mixin scale($trn...){
-	transform:-webkit-scale($trn);
-	transform:        scale($trn);
-}
-@mixin scaleX($trn...){
-	transform:-webkit-scaleX($trn);
-	transform:        scaleX($trn);
-}
-@mixin scaleY($trn...){
-	transform:-webkit-scaleY($trn);
-	transform:        scaleY($trn);
-}
-@mixin scaleZ($trn...){
-	transform:-webkit-scaleZ($trn);
-	transform:        scaleZ($trn);
-}
 @mixin transform-origin($org...){
 	-webkit-transform-origin:$org;
 	        transform-origin:$org;
@@ -151,9 +104,4 @@
 @mixin backface-visibility($visibility){
 	-webkit-backface-visibility:$visibility;
 	        backface-visibility:$visibility;
-}
-
-@mixin filter($flt...){
-	-webkit-filter:$flt;
-	        filter:$flt;
 }
