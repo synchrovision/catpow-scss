@@ -27,9 +27,11 @@
 	
 }
 @mixin shade($color:#fff,$contrust:8){
+	$color:clr($color);
 	@include linear-gradient(180deg,clr($color),tint($color,100 + $contrust));
 }
 @mixin glass($color:#666,$contrust:40){
+	$color:clr($color);
 	@include linear-gradient(180deg,
 		tint($color,100-$contrust),
 		tint($color,100-$contrust/2) 49%,
@@ -39,8 +41,11 @@
 }
 
 @mixin mist($color:#fff,$min:0.4,$max:0.8,$deg:90deg){
+	$color:clr($color);
 	@include linear-gradient($deg,tint($color,1,$max),tint($color,1,$min),tint($color,1,$max));
 }
 @mixin stripe($color1,$color2:transparent,$deg:0deg,$width:50){
+	$color1:clr($color1);
+	$color2:clr($color2);
 	@include linear-gradient($deg,$color1,$color1 $width * 1%,$color2 $width * 1% + .1%,$color2);
 }
