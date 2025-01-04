@@ -14,7 +14,7 @@ git submodule add https://github.com/synchrovision/catpow-scss.git scss/catpow
 ## INDEX
 
 ### Main Mixin
-| |プロパティ|概要| | |
+| |プロパティ|概要|Document|GitHub|
 |:--|:--|:--|:-:|:-:|
 |**anm**|animation|アニメーション関連|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/main/anm/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_anm.scss#L1-L24)|
 |**bdr**|border border-radius|ボーダー関連|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/main/bdr/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_bdr.scss#L1-L24)|
@@ -35,7 +35,7 @@ git submodule add https://github.com/synchrovision/catpow-scss.git scss/catpow
 |**usr**|cursor pointer-event user-select|カーソル、ユーザー操作・選択の受付|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/main/usr/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_usr.scss#L1-L26)|
 
 ### mixin
-| |概要| | |
+| |概要|Document|GitHub|
 |:--|:--|:-:|:-:|
 |**default_break**|ブラウザのデフォルトの余白や境界線の設定、モバイルブラウザの文字サイズ調整などをなくし、ブラウザによる表示の差異を抑制します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/default_break/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_basic.scss#L1-L5)|
 |**hide_scrollbar**|スクロールバーを非表示にします。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/hide_scrollbar/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_basic.scss#L6-L12)|
@@ -101,7 +101,7 @@ git submodule add https://github.com/synchrovision/catpow-scss.git scss/catpow
 |**wp_admin_color**||[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/wp_admin_color/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_wp.scss#L1-L45)|
 
 ### function
-| |概要| | |
+| |概要|Document|GitHub|
 |:--|:--|:-:|:-:|
 |**is_quoted**|変数がクオート付の文字列であるかを判定します。正確にはget_real_typeの関数が存在する場合に、get_real_typeから得られる値の型がstringであるかを判定します。scssphpではクオートで括られていない文字列の型はstringではなくkeywordです。get_real_typeが定義されていない環境下では単にstring型であるかどうかの判定をします。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/function/is_quoted/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_basic.scss#L26-L31)|
 |**tint**|色の濃さを変更してrgb形式で返します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/function/tint/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_basic.scss#L64-L91)|
