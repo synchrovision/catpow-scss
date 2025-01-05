@@ -11,7 +11,10 @@
 		o:text-overflow,
 		uo:text-underline-offset,
 		l:list-style,
-		whs:white-space,wds:word-spacing,wb:word-break,b:word-break,ffs:font-feature-settings
+		whs:white-space,wds:word-spacing,
+		cmb:text-combine-upright,
+		wb:word-break,b:word-break,
+		ffs:font-feature-settings
 	);
 	$avals:(l:left,r:right,c:center,j:justify,n:nowrap,wc:-webkit-center);
 	$akeys:(l:a,r:a,c:a,j:a,n:whs,wc:a);
@@ -24,6 +27,7 @@
 	$tovals:(m:mixed,s:sideway,u:upright);
 	$ovals:(c:clip,e:ellipsis);
 	$whsvals:(n:normal,nw:nowrap,p:pre,pw:pre-wrap,pl:pre-line,bs:break-space);
+	$cmbvals:(n:none,a:all,d:digits);
 	$ffsvals:(p:"palt",t:"trad",n:"nalt");
 	@each $key,$val in $txt{
 		@if $key == p or $key == h or $key == uo{$val:sz($val);}
@@ -35,13 +39,18 @@
 		@if $key == s{$key:replace_values($val,$skeys);$val:replace_values($val,$svals);}
 		@if $key == l{$val:replace_values($val,$lvals);}
 		@if $key == w{$val:wt($val);}
-		@if $key == m{@include writing-mode(replace_values($val,$mvals));}
+		@if $key == m{
+			$val:replace_values($val,$mvals);
+			-webkit-writing-mode:$val;
+					writing-mode:$val;
+		}
 		@if $key == t{$val:sz($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
 		@if $key == td{@include text-decoration($val);}
 		@if $key == te{@include text-emphasis($val);}
 		@if $key == o{$val:replace_values($val,$ovals);}
 		@if $key == whs{$val:replace_values($val,$whsvals);}
+		@if $key == cmb{$val:replace_values($val,$cmbvals);}
 		@if $key == ffs{$val:replace_values($val,$ffsvals);}
 		@if map-has-key($keys,$key){
 			@if type-of(map-get($keys,$key)) == 'list'{
@@ -68,22 +77,6 @@
 	&::-moz-placeholder{
 		@include txt($txt);
 	}
-}
-
-@mixin link-colors($args...){
-	&:normal{color:nth($args,1);}
-	&:hover{color:nth($args,2);}
-	&:active{color:nth($args,3);}
-	&:visited{color:nth($args,4);}
-	&:focus{color:nth($args,5);}
-}
-
-@mixin writing-mode($mode){
-	-webkit-writing-mode:$mode;
-	   -moz-writing-mode:$mode;
-	    -ms-writing-mode:$mode;
-	     -o-writing-mode:$mode;
-	        writing-mode:$mode;
 }
 @mixin text-decoration($vals){
 	$tvals:(n:none);
@@ -158,11 +151,4 @@
 		}
 	}
 	text-emphasis-style:$s;
-}
-
-
-@mixin text-combine(){
-	-webkit-text-combine: horizontal;
-	-ms-text-combine-horizontal: all;
-	text-combine-upright: all;
 }
