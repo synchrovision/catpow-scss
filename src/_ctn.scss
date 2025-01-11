@@ -3,9 +3,7 @@
 		@for $i from 1 through length($cnd) {
 			$c:nth($cnd,$i);
 			@if type-of($c) == 'number'{
-				@if unitless($c){
-					$c:$c * 1px;
-				}
+				$c:sz($c);
 				@if $c < 0{
 					$c:'(width < ' + abs($c) + ')';
 				}
