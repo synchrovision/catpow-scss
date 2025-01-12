@@ -6,7 +6,7 @@ catpow-scssは色やサイズの設定設定値を複数のscssファイルで�
 
 ## Install
 
-```command
+```shell
 git submodule add https://github.com/synchrovision/catpow-scss.git scss/catpow
 ```
 
@@ -54,8 +54,8 @@ git submodule add https://github.com/synchrovision/catpow-scss.git scss/catpow
 |**mist**|うっすらとかかるもやを表現するグラデーションを作成します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/mist/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_gradient.scss#L43-L46)|
 |**stripe**|縞模様を表現するグラデーションを作成します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/stripe/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_gradient.scss#L47-L51)|
 |**round_table**|表の４隅を角丸にします。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/round_table/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_tbl.scss#L19-L34)|
-|**text-decoration**|下線や打ち消し線などのテキスト装飾を短縮表現のキーと値で設定します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/text-decoration/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_txt.scss#L81-L119)|
-|**text-emphasis**|テキストの圏点を短縮表現のキーと値で設定します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/text-emphasis/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_txt.scss#L120-L154)|
+|**text-decoration**|下線や打ち消し線などのテキスト装飾を短縮表現の値のリストで設定します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/text-decoration/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_txt.scss#L81-L119)|
+|**text-emphasis**|テキストの圏点を短縮表現の値のリストで設定します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/text-emphasis/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_txt.scss#L120-L154)|
 |**wp_admin_color**|wordpressのwp-admin/css/colors/_variables.scssで定義されるSCSS変数を一括で定義します。|[![Document](https://img.shields.io/badge/Document-666)](https://catpow.info/products/scss/reference/mixin/wp_admin_color/)|[![Code](https://img.shields.io/badge/Code-CC6699?logo=sass&logoColor=fff)](https://github.com/synchrovision/catpow-scss/blob/master/src/_wp.scss#L1-L45)|
 
 ### function
