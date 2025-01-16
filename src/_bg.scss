@@ -71,7 +71,7 @@
 				@if $mxn == s{@include shade($clr);}
 				@if $mxn == g{@include glass($clr);}
 				@if $mxn == m{@include mist($clr);}
-				@if $mxn == p{@include stripe($clr);}
+				@if $mxn == p{@include stripe($clr...);}
 			}
 		}
 		@if $key == p{$val:replace_values($val,$pvals);$val:szs($val);}
