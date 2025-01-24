@@ -8,6 +8,7 @@
 		pdb:padding-bottom,mgb:margin-bottom,
 		pdl:padding-left,mgl:margin-left,
 		pdr:padding-right,mgr:margin-right,
+		pdi:padding-inline,mgi:margin-inline,
 		bs:box-sizing,fl:float,cl:clear,
 		bi:break-inside,
 		pbb:page-break-before,
@@ -15,6 +16,7 @@
 		pba:page-break-after,
 		o:overflow,ox:overflow-x,oy:overflow-y,
 		of:object-fit,op:object-position,
+		a:aspect-ratio,
 		as:align-self,
 		ac:align-content,
 		g:gap,
@@ -57,6 +59,7 @@
 	$apvals:(n:none,b:button);
 	$bivals:(n:auto,a:avoid,b:always,p:avoid-page,c:avoid-column);
 	$ofvals:(f:fill,c:cover,i:contain,cvr:cover,cnt:contain,sd:scale-down);
+	$avals:(a:auto,v:'4 / 3',h:'16 / 9');
 	$asvals:(f:stretch,c:center,e:flex-end,s:flex-start);
 	$acvals:(f:stretch,c:center,e:end,s:start,fe:flex-end,fs:flex-start,n:normal,b:baseline,sb:space-between,sa:space-around);
 	$opvals:(c:center);
@@ -83,6 +86,7 @@
 			$key == pdb or $key == mgb or
 			$key == pdl or $key == mgl or
 			$key == pdr or $key == mgr or
+			$key == pdi or $key == mgi or
 			$key == spd or $key == smg or
 			$key == spdt or $key == smgt or
 			$key == spdb or $key == smgb or
