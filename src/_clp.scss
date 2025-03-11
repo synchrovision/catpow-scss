@@ -1,0 +1,63 @@
+@mixin clp($clp:false){
+	@each $key,$val in $clp{
+		@if $key=='c'{
+			$d:nth($val,1);
+			$w:nth($val,2);
+			@if unitless($w){
+				$w:1% * $w;
+			}
+			@if $d=='l'{
+				clip-path:polygon(0% 50%,calc(100% - #{$w}) 0%, 100% 0%,#{$w} 50%,100% 100%, calc(100% - #{$w}) 100%);
+			}
+			@else if $d=='r'{
+				clip-path:polygon(0% 0%,#{$w} 0%, 100% 50%, #{$w} 100%, 0% 100%,calc(100% - #{$w}) 50%);
+			}
+			@else if $d=='t'{
+				clip-path:polygon(50% 0%,100% calc(100% - #{$w}),100% 100%,50% #{$w},0% 100%,0% calc(100% - #{$w}));
+			}
+			@else if $d=='b'{
+				clip-path:polygon(0% 0,50% calc(100% - #{$w}),100% 0%,100% #{$w},50% 100%,0% #{$w});
+			}
+		}
+		@else if $key=='t'{
+			$d:$val;
+			@if $d=='l'{
+				clip-path:polygon(0% 50%,100% 0%,100% 100%);
+			}
+			@else if $d=='r'{
+				clip-path:polygon(0% 0%,100% 50%,0% 100%);
+			}
+			@else if $d=='t'{
+				clip-path:polygon(50% 0%,100% 100%,0% 100%);
+			}
+			@else if $d=='b'{
+				clip-path:polygon(0% 0%,100% 0%,50% 100%);
+			}
+		}
+		@else if $key=='s'{
+			$tl:0%;$tr:0%;
+			$bl:100%;$br:100%;
+			@if type-of($val)=='list'{
+				$t:sz(nth($val,1));
+				$b:sz(nth($val,2));
+			}
+			@else{
+				$t:sz($val);
+				$b:sz($val);
+			}
+			@if $t<0{
+				$tr:$t * -1;
+			}
+			@else{
+				$tl:$t;
+			}
+			@if $b<0{
+				$bl:calc(100% - #{$b * -1});
+			}
+			@else{
+				$br:calc(100% - #{$b});
+			}
+			clip-path: polygon(0% #{$tl},100% #{$tr},100% #{$br},0% #{$bl});
+		}
+	}
+}
