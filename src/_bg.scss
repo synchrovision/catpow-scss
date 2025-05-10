@@ -15,9 +15,9 @@
 	@each $key,$val in $bg{
 		@if $key == i{$val:img($val);}
 		@if $key == c{$val:clr($val);}
-		@if $key == r{$val:map-get($rvals,$val);}
-		@if $key == a{$val:map-get($avals,$val);}
-		@if $key == bm{$val:map-get($bmvals,$val);}
+		@if $key == r{$val:replace_values($val,$rvals);}
+		@if $key == a{$val:replace_values($val,$avals);}
+		@if $key == bm{$val:replace_values($val,$bmvals);}
 		@if $key == s{
 			@if map-has-key($svals,$val){$val:map-get($svals,$val);}
 			@else {$val:szs($val);}
