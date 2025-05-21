@@ -1,6 +1,6 @@
 @mixin bnd($bnd){
 	$keys:(
-		d:display,p:position,w:width,h:height,v:visibility,
+		d:display,p:position,v:visibility,
 		l:left,r:right,t:top,b:bottom,i:inset,
 		x:left,y:bottom,z:z-index,
 		pd:padding,mg:margin,
@@ -32,6 +32,7 @@
 		spdr:scroll-padding-right,smgr:scroll-margin-right,
 		sb:scroll-behavior
 	);
+	$skeys:(w:width,h:height);
 	$dvals:(
 		b:block,ib:inline-block,
 		f:flex,if:inline-flex,
@@ -104,26 +105,39 @@
 			@if type-of($val) == 'list'{
 				@if length($val) == 2{
 					@if (
-						type-of(nth($val,1)) != 'number' or
-						(
-							type-of(nth($val,1)) == 'number' and
-							index(('%','vw','vh','vmax','vmin'),unit(nth($val,1))) != null and
-							type-of(nth($val,2)) == 'number'
-						)
+						nth($val,2) == n or
+						index($abstractSize,nth($val,2)) != null
 					){
-						max-#{map-get($keys,$key)}:nth($val,2);
-						$val:nth($val,1);
+						@if nth($val,1) != n{
+							min-#{map-get($skeys,$key)}:nth($val,1);
+						}
+						@if nth($val,2) != n{
+							#{map-get($skeys,$key)}:nth($val,2);
+						}
 					}
 					@else{
-						min-#{map-get($keys,$key)}:nth($val,1);
-						$val:nth($val,2);
+						@if nth($val,1) != n{
+							#{map-get($skeys,$key)}:nth($val,1);
+						}
+						@if nth($val,2) != n{
+							max-#{map-get($skeys,$key)}:nth($val,2);
+						}
 					}
 				}
 				@else{
-					min-#{map-get($keys,$key)}:nth($val,1);
-					max-#{map-get($keys,$key)}:nth($val,3);
-					$val:nth($val,2);
+					@if nth($val,1) != n{
+						min-#{map-get($skeys,$key)}:nth($val,1);
+					}
+					@if nth($val,2) != n{
+						#{map-get($skeys,$key)}:nth($val,2);
+					}
+					@if nth($val,3) != n{
+						max-#{map-get($skeys,$key)}:nth($val,3);
+					}
 				}
+			}
+			@else{
+				#{map-get($skeys,$key)}:$val;
 			}
 		}
 		@if $key == o or $key == ox or $key == oy{$val:map-get($ovals,$val);}
