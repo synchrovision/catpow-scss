@@ -128,11 +128,11 @@
 					@if nth($val,1) != n{
 						min-#{map-get($skeys,$key)}:nth($val,1);
 					}
-					@if nth($val,2) != n{
-						#{map-get($skeys,$key)}:nth($val,2);
-					}
 					@if nth($val,3) != n{
 						max-#{map-get($skeys,$key)}:nth($val,3);
+					}
+					@if nth($val,2) != n{
+						#{map-get($skeys,$key)}:nth($val,2);
 					}
 				}
 			}
