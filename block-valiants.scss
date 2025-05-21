@@ -12,9 +12,9 @@
 		mgb:calc(var(--cp-margin-bottom,0) * #{$sizeUnit})
 	));
 }
-.has-custom-content-width{
+.has-content-width{
 	@include bnd((
-		w:calc(var(--cp-content-width,960) * #{$sizeUnit}),
+		w:calc(var(--cp-content-width,90vw)) calc(var(--cp-content-max-width,60rem)),
 	));
 }
 .has-clip-path{
