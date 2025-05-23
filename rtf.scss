@@ -7,11 +7,11 @@
 		&:not(:first-child){
 			@include bnd((mgt:1em));
 		}
-		&.iheader{
+		&.is-header{
 			@include bnd((pdb:.25em,mgb:.5em));
 			@include bdr((p:b,s:s,w:1));
 		}
-		&.iheadline{
+		&.is-headline{
 			@include bnd((p:r,pd:0,pdl:1.5em,mgb:.5em));
 			@include txt((p:1.1em,h:1.5em));
 			&::before{
@@ -20,16 +20,9 @@
 				@include bg((c:m));
 			}
 		}
-		&.icatch{
+		&.is-catch{
 			@include bnd((mgb:.5em));
 			@include txt((p:1.25em));
-		}
-		img{
-			@include bnd((d:ib,w:a,h:1em));
-			@include txt((v:m));
-			&:only-child{
-				@include bnd((d:b,w:f,h:a));
-			}
 		}
 	}
 	&-large{
