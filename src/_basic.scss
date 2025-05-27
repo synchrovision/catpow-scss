@@ -76,6 +76,9 @@
 		}
 		@return clr(($c,$t,$a));
 	}
+	@if type-of($color) != 'color'{
+		@return $color;
+	}
 	$tint:$tint*0.01;$ff:255;
 	$r:$ff+$tint*(red($color)-$ff);
 	$g:$ff+$tint*(green($color)-$ff);
