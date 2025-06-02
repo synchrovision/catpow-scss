@@ -4,7 +4,7 @@
 	@include bnd((
 		pdt:var(--cp-padding-top,0),
 		pdb:var(--cp-padding-bottom,0),
-		pdi:var(--cp-padding-bottom,0)
+		pdi:var(--cp-padding-inline,0)
 	));
 }
 .has-custom-margin{
