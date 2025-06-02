@@ -2,19 +2,20 @@
 
 .has-custom-padding{
 	@include bnd((
-		pdt:calc(var(--cp-padding-top,0) * #{$sizeUnit}),
-		pdb:calc(var(--cp-padding-bottom,0) * #{$sizeUnit})
+		pdt:var(--cp-padding-top,0),
+		pdb:var(--cp-padding-bottom,0),
+		pdi:var(--cp-padding-bottom,0)
 	));
 }
 .has-custom-margin{
 	@include bnd((
-		mgt:calc(var(--cp-margin-top,0) * #{$sizeUnit}),
-		mgb:calc(var(--cp-margin-bottom,0) * #{$sizeUnit})
+		mgt:var(--cp-margin-top,0),
+		mgb:var(--cp-margin-bottom,0)
 	));
 }
 .has-content-width{
 	@include bnd((
-		w:calc(var(--cp-content-width,90vw)) calc(var(--cp-content-max-width,60rem)),
+		w:var(--cp-content-width,90vw) var(--cp-content-max-width,60rem),
 	));
 }
 .has-clip-path{
