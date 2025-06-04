@@ -149,6 +149,28 @@
 		}
 	}
 }
+.has-background-image{
+	@include bnd((p:r));
+	&::before{
+		content:'';
+		@include bnd((d:b,p:a,i:0,z:0));
+		@include bg((
+			i:var(--cp-background-image,'./images/bg.png'),
+			r:var(--cp-background-image-repeat,repeat),
+			p:var(--cp-background-image-position,repeat),
+			s:var(--cp-background-image-size,contain)
+		));
+		@include trn((bm:var(--cp-background-image-blendmode,normal),o:var(--cp-background-image-opacity,1)));
+	}
+	&.has-background-image-fixed{
+		&::before{
+			@include bnd((p:f,w:100vw,h:100vh));
+		}
+		&:not(.has-clip-path){
+			@include clp((i:0));
+		}
+	}
+}
 .has-background-pattern{
 	@include bg((
 		i:var(--cp-background-pattern-image,'./images/bg.png'),
