@@ -1,4 +1,5 @@
 @mixin clp($clp:false){
+	$ivals:(r:round);
 	@each $key,$val in $clp{
 		@if $key=='c'{
 			$d:nth($val,1);
@@ -136,6 +137,10 @@
 				$br:calc(100% - #{$b});
 			}
 			clip-path: polygon(0% #{$tl},100% #{$tr},100% #{$br},0% #{$bl});
+		}
+		@else if $key=='i'{
+			$val:szs(replace-values($val,$ivals));
+			clip-path:inset(#{$val});
 		}
 	}
 }
