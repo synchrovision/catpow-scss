@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.has-background-color{
+	@include bg((c:bx));
+}
+.has-background-color-alt{
+	@include bg((c:sx));
+}
