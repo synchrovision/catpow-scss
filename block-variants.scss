@@ -13,6 +13,10 @@
 		mgb:var(--cp-margin-bottom,0)
 	));
 }
+.has-custom-content-width{
+	--cp-content-width:var(--cp-custom-content-width);
+	--cp-content-max-width:var(--cp-custom-content-max-width);
+}
 .has-content-width{
 	@include bnd((
 		w:var(--cp-content-width,90vw) var(--cp-content-max-width,60rem),
