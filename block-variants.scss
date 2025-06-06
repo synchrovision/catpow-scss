@@ -31,10 +31,10 @@
 	$bx1:calc(50% - var(--cp-clip-shape-below-width,40) * #{$sizeUnit} / 2);
 	$bx2:calc(50% + var(--cp-clip-shape-below-width,40) * #{$sizeUnit} / 2);
 	@include bnd((
-		pdt:calc((var(--cp-padding-top,0) + var(--cp-clip-shape-upper-height,40)) * #{$sizeUnit}),
-		pdb:calc((var(--cp-padding-bottom,0) + var(--cp-clip-shape-below-height,40)) * #{$sizeUnit}),
-		mgt:calc((var(--cp-margin-top,0) - var(--cp-clip-shape-upper-height,40)) * #{$sizeUnit}),
-		mgb:calc((var(--cp-margin-bottom,0) - var(--cp-clip-shape-below-height,40)) * #{$sizeUnit})
+		pdt:calc((var(--cp-padding-top,0) + var(--cp-clip-shape-upper-height,40) * #{$sizeUnit})),
+		pdb:calc((var(--cp-padding-bottom,0) + var(--cp-clip-shape-below-height,40) * #{$sizeUnit})),
+		mgt:calc((var(--cp-margin-top,0) - var(--cp-clip-shape-upper-height,40) * #{$sizeUnit})),
+		mgb:calc((var(--cp-margin-bottom,0) - var(--cp-clip-shape-below-height,40) * #{$sizeUnit}))
 	));
 	&.has-clip-shape-ellipse{
 		&.has-clip-shape-both{
