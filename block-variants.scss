@@ -162,7 +162,8 @@
 			i:var(--cp-background-image,'./images/bg.png'),
 			r:var(--cp-background-image-repeat,repeat),
 			p:var(--cp-background-image-position,repeat),
-			s:var(--cp-background-image-size,contain)
+			s:var(--cp-background-image-size,contain),
+			bm:var(--cp-background-image-background-blendmode,normal)
 		));
 		@include trn((bm:var(--cp-background-image-blendmode,normal),o:var(--cp-background-image-opacity,1)));
 	}
@@ -180,6 +181,7 @@
 		i:var(--cp-background-pattern-image,'./images/bg.png'),
 		r:var(--cp-background-pattern-repeat,repeat),
 		p:var(--cp-background-pattern-position,repeat),
-		s:var(--cp-background-pattern-size,contain)
+		s:var(--cp-background-pattern-size,contain),
+		bm:var(--cp-background-pattern-background-blendmode,normal)
 	));
 }
