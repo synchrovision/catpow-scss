@@ -178,7 +178,7 @@
 }
 .has-background-pattern{
 	@include bg((
-		i:var(--cp-background-pattern-image,'./images/bg.png'),
+		i:var(--cp-background-pattern,'./images/bg.png'),
 		r:var(--cp-background-pattern-repeat,repeat),
 		p:var(--cp-background-pattern-position,repeat),
 		s:var(--cp-background-pattern-size,contain),
