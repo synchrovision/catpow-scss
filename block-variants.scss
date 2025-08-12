@@ -161,7 +161,7 @@
 		@include bg((
 			i:var(--cp-background-image,'./images/bg.png'),
 			r:var(--cp-background-image-repeat,repeat),
-			p:var(--cp-background-image-position,repeat),
+			p:var(--cp-background-image-position,center),
 			s:var(--cp-background-image-size,contain),
 			bm:var(--cp-background-image-background-blendmode,normal)
 		));
