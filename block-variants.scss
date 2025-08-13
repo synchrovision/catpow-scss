@@ -80,7 +80,7 @@
 		}
 	}
 	&.has-clip-shape-arrow{
-		clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%, 0% 100%);
+		clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 		&.has-clip-shape-below-in{
 			clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%, 50% #{$by}, 0% 100%);
 		}
