@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+.has-font-weight-thin{
+	@include txt((w:t));
+}
+.has-font-weight-extra-light{
+	@include txt((w:e));
+}
+.has-font-weight-light{
+	@include txt((w:l));
+}
+.has-font-weight-regular{
+	@include txt((w:r));
+}
+.has-font-weight-medium{
+	@include txt((w:m));
+}
+.has-font-weight-demi-bold{
+	@include txt((w:d));
+}
+.has-font-weight-bold{
+	@include txt((w:b));
+}
+.has-font-weight-ultra-bold{
+	@include txt((w:u));
+}
+.has-font-weight-heavy{
+	@include txt((w:h));
+}
+
+.has-text-align-left{
+	@include txt((a:l));
+}
+.has-text-align-center{
+	@include txt((a:c));
+}
+.has-text-align-right{
+	@include txt((a:r));
+}
