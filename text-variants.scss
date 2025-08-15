@@ -37,3 +37,34 @@
 .has-text-align-right{
 	@include txt((a:r));
 }
+
+.has-font-safe-serif{
+	@include txt((f:$safe-serif));
+	&.has-font-weight-safe-bold{
+		@include txt((f:$safe-serif-bold,w:b));
+	}
+}
+.has-font-safe-sans-serif{
+	@include txt((f:$safe-sans-serif));
+	&.has-font-weight-safe-bold{
+		@include txt((f:$safe-sans-serif-bold,w:b));
+	}
+}
+.has-font-safe-mono-spaced{
+	@include txt((f:$safe-mono-spaced));
+	&.has-font-weight-safe-bold{
+		@include txt((f:$safe-mono-spaced-bold,w:b));
+	}
+}
+.has-font-safe-gohic{
+	@include txt((f:$safe-gothic));
+	&.has-font-weight-safe-bold{
+		@include txt((f:$safe-gothic-bold,w:b));
+	}
+}
+.has-font-safe-mincho{
+	@include txt((f:$safe-mincho));
+	&.has-font-weight-safe-bold{
+		@include txt((f:$safe-mincho-bold,w:b));
+	}
+}

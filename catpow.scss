@@ -3,6 +3,17 @@
 $gothic:('Helvetica Neue',"游ゴシック Medium",YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,sans-serif);
 $mincho:Georgiam,'Hiragino Mincho ProN','Yu Mincho', serif;
 
+$safe-serif:(Georgia,'Times New Roman', Times, serif);
+$safe-serif-bold:(Georgia,'Times New Roman', Times, serif);
+$safe-sans-serif:(Arial, Helvetica, sans-serif);
+$safe-sans-serif-bold:('Arial Black',Arial, Helvetica, sans-serif);
+$safe-mono-spaced:(Courier New, Courier, monospace);
+$safe-mono-spaced-bold:(Courier New, Courier, monospace);
+$safe-gothic:(-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN","ヒラギノ角ゴ ProN W3", "Hiragino Sans", "Meiryo", "メイリオ","MS PGothic", sans-serif);
+$safe-gothic-bold:("Yu Gothic", "Yu Gothic UI", Meiryo, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif);
+$safe-mincho:("Hiragino Mincho ProN", "ヒラギノ明朝 ProN W3","MS PMincho", "ＭＳ Ｐ明朝", serif);
+$safe-mincho-bold:("Yu Mincho", "MS Mincho", "Hiragino Mincho ProN", serif);
+
 $shd:rgba(0,0,0,.3);
 
 @import "src/_basic.scss";
