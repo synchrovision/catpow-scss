@@ -187,6 +187,7 @@
 @function clr($clr){
 	@if type-of($clr) == 'color'{@return $clr;}
 	@if $clr == n{@return transparent;}
+	@if $clr == crr{@return currentcolor;}
 	$alpha:false;
 	$tint:false;
 	@if type-of($clr) =='list'{
