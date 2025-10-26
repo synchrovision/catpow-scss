@@ -14,7 +14,9 @@ $fonts:(
 $sizes:(
 	c:min(var(--cp-content-width,95%),var(--cp-content-max-width,60rem)),
 	t:var(--cp-font-size,0.875rem),
-	r:var(--cp-border-radius,0.5rem)
+	r:var(--cp-border-radius,0.5rem),
+	i:var(--cp-item-size,20rem),
+	g:var(--cp-item-gap,1rem)
 );
 
 $breakpoints:(
