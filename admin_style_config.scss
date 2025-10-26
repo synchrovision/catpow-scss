@@ -12,7 +12,9 @@ $fonts:(
 );
 
 $sizes:(
-	c:60rem
+	c:min(var(--cp-content-width,95%),var(--cp-content-max-width,60rem)),
+	t:var(--cp-font-size,0.875rem),
+	r:var(--cp-border-radius,0.5rem)
 );
 
 $breakpoints:(
