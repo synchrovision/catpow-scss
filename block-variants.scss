@@ -186,6 +186,9 @@
 	--cp-font-size:var(--cp-custom-font-size,0.875rem);
 }
 
+.has-border-radius-none{
+	--cp-border-radius:0;
+}
 .has-border-radius-small{
 	--cp-border-radius:var(--cp-border-radius-small,0.5rem);
 }
