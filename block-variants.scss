@@ -166,3 +166,35 @@
 		bm:var(--cp-background-pattern-background-blendmode,normal)
 	));
 }
+
+.has-font-size-x-large{
+	--cp-font-size:var(--cp-font-size-x-large,1.5rem);
+}
+.has-font-size-large{
+	--cp-font-size:var(--cp-font-size-large,1.25rem);
+}
+.has-font-size-middle{
+	--cp-font-size:var(--cp-font-size-middle,1rem);
+}
+.has-font-size-small{
+	--cp-font-size:var(--cp-font-size-small,0.875rem);
+}
+.has-font-size-x-small{
+	--cp-font-size:var(--cp-font-size-x-small,0.75rem);
+}
+.has-custom-font-size{
+	--cp-font-size:var(--cp-custom-font-size,0.875rem);
+}
+
+.has-border-radius-small{
+	--cp-border-radius:var(--cp-border-radius-small,0.5rem);
+}
+.has-border-radius-medium{
+	--cp-border-radius:var(--cp-border-radius-medium,1rem);
+}
+.has-border-radius-large{
+	--cp-border-radius:var(--cp-border-radius-large,3rem);
+}
+.has-custom-border-radius{
+	--cp-border-radius:var(--cp-custom-border-radius,0.5rem);
+}
