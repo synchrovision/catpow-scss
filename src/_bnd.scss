@@ -10,7 +10,9 @@
 		pdr:padding-right,mgr:margin-right,
 		pdi:padding-inline,mgi:margin-inline,
 		bs:box-sizing,fl:float,cl:clear,
+		bb:break-before,
 		bi:break-inside,
+		ba:break-after,
 		pbb:page-break-before,
 		pbi:page-break-inside,
 		pba:page-break-after,
@@ -58,7 +60,8 @@
 	$flvals:(l:left,r:right,n:none);
 	$clvals:(l:left,r:right,b:both);
 	$apvals:(n:none,b:button);
-	$bivals:(n:auto,a:avoid,b:always,p:avoid-page,c:avoid-column);
+	$bvals:(n:auto,a:avoid,b:always,p:page,c:column,ap:avoid-page,ac:avoid-column,l:left,r:right);
+	$bivals:(n:auto,a:avoid,b:always,ap:avoid-page,ac:avoid-column);
 	$ofvals:(f:fill,c:cover,i:contain,cvr:cover,cnt:contain,sd:scale-down);
 	$avals:(a:auto,v:'4 / 3',h:'16 / 9');
 	$asvals:(f:stretch,c:center,e:flex-end,s:flex-start);
@@ -78,6 +81,8 @@
 		@if $key == fl{$val:map-get($flvals,$val);}
 		@if $key == cl{$val:map-get($clvals,$val);}
 		@if $key == bs{$val:map-get($bsvals,$val);}
+		@if $key == bb or $key == ba 
+			{$val:map-get($bvals,$val);}
 		@if $key == bi or $key == pbb or $key == pbi or $key == pba
 			{$val:map-get($bivals,$val);}
 		@if $key == w or $key == h or $key == x or $key == y or $key == g or 
