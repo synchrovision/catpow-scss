@@ -16,7 +16,7 @@
 
 .has-content-width{
 	@include bnd((
-		w:min(var(--cp-content-width,90vw),var(--cp-content-max-width,60rem)),
+		w:min(var(--cp-content-width,90vw),var(--cp-content-max-width,60rem),100%),
 	));
 	&-fit{
 		--cp-content-width:fit-content;
@@ -196,8 +196,8 @@
 	&-large{
 		--cp-font-size:var(--cp-font-size-large,1.25rem);
 	}
-	&-middle{
-		--cp-font-size:var(--cp-font-size-middle,1rem);
+	&-medium{
+		--cp-font-size:var(--cp-font-size-medium,1rem);
 	}
 	&-small{
 		--cp-font-size:var(--cp-font-size-small,0.875rem);
@@ -232,7 +232,7 @@
 		--cp-item-size:var(--cp-item-size-large,40rem);
 	}
 	&-medium{
-		--cp-item-size:var(--cp-item-size-middle,20rem);
+		--cp-item-size:var(--cp-item-size-medium,20rem);
 	}
 	&-small{
 		--cp-item-size:var(--cp-item-size-small,10rem);
@@ -246,7 +246,7 @@
 		--cp-item-gap:var(--cp-item-gap-large,4rem);
 	}
 	&-medium{
-		--cp-item-gap:var(--cp-item-gap-middle,2rem);
+		--cp-item-gap:var(--cp-item-gap-medium,2rem);
 	}
 	&-small{
 		--cp-item-gap:var(--cp-item-gap-small,1rem);
