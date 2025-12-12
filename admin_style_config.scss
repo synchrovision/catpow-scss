@@ -12,7 +12,7 @@ $fonts:(
 );
 
 $sizes:(
-	c:min(var(--cp-content-width,95%),var(--cp-content-max-width,60rem)),
+	c:min(var(--cp-content-width,90vw),var(--cp-content-max-width,60rem),100%),
 	t:var(--cp-font-size,0.875rem),
 	r:var(--cp-border-radius,0.5rem),
 	i:var(--cp-item-size,20rem),
