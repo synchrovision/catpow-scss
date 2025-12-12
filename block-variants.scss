@@ -1,46 +1,61 @@
 @charset "utf-8";
 
-.has-custom-padding{
+.has-padding{
 	@include bnd((
-		pdt:var(--cp-padding-top,0),
-		pdb:var(--cp-padding-bottom,0),
-		pdi:var(--cp-padding-inline,0)
+		pd:var(--cp-padding-top,0) var(--cp-padding-inline,0) var(--cp-padding-bottom,0)
 	));
+	@each $pos in (top,bottom,inline){
+		@each $size ,$default_value in (
+			x-small:.5rem,
+			small:1rem,
+			medium:2rem,
+			large:4rem,
+			x-large:8rem,
+			custom:2rem
+		){
+			&-#{$pos}-#{$size}{
+				--cp-padding-#{$pos}:var(--cp-padding-#{$size},#{$default_value});
+			}
+		}
+	}
 }
-.has-custom-margin{
+
+.has-margin{
 	@include bnd((
-		mgt:var(--cp-margin-top,0),
-		mgb:var(--cp-margin-bottom,0)
+		mg:var(--cp-margin-top,0) a var(--cp-margin-bottom,0)
 	));
+	@each $pos in (top,bottom){
+		@each $size ,$default_value in (
+			x-small:.5rem,
+			small:1rem,
+			medium:2rem,
+			large:4rem,
+			x-large:8rem,
+			custom:2rem
+		){
+			&-#{$pos}-#{$size}{
+				--cp-margin-#{$pos}:var(--cp-margin-#{$size},#{$default_value});
+			}
+		}
+	}
 }
 
 .has-content-width{
 	@include bnd((
 		w:min(var(--cp-content-width,90vw),var(--cp-content-max-width,60rem),100%),
 	));
-	&-fit{
-		--cp-content-width:fit-content;
-		--cp-content-max-width:100%;
-	}
-	&-narrow{
-		--cp-content-width:var(--cp-content-width-narrow,85vw);
-		--cp-content-max-width:var(--cp-content-max-width-narrow,40rem);
-	}
-	&-regular{
-		--cp-content-width:var(--cp-content-width-regular,90vw);
-		--cp-content-max-width:var(--cp-content-max-width-regular,60rem);
-	}
-	&-wide{
-		--cp-content-width:var(--cp-content-width-wide,95vw);
-		--cp-content-max-width:var(--cp-content-max-width-wide,80rem);
-	}
-	&-full{
-		--cp-content-width:100%;
-		--cp-content-max-width:100%;
-	}
-	&-custom{
-		--cp-content-width:var(--cp-content-width-custom,90vw);
-		--cp-content-max-width:var(--cp-content-max-width-custom,60rem);
+	@each $size ,$default_value in (
+		fit:(fit-content,100%),
+		narrow:(85vw,40rem),
+		regular:(90vw,60rem),
+		wide:(95vw,80rem),
+		full:(100%,100%),
+		custom:(90vw,60rem),
+	){
+		&-#{$size}{
+			--cp-content-width:var(--cp-content-width-#{$size},#{nth($default_value,1)});
+			--cp-content-max-width:var(--cp-content-max-width-#{$size},#{nth($default_value,2)});
+		}
 	}
 }
 
@@ -190,68 +205,54 @@
 }
 
 .has-font-size{
-	&-x-large{
-		--cp-font-size:var(--cp-font-size-x-large,1.5rem);
-	}
-	&-large{
-		--cp-font-size:var(--cp-font-size-large,1.25rem);
-	}
-	&-medium{
-		--cp-font-size:var(--cp-font-size-medium,1rem);
-	}
-	&-small{
-		--cp-font-size:var(--cp-font-size-small,0.875rem);
-	}
-	&-x-small{
-		--cp-font-size:var(--cp-font-size-x-small,0.75rem);
-	}
-	&-custom{
-		--cp-font-size:var(--cp-font-size-custom,0.875rem);
+	@each $size ,$default_value in (
+		x-small:.75rem,
+		small:.875rem,
+		medium:1rem,
+		large:1.25rem,
+		x-large:1.5rem,
+		custom:.875rem
+	){
+		&-#{$size}{
+			--cp-font-size:var(--cp-font-size-#{$size},#{$default_value});
+		}
 	}
 }
 .has-border-radius{
-	&-none{
-		--cp-border-radius:0;
-	}
-	&-small{
-		--cp-border-radius:var(--cp-border-radius-small,0.5rem);
-	}
-	&-medium{
-		--cp-border-radius:var(--cp-border-radius-medium,1rem);
-	}
-	&-large{
-		--cp-border-radius:var(--cp-border-radius-large,3rem);
-	}
-	&-custom{
-		--cp-border-radius:var(--cp-border-radius-custom,0.5rem);
+	@each $size ,$default_value in (
+		none:0,
+		small:.5rem,
+		medium:1rem,
+		large:3rem,
+		custom:.5rem
+	){
+		&-#{$size}{
+			--cp-border-radius:var(--cp-border-radius-#{$size},#{$default_value});
+		}
 	}
 }
 
 .has-item-size{
-	&-large{
-		--cp-item-size:var(--cp-item-size-large,40rem);
-	}
-	&-medium{
-		--cp-item-size:var(--cp-item-size-medium,20rem);
-	}
-	&-small{
-		--cp-item-size:var(--cp-item-size-small,10rem);
-	}
-	&-custom{
-		--cp-item-size:var(--cp-item-size-custom,20rem);
+	@each $size ,$default_value in (
+		small:10rem,
+		medium:20rem,
+		large:40rem,
+		custom:20rem
+	){
+		&-#{$size}{
+			--cp-item-size:var(--cp-item-size-#{$size},#{$default_value});
+		}
 	}
 }
 .has-item-gap{
-	&-large{
-		--cp-item-gap:var(--cp-item-gap-large,4rem);
-	}
-	&-medium{
-		--cp-item-gap:var(--cp-item-gap-medium,2rem);
-	}
-	&-small{
-		--cp-item-gap:var(--cp-item-gap-small,1rem);
-	}
-	&-custom{
-		--cp-item-gap:var(--cp-item-gap-custom,0.875rem);
+	@each $size ,$default_value in (
+		small:1rem,
+		medium:2rem,
+		large:4rem,
+		custom:2rem
+	){
+		&-#{$size}{
+			--cp-item-gap:var(--cp-item-gap-#{$size},#{$default_value});
+		}
 	}
 }
