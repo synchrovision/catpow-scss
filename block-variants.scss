@@ -14,7 +14,12 @@
 			custom:2rem
 		){
 			&-#{$pos}-#{$size}{
-				--cp-padding-#{$pos}:var(--cp-padding-#{$size},#{$default_value});
+				@if $size == custom {
+					--cp-padding-#{$pos}:var(--cp-padding-#{$pos}-custom, #{$default_value});
+				}
+				@else{
+					--cp-padding-#{$pos}:var(--cp-padding-#{$size},#{$default_value});
+				}
 			}
 		}
 	}
@@ -34,7 +39,13 @@
 			custom:2rem
 		){
 			&-#{$pos}-#{$size}{
-				--cp-margin-#{$pos}:var(--cp-margin-#{$size},#{$default_value});
+				@if $size == custom {
+					--cp-margin-#{$pos}:var(--cp-margin-#{$pos}-custom, #{$default_value});
+				}
+				@else{
+					--cp-margin-#{$pos}:var(--cp-margin-#{$size},#{$default_value});
+				}
+				
 			}
 		}
 	}
@@ -46,7 +57,8 @@
 	));
 	@each $size ,$default_value in (
 		fit:(fit-content,100%),
-		narrow:(85vw,40rem),
+		narrow:(80vw,30rem),
+		compact:(85vw,40rem),
 		regular:(90vw,60rem),
 		wide:(95vw,80rem),
 		full:(100%,100%),
