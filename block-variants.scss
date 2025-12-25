@@ -1,5 +1,36 @@
 @charset "utf-8";
 
+.has-box-shadow{
+	@include shd((b:var(--cp-box-shadow)));
+	@each $size ,$default_value in (
+		small:.1rem .1rem .2rem var(--cp-color-shd,rgba(0,0,0,.2)),
+		medium:.2rem .2rem .4rem var(--cp-color-shd,rgba(0,0,0,.2)),
+		large:.4rem .4rem .8rem var(--cp-color-shd,rgba(0,0,0,.2)),
+		custom:.2rem .2rem .4rem var(--cp-color-shd,rgba(0,0,0,.2)),
+	){
+		&-#{$size}{
+			--cp-box-shadow:var(--cp-box-shadow-#{$size},#{$default_value});
+			&.has-box-shadow-inset{
+				--cp-box-shadow:inset var(--cp-box-shadow-#{$size},#{$default_value});
+			}
+		}
+	}
+}
+.has-text-shadow{
+	@include shd((t:var(--cp-text-shadow)));
+	@each $size ,$default_value in (
+		small:.1em .1em .05em var(--cp-color-shd,rgba(0,0,0,.2)),
+		medium:.2em .2em .1em var(--cp-color-shd,rgba(0,0,0,.2)),
+		large:.4em .4em .2em var(--cp-color-shd,rgba(0,0,0,.2)),
+		custom:.2em .2em .1em var(--cp-color-shd,rgba(0,0,0,.2)),
+	){
+		&-#{$size}{
+			--cp-text-shadow:var(--cp-text-shadow-#{$size},#{$default_value});
+		}
+	}
+}
+
+
 .has-padding{
 	@include bnd((
 		pd:var(--cp-padding-top,0) var(--cp-padding-inline,0) var(--cp-padding-bottom,0)
@@ -232,6 +263,7 @@
 	}
 }
 .has-border-radius{
+	@include bdr((r:var(--cp-border-radius,1rem)));
 	@each $size ,$default_value in (
 		none:0,
 		small:.5rem,
