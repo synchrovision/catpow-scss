@@ -54,6 +54,7 @@
 .has-content-width{
 	@include bnd((
 		w:min(var(--cp-content-width,90vw),var(--cp-content-max-width,60rem),100%),
+		mgi:a
 	));
 	@each $size ,$default_value in (
 		fit:(fit-content,100%),
