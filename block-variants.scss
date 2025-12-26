@@ -2,30 +2,38 @@
 
 .has-box-shadow{
 	@include shd((b:var(--cp-box-shadow)));
-	@each $size ,$default_value in (
-		small:.1rem .1rem .2rem var(--cp-color-shd,rgba(0,0,0,.2)),
-		medium:.2rem .2rem .4rem var(--cp-color-shd,rgba(0,0,0,.2)),
-		large:.4rem .4rem .8rem var(--cp-color-shd,rgba(0,0,0,.2)),
-		custom:.2rem .2rem .4rem var(--cp-color-shd,rgba(0,0,0,.2)),
+	--cp-box-shadow:var(--cp-box-shadow-offset-x,0) var(--cp-box-shadow-offset-y,0) var(--cp-box-shadow-blur,0) var(--cp-box-shadow-spread,0) var(--cp-color-shd,rgba(0,0,0,.2));
+	&.has-box-shadow-inset{
+		--cp-box-shadow:inset var(--cp-box-shadow-offset-x,0) var(--cp-box-shadow-offset-y,0) var(--cp-box-shadow-blur,0) var(--cp-box-shadow-spread,0) var(--cp-color-shd,rgba(0,0,0,.2));
+	}
+	@each $size ,$default_values in (
+		small:.1rem .1rem .2rem 0rem,
+		medium:.2rem .2rem .4rem 0rem,
+		large:.4rem .4rem .8rem 0rem,
+		custom:.2rem .2rem .4rem 0rem,
 	){
 		&-#{$size}{
-			--cp-box-shadow:var(--cp-box-shadow-#{$size},#{$default_value});
-			&.has-box-shadow-inset{
-				--cp-box-shadow:inset var(--cp-box-shadow-#{$size},#{$default_value});
-			}
+			--cp-box-shadow-offset-x-#{$size}:var(--cp-box-shadow-offset-x-#{$size},#{nth($default_values,1)});
+			--cp-box-shadow-offset-y-#{$size}:var(--cp-box-shadow-offset-y-#{$size},#{nth($default_values,2)});
+			--cp-box-shadow-blur-#{$size}:var(--cp-box-shadow-blur-#{$size},#{nth($default_values,3)});
+			--cp-box-shadow-spread-#{$size}:var(--cp-box-shadow-spread-#{$size},#{nth($default_values,4)});
 		}
 	}
 }
+
 .has-text-shadow{
 	@include shd((t:var(--cp-text-shadow)));
+	--cp-text-shadow:var(--cp-text-shadow-offset-x,0) var(--cp-text-shadow-offset-y,0) var(--cp-text-shadow-blur,0) var(--cp-color-shd,rgba(0,0,0,.2));
 	@each $size ,$default_value in (
-		small:.1em .1em .05em var(--cp-color-shd,rgba(0,0,0,.2)),
-		medium:.2em .2em .1em var(--cp-color-shd,rgba(0,0,0,.2)),
-		large:.4em .4em .2em var(--cp-color-shd,rgba(0,0,0,.2)),
-		custom:.2em .2em .1em var(--cp-color-shd,rgba(0,0,0,.2)),
+		small:.1em .1em .05em,
+		medium:.2em .2em .1em,
+		large:.4em .4em .2em,
+		custom:.2em .2em .1em,
 	){
 		&-#{$size}{
-			--cp-text-shadow:var(--cp-text-shadow-#{$size},#{$default_value});
+			--cp-text-shadow-offset-x-#{$size}:var(--cp-text-shadow-offset-x-#{$size},#{nth($default_values,1)});
+			--cp-text-shadow-offset-y-#{$size}:var(--cp-text-shadow-offset-y-#{$size},#{nth($default_values,2)});
+			--cp-text-shadow-blur-#{$size}:var(--cp-text-shadow-blur-#{$size},#{nth($default_values,3)});
 		}
 	}
 }
@@ -259,6 +267,31 @@
 	){
 		&-#{$size}{
 			--cp-font-size:var(--cp-font-size-#{$size},#{$default_value});
+		}
+	}
+}
+.has-border{
+	@include bdr((s:var(--cp-border-style,solid),w:var(--cp-border-width,.2rem)));
+	@each $size ,$default_value in (
+		thin:.1rem,
+		medium:.2rem,
+		bold:.4rem,
+		custom:.2rem
+	){
+		&-width-#{$size}{
+			--cp-border-width:var(--cp-border-width-#{$size},#{$default_value});
+		}
+	}
+	@each $style ,$value in (
+		solid:solid,
+		dotted:dotted,
+		dashed:dashed,
+		double:double,
+		ridge:ridge,
+		groove:groove
+	){
+		&-style-#{$style}{
+			--cp-border-style:$value;
 		}
 	}
 }
