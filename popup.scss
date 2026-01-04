@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+.cp{
+	&-popup{
+		@include bnd((p:f,i:0,z:1000));
+		&.is-closed{
+			@include bnd((d:n));
+		}
+		&__bg{
+			@include bnd((d:b,p:a,i:0));
+			@include bg((c:shd));
+		}
+		&__body{
+			@include bnd((d:b,p:a,i:0,mg:a,w:90vw 720,h:90vh 720));
+		}
+		&-contents{
+			@include bnd((d:b,p:a,i:0,w:f,h:f,oy:a,bs:b));
+			@include bdr((r:1em));
+			@include bg((c:b));
+			@include shd((b:8));
+		}
+	}
+}
