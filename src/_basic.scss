@@ -223,7 +223,7 @@
 	);
 	@if map-has-key($svals,$val){@return map-get($svals,$val);}
 	@if type-of($val) == 'number' and unitless($val){
-		@if global-variable-exists("sizeUnit"){@return $val*$sizeUnit;}
+		@if global-variable-exists("size-unit"){@return $val*$size-unit;}
 		@return $val * 1px;
 	}
 	@return $val;
@@ -242,13 +242,28 @@
 		@return sz($vals);
 	}
 }
-@function wt($val){
-	@if global-variable-exists("weights") and type-of($weights) == 'map' {
-		@if map-has-key($weights,$val){$val:map-get($weights,$val);}
+@function fsz($val){
+	@if global-variable-exists("font-sizes") and type-of($font-sizes) == 'map' {
+		@if map-has-key($font-sizes,$val){$val:map-get($font-sizes,$val);}
 	}
-	@else if function-exists('translate_weight') {
-		$weight:translate_weight($val);
-		@if($weight != false){$val:$weight;}
+	@else if function-exists('translate_font_size') {
+		$font-size:translate_font_size($val);
+		@if($font-size != false){$val:$font-size;}
+	}
+	@if type-of($val) == 'number' and unitless($val){
+		@if global-variable-exists("size-unit"){@return $val*$size-unit;}
+		@return $val * 1px;
+	}
+	@return $val;
+}
+
+@function fwt($val){
+	@if global-variable-exists("font-weights") and type-of($font-weights) == 'map' {
+		@if map-has-key($font-weights,$val){$val:map-get($font-weights,$val);}
+	}
+	@else if function-exists('translate_font_weight') {
+		$font-weight:translate_font_weight($val);
+		@if($font-weight != false){$val:$font-weight;}
 	}
 	$wvals:(t:100,e:200,l:300,r:400,m:500,d:600,b:700,u:800,h:900);
 	@if map-has-key($wvals,$val){@return map-get($wvals,$val);}

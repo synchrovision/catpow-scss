@@ -30,7 +30,7 @@
 	$cmbvals:(n:none,a:all,d:digits);
 	$ffsvals:(p:"palt",t:"trad",n:"nalt");
 	@each $key,$val in $txt{
-		@if $key == p or $key == h or $key == uo{$val:sz($val);}
+		@if $key == p or $key == h or $key == uo{$val:fsz($val);}
 		@if $key == c{$val:clr($val);}
 		@if $key == f{$val:fnt($val);}
 		@if $key == b{$val:replace_values($val,$bvals);}
@@ -38,13 +38,13 @@
 		@if $key == v{$val:replace_values($val,$vvals);}
 		@if $key == s{$key:replace_values($val,$skeys);$val:replace_values($val,$svals);}
 		@if $key == l{$val:replace_values($val,$lvals);}
-		@if $key == w{$val:wt($val);}
+		@if $key == w{$val:fwt($val);}
 		@if $key == m{
 			$val:replace_values($val,$mvals);
 			-webkit-writing-mode:$val;
 					writing-mode:$val;
 		}
-		@if $key == t{$val:sz($val);}
+		@if $key == t{$val:fsz($val);}
 		@if $key == to{$val:replace_values($val,$tovals);}
 		@if $key == td{@include text-decoration($val);}
 		@if $key == te{@include text-emphasis($val);}
