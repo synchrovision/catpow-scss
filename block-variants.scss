@@ -24,7 +24,7 @@
 .has-text-shadow{
 	@include shd((t:var(--cp-text-shadow)));
 	--cp-text-shadow:var(--cp-text-shadow-offset-x,0) var(--cp-text-shadow-offset-y,0) var(--cp-text-shadow-blur,0) var(--cp-color-shd,rgba(0,0,0,.2));
-	@each $size ,$default_value in (
+	@each $size ,$default_values in (
 		small:.1em .1em .05em,
 		medium:.2em .2em .1em,
 		large:.4em .4em .2em,
@@ -40,8 +40,9 @@
 
 
 .has-padding{
+	--cp-padding:var(--cp-padding-top,0) var(--cp-padding-inline,0) var(--cp-padding-bottom,0);
 	@include bnd((
-		pd:var(--cp-padding-top,0) var(--cp-padding-inline,0) var(--cp-padding-bottom,0)
+		pd:var(--cp-padding)
 	));
 	@each $pos in (top,bottom,inline){
 		@each $size ,$default_value in (
@@ -65,8 +66,9 @@
 }
 
 .has-margin{
+	--cp-margin:var(--cp-margin-top,0) a var(--cp-margin-bottom,0);
 	@include bnd((
-		mg:var(--cp-margin-top,0) a var(--cp-margin-bottom,0)
+		mg:var(--cp-margin-top)
 	));
 	@each $pos in (top,bottom){
 		@each $size ,$default_value in (
@@ -92,7 +94,7 @@
 
 .has-content-width{
 	@include bnd((
-		w:min(var(--cp-content-width,90vw),var(--cp-content-max-width,60rem),100%),
+		w:var(--cp-content-width,min(90vw,60rem,100%)),
 		mgi:a
 	));
 	@each $size ,$default_value in (
@@ -105,8 +107,7 @@
 		custom:(90vw,60rem),
 	){
 		&-#{$size}{
-			--cp-content-width:var(--cp-content-width-#{$size},#{nth($default_value,1)});
-			--cp-content-max-width:var(--cp-content-max-width-#{$size},#{nth($default_value,2)});
+			--cp-content-width:var(--cp-content-width-#{$size},min(#{nth($default_value,1)},#{nth($default_value,2)},100%));
 		}
 	}
 }
@@ -222,6 +223,11 @@
 			}
 		}
 	}
+}
+
+.has-background-color{
+	@include bg((c:bx));
+	&-alt{@include bg((c:sx));}
 }
 .has-background-image{
 	@include bnd((p:r));
