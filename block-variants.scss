@@ -113,17 +113,17 @@
 }
 
 .has-clip-path{
-	$uy:calc(var(--cp-clip-shape-upper-height,40) * #{$sizeUnit});
-	$ux1:calc(50% - var(--cp-clip-shape-upper-width,40) * #{$sizeUnit} / 2);
-	$ux2:calc(50% + var(--cp-clip-shape-upper-width,40) * #{$sizeUnit} / 2);
-	$by:calc(100% - var(--cp-clip-shape-below-height,40) * #{$sizeUnit});
-	$bx1:calc(50% - var(--cp-clip-shape-below-width,40) * #{$sizeUnit} / 2);
-	$bx2:calc(50% + var(--cp-clip-shape-below-width,40) * #{$sizeUnit} / 2);
+	$uy:calc(var(--cp-clip-shape-upper-height,40) * #{$size-unit});
+	$ux1:calc(50% - var(--cp-clip-shape-upper-width,40) * #{$size-unit} / 2);
+	$ux2:calc(50% + var(--cp-clip-shape-upper-width,40) * #{$size-unit} / 2);
+	$by:calc(100% - var(--cp-clip-shape-below-height,40) * #{$size-unit});
+	$bx1:calc(50% - var(--cp-clip-shape-below-width,40) * #{$size-unit} / 2);
+	$bx2:calc(50% + var(--cp-clip-shape-below-width,40) * #{$size-unit} / 2);
 	@include bnd((
-		pdt:calc((var(--cp-padding-top,0) + var(--cp-clip-shape-upper-height,40) * #{$sizeUnit})),
-		pdb:calc((var(--cp-padding-bottom,0) + var(--cp-clip-shape-below-height,40) * #{$sizeUnit})),
-		mgt:calc((var(--cp-margin-top,0) - var(--cp-clip-shape-upper-height,40) * #{$sizeUnit})),
-		mgb:calc((var(--cp-margin-bottom,0) - var(--cp-clip-shape-below-height,40) * #{$sizeUnit}))
+		pdt:calc((var(--cp-padding-top,0) + var(--cp-clip-shape-upper-height,40) * #{$size-unit})),
+		pdb:calc((var(--cp-padding-bottom,0) + var(--cp-clip-shape-below-height,40) * #{$size-unit})),
+		mgt:calc((var(--cp-margin-top,0) - var(--cp-clip-shape-upper-height,40) * #{$size-unit})),
+		mgb:calc((var(--cp-margin-bottom,0) - var(--cp-clip-shape-below-height,40) * #{$size-unit}))
 	));
 	&.has-clip-shape-ellipse{
 		$h1:calc(var(--cp-clip-shape-amount,50) * 0.1rem);
@@ -337,6 +337,22 @@
 	){
 		&-#{$size}{
 			--cp-item-gap:var(--cp-item-gap-#{$size},#{$default_value});
+		}
+	}
+}
+
+.is-level{
+	@each $level ,$default_value in (
+		1:2rem,
+		2:1.5rem,
+		3:1.25rem,
+		4:1rem,
+		5:.875rem,
+		6:.75rem
+	){
+		&#{$level}{
+			--cp-font-sizes-h:var(--cp-font-sizes-h#{$level},#{$default_value});
+			--cp-font-sizes-p:var(--cp-font-sizes-p#{$level},#{$default_value});
 		}
 	}
 }
