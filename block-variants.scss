@@ -351,8 +351,17 @@
 		6:.75rem
 	){
 		&#{$level}{
+			--cp-block-margin:var(--cp-sizes-bmg#{$level},#{$default_value});
+			--cp-block-padding:var(--cp-sizes-bpd#{$level},#{$default_value});
+			--cp-header-margin:var(--cp-sizes-hmg#{$level},#{$default_value});
+			--cp-header-padding:var(--cp-sizes-hpd#{$level},#{$default_value});
+			--cp-paragraph-margin:var(--cp-sizes-pmg#{$level},#{$default_value});
+			--cp-item-gap:var(--cp-sizes-g#{$level},#{$default_value});
+			--cp-item-padding:var(--cp-sizes-ipd#{$level},#{$default_value});
 			--cp-font-sizes-h:var(--cp-font-sizes-h#{$level},#{$default_value});
+			--cp-font-sizes-l:var(--cp-font-sizes-l#{$level},#{$default_value});
 			--cp-font-sizes-p:var(--cp-font-sizes-p#{$level},#{$default_value});
+			--cp-font-sizes-c:var(--cp-font-sizes-c#{$level},#{$default_value});
 		}
 	}
 }
