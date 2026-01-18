@@ -269,15 +269,25 @@
 	@if map-has-key($wvals,$val){@return map-get($wvals,$val);}
 	@return $val;
 }
-@function fnt($fnt){
-	@if global-variable-exists("fonts") and type-of($fonts) == 'map' and map-has-key($fonts,$fnt){
-		$fnt:map-get($fonts,$fnt);
+@function ffm($fnt){
+	@if global-variable-exists("font-families") and type-of($font-families) == 'map' and map-has-key($font-families,$fnt){
+		$fnt:map-get($font-families,$fnt);
 	}
-	@else if function-exists('translate_font') {
-		$font:translate_font($fnt);
+	@else if function-exists('translate_font_family') {
+		$font:translate_font_family($fnt);
 		@if $font{@return $font;}
 	}
 	@return $fnt;
+}
+@function fnt($role){
+	@if global-variable-exists("font-roles") and type-of($font-roles) == 'map' and map-has-key($font-roles,$role){
+		$role:map-get($font-roles,$role);
+	}
+	@else if function-exists('translate_font_role') {
+		$font:translate_font_role($role);
+		@if $font{@return $font;}
+	}
+	@return $role;
 }
 @function slice($list,$start:1,$end:length($list)){
 	$rtn:();
