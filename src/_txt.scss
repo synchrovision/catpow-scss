@@ -1,7 +1,7 @@
 @mixin txt($txt){
 	$keys:(
 		i:text-indent,a:text-align,h:line-height,v:vertical-align,
-		r:font,f:font-family,p:font-size,
+		f:font-family,p:font-size,
 		t:letter-spacing,ls:letter-spacing,c:color,
 		w:font-weight,fw:font-weight,fs:font-style,
 		tds:text-decoration-style,tdl:text-decoration-line,
@@ -32,7 +32,6 @@
 	@each $key,$val in $txt{
 		@if $key == p or $key == h or $key == uo{$val:fsz($val);}
 		@if $key == c{$val:clr($val);}
-		@if $key == r{$val:fnt($val);}
 		@if $key == f{$val:ffm($val);}
 		@if $key == b{$val:replace_values($val,$bvals);}
 		@if $key == a{$key:replace_values($val,$akeys);$val:replace_values($val,$avals);}
