@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+@each $h,$role in (h:heading,l:lead,p:paragraph,c:caption){
+	%#{$role}{
+		@include bnd((
+			mg:var(--cp-margin-#{$h},0),
+			pd:var(--cp-padding-#{$h},0)
+		));
+		@include txt((
+			f:var(--cp-font-family-#{$h},inherit),
+			p:var(--cp-font-size-#{$h},2em),
+			w:var(--cp-font-weight-#{$h},regular),
+			h:var(--cp-line-height-#{$h},1.5),
+			t:var(--cp-letter-spacing-#{$h},normal)
+		));
+	}
+}
