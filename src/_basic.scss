@@ -281,10 +281,10 @@
 }
 @function lh($role){
 	@if global-variable-exists("line-heights") and type-of($line-heights) == 'map' and map-has-key($line-heights,$role){
-		$role:map-get($line-height-roles,$role);
+		$role:map-get($line-heights,$role);
 	}
 	@else if function-exists('translate_line_height') {
-		$line-height:translate_line_height_role($role);
+		$line-height:translate_line_height($role);
 		@if $line-height{@return $line-height;}
 	}
 	@return $role;
