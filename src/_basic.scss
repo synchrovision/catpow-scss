@@ -279,13 +279,23 @@
 	}
 	@return $fnt;
 }
-@function fnt($role){
-	@if global-variable-exists("font-roles") and type-of($font-roles) == 'map' and map-has-key($font-roles,$role){
-		$role:map-get($font-roles,$role);
+@function lh($role){
+	@if global-variable-exists("line-heights") and type-of($line-heights) == 'map' and map-has-key($line-heights,$role){
+		$role:map-get($line-height-roles,$role);
 	}
-	@else if function-exists('translate_font_role') {
-		$font:translate_font_role($role);
-		@if $font{@return $font;}
+	@else if function-exists('translate_line_height') {
+		$line-height:translate_line_height_role($role);
+		@if $line-height{@return $line-height;}
+	}
+	@return $role;
+}
+@function ls($role){
+	@if global-variable-exists("letter-spacings") and type-of($letter-spacings) == 'map' and map-has-key($letter-spacings,$role){
+		$role:map-get($letter-spacings,$role);
+	}
+	@else if function-exists('translate_letter_spacing') {
+		$letter-spacing:translate_letter_spacing($role);
+		@if $letter-spacing{@return $letter-spacing;}
 	}
 	@return $role;
 }
