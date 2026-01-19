@@ -1,11 +1,13 @@
 @charset "utf-8";
 
 @each $h,$role in (h:heading,l:lead,p:paragraph,c:caption){
-	%#{$role}{
+	%#{$role}-block{
 		@include bnd((
 			mg:var(--cp-margin-#{$h},0),
 			pd:var(--cp-padding-#{$h},0)
 		));
+	}
+	%#{$role}{
 		@include txt((
 			f:var(--cp-font-family-#{$h},inherit),
 			p:var(--cp-font-size-#{$h},2em),
