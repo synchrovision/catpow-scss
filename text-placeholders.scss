@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@each $h,$role in (h:heading,l:lead,p:paragraph,c:caption){
+@each $h,$role in (h:heading,l:lead,p:paragraph,u:ui,c:caption){
 	%#{$role}-block{
 		@include bnd((
 			mg:var(--cp-margin-#{$h},0),
