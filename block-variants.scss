@@ -99,10 +99,9 @@
 	));
 	@each $size ,$default_value in (
 		fit:(fit-content,100%),
-		narrow:(80vw,30rem),
-		compact:(85vw,40rem),
-		regular:(90vw,60rem),
-		wide:(95vw,80rem),
+		small:(80vw,30rem),
+		medium:(85vw,40rem),
+		large:(90vw,60rem),
 		full:(100%,100%),
 		custom:(90vw,60rem),
 	){
@@ -351,17 +350,15 @@
 		6:.75rem
 	){
 		&#{$level}{
-			--cp-block-margin:var(--cp-size-bmg-#{$level},#{$default_value});
-			--cp-block-padding:var(--cp-size-bpd-#{$level},#{$default_value});
-			--cp-header-margin:var(--cp-size-hmg-#{$level},#{$default_value});
-			--cp-header-padding:var(--cp-size-hpd-#{$level},#{$default_value});
-			--cp-paragraph-margin:var(--cp-size-pmg-#{$level},#{$default_value});
+			@each $h ,$role in (s:section,f:frame,i:item){
+				--cp-#{$role}-padding:var(--cp-size-#{$h}pd-#{$level},#{$default_value});
+			}
+			@each $h ,$role in (h:heading,l:lead,p:paragraph,u:ui,c:caption){
+				--cp-#{$role}-margin-top:var(--cp-size-#{$h}mgt-#{$level},#{$default_value});
+				--cp-#{$role}-margin-bottom:var(--cp-size-#{$h}mgb-#{$level},#{$default_value});
+				--cp-font-size-#{$h}:var(--cp-font-size-#{$h}-#{$level},#{$default_value});
+			}
 			--cp-item-gap:var(--cp-size-g-#{$level},#{$default_value});
-			--cp-item-padding:var(--cp-size-ipd-#{$level},#{$default_value});
-			--cp-font-size-h:var(--cp-font-size-h-#{$level},#{$default_value});
-			--cp-font-size-l:var(--cp-font-size-l-#{$level},#{$default_value});
-			--cp-font-size-p:var(--cp-font-size-p-#{$level},#{$default_value});
-			--cp-font-size-c:var(--cp-font-size-c-#{$level},#{$default_value});
 		}
 	}
 }
