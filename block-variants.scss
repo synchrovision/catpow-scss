@@ -350,6 +350,7 @@
 		6:.75rem
 	){
 		&#{$level}{
+			@include txt((p:var(--cp-font-size-p-#{$level})));
 			@each $h ,$role in (s:section,f:frame,i:item){
 				--cp-#{$role}-padding:var(--cp-size-#{$h}pd-#{$level},#{$default_value});
 			}
