@@ -359,7 +359,8 @@
 				--cp-#{$role}-margin-bottom:var(--cp-size-#{$h}mgb-#{$level},#{$default_value});
 				--cp-font-size-#{$h}:var(--cp-font-size-#{$h}-#{$level},#{$default_value});
 			}
-			--cp-item-gap:var(--cp-size-g-#{$level},#{$default_value});
+			--cp-item-gap:var(--cp-size-g-#{$level});
+			--cp-cell-padding:var(--cp-size-cpd-#{$level});
 		}
 	}
 }
