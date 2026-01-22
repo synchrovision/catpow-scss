@@ -2,22 +2,6 @@
 @import "catpow.scss";
 
 $size-unit:0.0625rem;
-$sizeUnit:$size-unit;
-
-$fonts:(
-	g:$gothic,
-	m:$mincho,
-	e:'times',
-	i:'Material Icons'
-);
-
-$sizes:(
-	c:min(var(--cp-content-width,90vw),var(--cp-content-max-width,60rem),100%),
-	t:var(--cp-font-size,0.875rem),
-	r:var(--cp-border-radius,0.5rem),
-	i:var(--cp-item-size,20rem),
-	g:var(--cp-item-gap,1rem)
-);
 
 $breakpoints:(
 	pc:'min-width:960px',
