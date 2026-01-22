@@ -3,8 +3,8 @@
 @each $h,$role in (h:heading,l:lead,p:paragraph,u:ui,c:caption){
 	%#{$role}-block{
 		@include bnd((
-			mg:var(--cp-margin-#{$h},0),
-			pd:var(--cp-padding-#{$h},0)
+			mgt:var(--cp-#{$role}-margin-top,0),
+			mgb:var(--cp-#{$role}-margin-bottom,0)
 		));
 	}
 	%#{$role}{
