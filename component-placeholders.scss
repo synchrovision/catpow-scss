@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+@each $h,$role in (f:frame,h:header,c:card,b:button,l:label,t:tab,i:input,){
+	%#{$role}-component{
+		@include bnd((pd:sp- + $h));
+		@if $role == tab{
+			@include bdr((
+				r:var(--cp-size-r-#{$h},0) var(--cp-size-r-#{$h},0) 0 0
+			));
+		}
+		@else{
+			@include bdr((
+				r:var(--cp-size-r-#{$h},0)
+			));
+		}
+	}
+}
