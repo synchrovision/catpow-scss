@@ -6,11 +6,11 @@
 	$ps:false;
 	@if map-has-key($bdr,p){$ps:replace_values(map-get($bdr,p),$pvals);}
 	@each $key,$val in $bdr{
-		@if $key == w{$val:szs($val);}
+		@if $key == w{$val:bw($val);}
 		@if $key == c{$val:clr($val);}
 		@if $key == s{$val:replace_values($val,$svals);}
 		@if $key == o{outline-offset:sz($val);}
-		@if $key == r{border-radius:szs($val);}
+		@if $key == r{border-radius:br($val);}
 		@if $key == i{border-image:img(nth($val,1)) nth($val,2) map-get($ivals,nth($val,3));}
 		@if map-has-key($keys,$key){
 			@if $ps == false{border-#{map-get($keys,$key)}:$val;}
