@@ -222,11 +222,7 @@
 		saib:env(safe-area-inset-bottom)
 	);
 	@if map-has-key($svals,$val){@return map-get($svals,$val);}
-	@if type-of($val) == 'number' and unitless($val){
-		@if global-variable-exists("size-unit"){@return $val*$size-unit;}
-		@return $val * 1px;
-	}
-	@return $val;
+	@return translate-numeric-unitless-size($val);
 }
 @function szs($vals){
 	@if type-of($vals) == 'list'{
@@ -250,11 +246,7 @@
 		$font-size:translate_font_size($val);
 		@if($font-size != false){$val:$font-size;}
 	}
-	@if type-of($val) == 'number' and unitless($val){
-		@if global-variable-exists("size-unit"){@return $val*$size-unit;}
-		@return $val * 1px;
-	}
-	@return $val;
+	@return translate-numeric-unitless-sizes($val);
 }
 
 @function fwt($val){
