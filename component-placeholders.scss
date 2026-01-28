@@ -5,12 +5,14 @@
 		@include bnd((pd:sp- + $h));
 		@if $role == tab{
 			@include bdr((
-				r:var(--cp-size-r-#{$h},0) var(--cp-size-r-#{$h},0) 0 0
+				w:var(--cp-border-width-c-#{$h},0),
+				r:var(--cp-border-radius-c-#{$h},0) var(--cp-border-radius-c-#{$h},0) 0 0
 			));
 		}
 		@else{
 			@include bdr((
-				r:var(--cp-size-r-#{$h},0)
+				w:var(--cp-border-width-c-#{$h},0),
+				r:var(--cp-border-radius-c-#{$h},0)
 			));
 		}
 	}
