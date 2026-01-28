@@ -291,6 +291,16 @@
 	}
 	@return $role;
 }
+@function bw($val){
+	@if global-variable-exists("border-widths") and type-of($border-widths) == 'map' and map-has-key($border-widths,$val){
+		$val:map-get($border-widths,$val);
+	}
+	@else if function-exists('translate_border_width') {
+		$border-width:translate_border_width($val);
+		@if $border-width{@return $border-width;}
+	}
+	@return translate-numeric-unitless-sizes($val);
+}
 @function translate-numeric-unitless-size($val){
 	@if type-of($val) == 'number' and unitless($val){
 		@if global-variable-exists("size-unit"){@return $val*$size-unit;}
