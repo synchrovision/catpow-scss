@@ -299,6 +299,26 @@
 	}
 	@return $role;
 }
+@function translate-numeric-unitless-size($val){
+	@if type-of($val) == 'number' and unitless($val){
+		@if global-variable-exists("size-unit"){@return $val*$size-unit;}
+		@return $val * 1px;
+	}
+	@return $val;
+}
+@function translate-numeric-unitless-sizes($vals){
+	@if type-of($vals) == 'list'{
+		$rtn:false;
+		@each $v in $vals{
+			@if type-of($rtn) == 'list'{$rtn:append($rtn,translate-numeric-unitless-size($v));}
+			@else if $rtn == false{$rtn:translate-numeric-unitless-size($v);}
+			@else {$rtn:$rtn translate-numeric-unitless-size($v);}
+		}
+		@return $rtn;
+	}
+	@return translate-numeric-unitless-size($vals);
+}
+
 @function slice($list,$start:1,$end:length($list)){
 	$rtn:();
 	@if $start < 0 {
