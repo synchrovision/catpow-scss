@@ -301,6 +301,16 @@
 	}
 	@return translate-numeric-unitless-sizes($val);
 }
+@function br($val){
+	@if global-variable-exists("border-radiuses") and type-of($border-radiuses) == 'map' and map-has-key($border-radiuses,$val){
+		$val:map-get($border-radiuses,$val);
+	}
+	@else if function-exists('translate_border_radius') {
+		$border-radius:translate_border_radius($val);
+		@if $border-radius{@return $border-radius;}
+	}
+	@return translate-numeric-unitless-sizes($val);
+}
 @function translate-numeric-unitless-size($val){
 	@if type-of($val) == 'number' and unitless($val){
 		@if global-variable-exists("size-unit"){@return $val*$size-unit;}
