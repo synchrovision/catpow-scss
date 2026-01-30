@@ -3,17 +3,9 @@
 @each $h,$role in (f:frame,h:header,c:card,b:button,l:label,t:tab,i:input,){
 	%#{$role}-component{
 		@include bnd((pd:sp- + $h));
-		@if $role == tab{
-			@include bdr((
-				w:var(--cp-border-width-c-#{$h},0),
-				r:var(--cp-border-radius-c-#{$h},0) var(--cp-border-radius-c-#{$h},0) 0 0
-			));
-		}
-		@else{
-			@include bdr((
-				w:var(--cp-border-width-c-#{$h},0),
-				r:var(--cp-border-radius-c-#{$h},0)
-			));
-		}
+		@include bdr((
+			w:var(--cp-border-width-c-#{$h},0),
+			r:var(--cp-border-radius-c-#{$h},0)
+		));
 	}
 }
