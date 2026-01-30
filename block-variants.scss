@@ -97,11 +97,17 @@
 		w:var(--cp-content-width,min(90vw,60rem,100%)),
 		mgi:a
 	));
+	@each $size, $h in (
+		small:s,
+		medium:m,
+		large:l
+	){
+		&-#{$size}{
+			--cp-content-width:var(--cp-size-c-#{$h});
+		}
+	}
 	@each $size ,$default_value in (
 		fit:(fit-content,100%),
-		small:(80vw,30rem),
-		medium:(85vw,40rem),
-		large:(90vw,60rem),
 		full:(100%,100%),
 		custom:(90vw,60rem),
 	){
