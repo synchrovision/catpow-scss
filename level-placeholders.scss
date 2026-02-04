@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+@for $level from 1 through 6 {
+	%level#{$level}{
+		@each $h ,$role in (s:section,f:frame,i:item){
+			--cp-#{$role}-padding:var(--cp-size-#{$h}pd-#{$level},#{$default_value});
+		}
+		@each $h ,$role in (h:heading,l:lead,p:paragraph,u:ui,c:caption){
+			--cp-#{$role}-margin-top:var(--cp-size-#{$h}mgt-#{$level},#{$default_value});
+			--cp-#{$role}-margin-bottom:var(--cp-size-#{$h}mgb-#{$level},#{$default_value});
+			--cp-font-size-#{$h}:var(--cp-font-size-#{$h}-#{$level},#{$default_value});
+		}
+		--cp-item-gap:var(--cp-size-g-#{$level});
+		--cp-cell-padding:var(--cp-size-cpd-#{$level});
+	}
+}
