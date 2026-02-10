@@ -68,7 +68,7 @@
 .has-margin{
 	--cp-margin:var(--cp-margin-top,0) a var(--cp-margin-bottom,0);
 	@include bnd((
-		mg:var(--cp-margin-top)
+		mg:var(--cp-margin)
 	));
 	@each $pos in (top,bottom){
 		@each $size ,$default_value in (
