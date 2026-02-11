@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import './text-placeholders.scss';
 
 .has-box-shadow{
 	@include shd((b:var(--cp-box-shadow)));
@@ -278,6 +279,13 @@
 	){
 		&-#{$size}{
 			--cp-font-size:var(--cp-font-size-#{$size},#{$default_value});
+		}
+	}
+}
+.has-text-role{
+	@each $h,$role in (h:heading,l:lead,p:paragraph,u:ui,c:caption){
+		&-#{$role}{
+			@extend %#{$role};
 		}
 	}
 }
