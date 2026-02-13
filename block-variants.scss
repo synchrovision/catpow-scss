@@ -67,7 +67,7 @@
 }
 
 .has-margin{
-	--cp-margin:var(--cp-margin-top,0) a var(--cp-margin-bottom,0);
+	--cp-margin:var(--cp-margin-top,0) auto var(--cp-margin-bottom,0);
 	@include bnd((
 		mg:var(--cp-margin)
 	));
@@ -87,7 +87,6 @@
 				@else{
 					--cp-margin-#{$pos}:var(--cp-margin-#{$size},#{$default_value});
 				}
-				
 			}
 		}
 	}
