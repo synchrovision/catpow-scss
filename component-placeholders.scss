@@ -7,5 +7,6 @@
 			w:var(--cp-border-width-c-#{$h},0),
 			r:var(--cp-border-radius-c-#{$h},0)
 		));
+		@include shd((b:c- + $h));
 	}
 }
