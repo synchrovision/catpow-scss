@@ -311,6 +311,16 @@
 	}
 	@return translate-numeric-unitless-sizes($val);
 }
+@function shd($val){
+	@if global-variable-exists("shadows") and type-of($shadows) == 'map' and map-has-key($shadows,$val){
+		$val:map-get($shadows,$val);
+	}
+	@else if function-exists('translate_shadow') {
+		$shadow:translate_shadow($val);
+		@if $shadow{@return $shadow;}
+	}
+	@return $val;
+}
 @function translate-numeric-unitless-size($val){
 	@if type-of($val) == 'number' and unitless($val){
 		@if global-variable-exists("size-unit"){@return $val*$size-unit;}
