@@ -224,6 +224,26 @@
 	@if map-has-key($svals,$val){@return map-get($svals,$val);}
 	@return translate-numeric-unitless-size($val);
 }
+@function pd($val){
+	@if global-variable-exists("paddings") and type-of($paddings) == 'map' {
+		@if map-has-key($paddings,$val){$val:map-get($paddings,$val);}
+	}
+	@else if function-exists('translate-padding') {
+		$padding:translate-padding($val);
+		@if($padding != false){$val:$padding;}
+	}
+	@return translate-numeric-unitless-size($val);
+}
+@function mg($val){
+	@if global-variable-exists("margins") and type-of($margins) == 'map' {
+		@if map-has-key($margins,$val){$val:map-get($margins,$val);}
+	}
+	@else if function-exists('translate-margin') {
+		$margin:translate-margin($val);
+		@if($margin != false){$val:$margin;}
+	}
+	@return translate-numeric-unitless-size($val);
+}
 @function szs($vals){
 	@if type-of($vals) == 'list'{
 		$rtn:false;
