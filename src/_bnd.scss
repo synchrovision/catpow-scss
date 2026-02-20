@@ -85,6 +85,8 @@
 			{$val:map-get($bvals,$val);}
 		@if $key == bi or $key == pbb or $key == pbi or $key == pba
 			{$val:map-get($bivals,$val);}
+		@if $key == pd{$val:pd($val);}
+		@if $key == mg{$val:mg($val);}
 		@if $key == w or $key == h or $key == x or $key == y or $key == g or 
 			$key == l or $key == r or $key == t or $key == b or $key == i or 
 			$key == pd or $key == mg or
