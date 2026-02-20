@@ -2,22 +2,16 @@
 @import './text-placeholders.scss';
 
 .has-box-shadow{
-	@include shd((b:var(--cp-box-shadow)));
-	--cp-box-shadow:var(--cp-box-shadow-offset-x,0) var(--cp-box-shadow-offset-y,0) var(--cp-box-shadow-blur,0) var(--cp-box-shadow-spread,0) var(--cp-color-shd,rgba(0,0,0,.2));
-	&.has-box-shadow-inset{
-		--cp-box-shadow:inset var(--cp-box-shadow-offset-x,0) var(--cp-box-shadow-offset-y,0) var(--cp-box-shadow-blur,0) var(--cp-box-shadow-spread,0) var(--cp-color-shd,rgba(0,0,0,.2));
-	}
-	@each $size ,$default_values in (
-		small:.1rem .1rem .2rem 0rem,
-		medium:.2rem .2rem .4rem 0rem,
-		large:.4rem .4rem .8rem 0rem,
-		custom:.2rem .2rem .4rem 0rem,
+	@each $size ,$h in (
+		inset-large:il,
+		inset-medium:im,
+		inset-small:is,
+		small:os,
+		medium:om,
+		large:ol,
 	){
 		&-#{$size}{
-			--cp-box-shadow-offset-x-#{$size}:var(--cp-box-shadow-offset-x-#{$size},#{nth($default_values,1)});
-			--cp-box-shadow-offset-y-#{$size}:var(--cp-box-shadow-offset-y-#{$size},#{nth($default_values,2)});
-			--cp-box-shadow-blur-#{$size}:var(--cp-box-shadow-blur-#{$size},#{nth($default_values,3)});
-			--cp-box-shadow-spread-#{$size}:var(--cp-box-shadow-spread-#{$size},#{nth($default_values,4)});
+			@include shd((b:var(--cp-shadow-s-#{$h}) clr(shd)));
 		}
 	}
 }
@@ -46,20 +40,20 @@
 		pd:var(--cp-padding)
 	));
 	@each $pos in (top,bottom,inline){
-		@each $size ,$default_value in (
-			x-small:.5rem,
-			small:1rem,
-			medium:2rem,
-			large:4rem,
-			x-large:8rem,
-			custom:2rem
+		@each $size ,$h in (
+			x-small:xs,
+			small:s,
+			medium:m,
+			large:l,
+			x-large:xl,
+			custom:c
 		){
 			&-#{$pos}-#{$size}{
 				@if $size == custom {
-					--cp-padding-#{$pos}:var(--cp-padding-#{$pos}-custom, #{$default_value});
+					--cp-padding-#{$pos}:var(--cp-padding-#{$pos}-custom);
 				}
 				@else{
-					--cp-padding-#{$pos}:var(--cp-padding-#{$size},#{$default_value});
+					--cp-padding-#{$pos}:var(--cp-size-s-#{$h});
 				}
 			}
 		}
@@ -72,20 +66,20 @@
 		mg:var(--cp-margin)
 	));
 	@each $pos in (top,bottom){
-		@each $size ,$default_value in (
-			x-small:.5rem,
-			small:1rem,
-			medium:2rem,
-			large:4rem,
-			x-large:8rem,
-			custom:2rem
+		@each $size ,$h in (
+			x-small:xs,
+			small:s,
+			medium:m,
+			large:l,
+			x-large:xl,
+			custom:c
 		){
 			&-#{$pos}-#{$size}{
 				@if $size == custom {
-					--cp-margin-#{$pos}:var(--cp-margin-#{$pos}-custom, #{$default_value});
+					--cp-margin-#{$pos}:var(--cp-margin-#{$pos}-custom);
 				}
 				@else{
-					--cp-margin-#{$pos}:var(--cp-margin-#{$size},#{$default_value});
+					--cp-margin-#{$pos}:var(--cp-size-s-#{$h});
 				}
 			}
 		}
@@ -98,22 +92,40 @@
 		mgi:a
 	));
 	@each $size, $h in (
+		x-small:xs,
 		small:s,
 		medium:m,
-		large:l
+		large:l,
+		x-large:xl,
 	){
 		&-#{$size}{
 			--cp-content-width:var(--cp-size-c-#{$h});
 		}
 	}
 	@each $size ,$default_value in (
-		fit:(fit-content,100%),
-		full:(100%,100%),
-		custom:(90vw,60rem),
+		fit:'min(fit-content,100%)',
+		full:100%,
+		custom:'min(90vw,60rem,100%)',
 	){
 		&-#{$size}{
-			--cp-content-width:var(--cp-content-width-#{$size},min(#{nth($default_value,1)},#{nth($default_value,2)},100%));
+			--cp-content-width:var(--cp-content-width-#{$size},#{$default_value});
 		}
+	}
+}
+.has-item-size{
+	@each $size ,$h in (
+		x-small:xs,
+		small:s,
+		medium:m,
+		large:l,
+		x-large:xl
+	){
+		&-#{$size}{
+			--cp-item-size:var(--cp-size-i-#{$h});
+		}
+	}
+	&-custom{
+		--cp-item-size:var(--cp-item-size-custom);
 	}
 }
 
@@ -282,7 +294,7 @@
 	}
 }
 .has-text-role{
-	@each $h,$role in (h:heading,l:lead,p:paragraph,u:ui,c:caption){
+	@each $h,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
 		&-#{$role}{
 			@extend %#{$role};
 		}
@@ -326,30 +338,25 @@
 			--cp-border-radius:var(--cp-border-radius-#{$size},#{$default_value});
 		}
 	}
-}
-
-.has-item-size{
-	@each $size ,$default_value in (
-		small:10rem,
-		medium:20rem,
-		large:40rem,
-		custom:20rem
-	){
-		&-#{$size}{
-			--cp-item-size:var(--cp-item-size-#{$size},#{$default_value});
-		}
+	&-custom{
+		--cp-border-radius:var(--cp-border-radius-custom);
 	}
 }
+
 .has-item-gap{
-	@each $size ,$default_value in (
-		small:1rem,
-		medium:2rem,
-		large:4rem,
-		custom:2rem
+	@each $size ,$h in (
+		x-small:xs,
+		small:s,
+		medium:m,
+		large:l,
+		x-large:xl
 	){
 		&-#{$size}{
-			--cp-item-gap:var(--cp-item-gap-#{$size},#{$default_value});
+			--cp-item-gap:var(--cp-margin-g-#{$h});
 		}
+	}
+	&-custom{
+		--cp-item-gap:var(--cp-item-gap-custom);
 	}
 }
 
@@ -364,16 +371,14 @@
 	){
 		&#{$level}{
 			@include txt((p:var(--cp-font-size-p-#{$level})));
-			@each $h ,$role in (s:section,f:frame,i:item){
-				--cp-#{$role}-padding:var(--cp-size-#{$h}pd-#{$level},#{$default_value});
+			@each $h ,$role in (s:section,f:frame,i:item,c:cell){
+				--cp-#{$role}-padding:var(--cp-padding-b-#{$h}-#{$level});
+				--cp-#{$role}-margin:var(--cp-margin-b-#{$h}-#{$level});
 			}
-			@each $h ,$role in (h:heading,l:lead,p:paragraph,u:ui,c:caption){
-				--cp-#{$role}-margin-top:var(--cp-size-#{$h}mgt-#{$level},#{$default_value});
-				--cp-#{$role}-margin-bottom:var(--cp-size-#{$h}mgb-#{$level},#{$default_value});
+			@each $h ,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
+				--cp-#{$role}-margin:var(--cp-margin-t-#{$h}-#{$level},#{$default_value});
 				--cp-font-size-#{$h}:var(--cp-font-size-#{$h}-#{$level},#{$default_value});
 			}
-			--cp-item-gap:var(--cp-size-g-#{$level});
-			--cp-cell-padding:var(--cp-size-cpd-#{$level});
 		}
 	}
 }
