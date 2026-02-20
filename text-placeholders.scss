@@ -2,18 +2,15 @@
 
 @each $h,$role in (h:heading,l:lead,p:paragraph,u:ui,c:caption){
 	%#{$role}-block{
-		@include bnd((
-			mgt:var(--cp-#{$role}-margin-top,0),
-			mgb:var(--cp-#{$role}-margin-bottom,0)
-		));
+		@include bnd((mg:var(--cp-margin-t-#{$h},0)));
 	}
 	%#{$role}{
 		@include txt((
-			f:var(--cp-font-family-#{$h},inherit),
-			p:var(--cp-font-size-#{$h},2em),
-			w:var(--cp-font-weight-#{$h},regular),
-			h:var(--cp-line-height-#{$h},1.5),
-			t:var(--cp-letter-spacing-#{$h},normal)
+			f:var(--cp-font-family-t-#{$h},inherit),
+			p:var(--cp-font-size-t-#{$h},2em),
+			w:var(--cp-font-weight-t-#{$h},regular),
+			h:var(--cp-line-height-t-#{$h},1.5),
+			t:var(--cp-letter-spacing-t-#{$h},normal)
 		));
 	}
 }
