@@ -1,21 +1,21 @@
-@mixin default_break(){
+@mixin default-break(){
 	*{margin:0;padding:0;background:transparent;text-decoration:none;font-style:normal;}
 	img{vertical-align:bottom;border:none;}
 	html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 }
-@mixin hide_scrollbar(){
+@mixin hide-scrollbar(){
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	&::-webkit-scrollbar{
 		display:none;
 	}
 }
-@mixin define_color_vars($color_map:false){
-	@if function-exists('get_color_vars'){
-		@if global-variable-exists("colors") and $color_map == false{
-			$color_map:$colors;
+@mixin define-color-vars($color-map:false){
+	@if function-exists('get-color-vars'){
+		@if global-variable-exists("colors") and $color-map == false{
+			$color-map:$colors;
 		}
-		$vars:get_color_vars($color_map);
+		$vars:get-color-vars($color-map);
 		:root{
 			@each $key,$val in $vars{
 				#{$key}:$val;
@@ -23,18 +23,18 @@
 		}
 	}
 }
-@function is_quoted($string){
-	@if function-exists('get_real_type'){
-		@return get_real_type($string) == 'string';
+@function is-quoted($string){
+	@if function-exists('get-real-type'){
+		@return get-real-type($string) == 'string';
 	}
 	@return type-of($string) == 'string';
 }
-@mixin define_color_classes($color_map:false){
-	@if function-exists('get_color_classes'){
-		@if global-variable-exists("colors") and $color_map == false{
-			$color_map:$colors;
+@mixin define-color-classes($color-map:false){
+	@if function-exists('get-color-classes'){
+		@if global-variable-exists("colors") and $color-map == false{
+			$color-map:$colors;
 		}
-		$classes:get_color_classes($color_map);
+		$classes:get-color-classes($color-map);
 		@each $class,$vars in $classes{
 			#{$class}{
 				@each $key,$val in $vars{
@@ -45,16 +45,16 @@
 	}
 }
 
-@mixin clear_float(){
+@mixin clear-float(){
 	content:"";display:block;clear:both;height:0;margin:0;padding:0;line-height:0;
 }
-@mixin clear_fix(){
-	&:after{@include clear_float;}
+@mixin clear-fix(){
+	&:after{@include clear-float;}
 }
-@mixin pull_left(){
+@mixin pull-left(){
 	display:inline;float:left;
 }
-@mixin pull_right(){
+@mixin pull-right(){
 	display:inline;float:right;
 }
 
@@ -109,11 +109,11 @@
 	@return $ease;
 }
 
-@function replace_values($vals,$dct){
+@function replace-values($vals,$dct){
 	@if type-of($vals) == 'list' or type-of($vals) == 'arglist'{
 		@for $i from 1 through length($vals){
 			$v:nth($vals,$i);
-			@if type-of($v) == 'list'{$vals:set-nth($vals,$i,replace_values($v,$dct));}
+			@if type-of($v) == 'list'{$vals:set-nth($vals,$i,replace-values($v,$dct));}
 			@else if map-has-key($dct,$v){$vals:set-nth($vals,$i,map-get($dct,$v));}
 		}
 		@return $vals;
@@ -124,7 +124,7 @@
 	}
 }
 
-@function fill_4_values($vals){
+@function fill-4-values($vals){
 	@if type-of($vals) == 'list' or type-of($vals) == 'arglist'{
 		@if length($vals) == 1{
 			$v:nth($vals,1);
@@ -198,8 +198,8 @@
 	@if global-variable-exists("colors") and type-of($colors) == 'map' and map-has-key($colors,$clr){
 		$clr:map-get($colors,$clr);
 	}
-	@else if function-exists('translate_color') {
-		$color:translate_color($clr,$tint,$alpha);
+	@else if function-exists('translate-color') {
+		$color:translate-color($clr,$tint,$alpha);
 		@if $color{@return $color;}
 	}
 	@if type-of($alpha) == 'number'{@return rgba(tint($clr,$tint),$alpha);}
@@ -210,8 +210,8 @@
 	@if global-variable-exists("sizes") and type-of($sizes) == 'map' {
 		@if map-has-key($sizes,$val){$val:map-get($sizes,$val);}
 	}
-	@else if function-exists('translate_size') {
-		$size:translate_size($val);
+	@else if function-exists('translate-size') {
+		$size:translate-size($val);
 		@if($size != false){$val:$size;}
 	}
 	$svals:(
@@ -242,8 +242,8 @@
 	@if global-variable-exists("font-sizes") and type-of($font-sizes) == 'map' {
 		@if map-has-key($font-sizes,$val){$val:map-get($font-sizes,$val);}
 	}
-	@else if function-exists('translate_font_size') {
-		$font-size:translate_font_size($val);
+	@else if function-exists('translate-font-size') {
+		$font-size:translate-font-size($val);
 		@if($font-size != false){$val:$font-size;}
 	}
 	@return translate-numeric-unitless-sizes($val);
@@ -253,8 +253,8 @@
 	@if global-variable-exists("font-weights") and type-of($font-weights) == 'map' {
 		@if map-has-key($font-weights,$val){$val:map-get($font-weights,$val);}
 	}
-	@else if function-exists('translate_font_weight') {
-		$font-weight:translate_font_weight($val);
+	@else if function-exists('translate-font-weight') {
+		$font-weight:translate-font-weight($val);
 		@if($font-weight != false){$val:$font-weight;}
 	}
 	$wvals:(t:100,e:200,l:300,r:400,m:500,d:600,b:700,u:800,h:900);
@@ -265,8 +265,8 @@
 	@if global-variable-exists("font-families") and type-of($font-families) == 'map' and map-has-key($font-families,$fnt){
 		$fnt:map-get($font-families,$fnt);
 	}
-	@else if function-exists('translate_font_family') {
-		$font:translate_font_family($fnt);
+	@else if function-exists('translate-font-family') {
+		$font:translate-font-family($fnt);
 		@if $font{@return $font;}
 	}
 	@return $fnt;
@@ -275,8 +275,8 @@
 	@if global-variable-exists("line-heights") and type-of($line-heights) == 'map' and map-has-key($line-heights,$role){
 		$role:map-get($line-heights,$role);
 	}
-	@else if function-exists('translate_line_height') {
-		$line-height:translate_line_height($role);
+	@else if function-exists('translate-line-height') {
+		$line-height:translate-line-height($role);
 		@if $line-height{@return $line-height;}
 	}
 	@return $role;
@@ -285,8 +285,8 @@
 	@if global-variable-exists("letter-spacings") and type-of($letter-spacings) == 'map' and map-has-key($letter-spacings,$role){
 		$role:map-get($letter-spacings,$role);
 	}
-	@else if function-exists('translate_letter_spacing') {
-		$letter-spacing:translate_letter_spacing($role);
+	@else if function-exists('translate-letter-spacing') {
+		$letter-spacing:translate-letter-spacing($role);
 		@if $letter-spacing{@return $letter-spacing;}
 	}
 	@return $role;
@@ -295,8 +295,8 @@
 	@if global-variable-exists("border-widths") and type-of($border-widths) == 'map' and map-has-key($border-widths,$val){
 		$val:map-get($border-widths,$val);
 	}
-	@else if function-exists('translate_border_width') {
-		$border-width:translate_border_width($val);
+	@else if function-exists('translate-border-width') {
+		$border-width:translate-border-width($val);
 		@if $border-width{@return $border-width;}
 	}
 	@return translate-numeric-unitless-sizes($val);
@@ -305,8 +305,8 @@
 	@if global-variable-exists("border-radiuses") and type-of($border-radiuses) == 'map' and map-has-key($border-radiuses,$val){
 		$val:map-get($border-radiuses,$val);
 	}
-	@else if function-exists('translate_border_radius') {
-		$border-radius:translate_border_radius($val);
+	@else if function-exists('translate-border-radius') {
+		$border-radius:translate-border-radius($val);
 		@if $border-radius{@return $border-radius;}
 	}
 	@return translate-numeric-unitless-sizes($val);
@@ -315,8 +315,8 @@
 	@if global-variable-exists("shadows") and type-of($shadows) == 'map' and map-has-key($shadows,$val){
 		$val:map-get($shadows,$val);
 	}
-	@else if function-exists('translate_shadow') {
-		$shadow:translate_shadow($val);
+	@else if function-exists('translate-shadow') {
+		$shadow:translate-shadow($val);
 		@if $shadow{@return $shadow;}
 	}
 	@return $val;
