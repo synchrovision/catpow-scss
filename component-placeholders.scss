@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@each $h,$role in (f:frame,h:header,c:card,b:button,l:label,t:tab,i:input,){
+@each $h,$role in (f:frame,h:header,c:card,b:button,l:label,t:table,i:input,){
 	%#{$role}-component{
 		@include bnd((pd:sp- + $h));
 		@include bdr((
