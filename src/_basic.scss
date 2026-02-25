@@ -232,7 +232,7 @@
 		$padding:translate-padding($val);
 		@if($padding != false){$val:$padding;}
 	}
-	@return translate-numeric-unitless-size($val);
+	@return szs($val);
 }
 @function mg($val){
 	@if global-variable-exists("margins") and type-of($margins) == 'map' {
