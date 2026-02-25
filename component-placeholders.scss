@@ -2,7 +2,7 @@
 
 @each $h,$role in (f:frame,h:header,c:card,b:button,l:label,t:table,i:input,){
 	%#{$role}-component{
-		@include bnd((pd:sp- + $h));
+		@include bnd((pd:c- + $h));
 		@include bdr((
 			w:var(--cp-border-width-c-#{$h},0),
 			r:var(--cp-border-radius-c-#{$h},0)
