@@ -242,7 +242,7 @@
 		$margin:translate-margin($val);
 		@if($margin != false){$val:$margin;}
 	}
-	@return translate-numeric-unitless-size($val);
+	@return szs($val);
 }
 @function szs($vals){
 	@if type-of($vals) == 'list'{
