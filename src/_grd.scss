@@ -78,8 +78,11 @@
 				}
 			}
 		}
+		@if $key == g {
+			$val:mg($val);
+		}
 		@if $key == tc or $key == tr or
-			$key == ac or $key == ar or $key == g
+			$key == ac or $key == ar
 			{$val:szs($val);}
 		@if $key == j or $key == a or
 			$key == ji or $key == ai
