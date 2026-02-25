@@ -88,7 +88,7 @@
 
 .has-content-width{
 	@include bnd((
-		w:var(--cp-content-width,min(90vw,60rem,100%)),
+		w:var(--cp-size-c,min(90vw,60rem,100%)),
 		mgi:a
 	));
 	@each $size, $h in (
@@ -99,7 +99,7 @@
 		x-large:xl,
 	){
 		&-#{$size}{
-			--cp-content-width:var(--cp-size-c-#{$h});
+			--cp-size-c:var(--cp-size-c-#{$h});
 		}
 	}
 	@each $size ,$default_value in (
@@ -108,7 +108,7 @@
 		custom:'min(90vw,60rem,100%)',
 	){
 		&-#{$size}{
-			--cp-content-width:var(--cp-content-width-#{$size},#{$default_value});
+			--cp-size-c:var(--cp-size-c-#{$size},#{$default_value});
 		}
 	}
 }
@@ -121,11 +121,11 @@
 		x-large:xl
 	){
 		&-#{$size}{
-			--cp-item-size:var(--cp-size-i-#{$h});
+			--cp-size-i:var(--cp-size-i-#{$h});
 		}
 	}
 	&-custom{
-		--cp-item-size:var(--cp-item-size-custom);
+		--cp-size-i:var(--cp-size-i-custom);
 	}
 }
 
@@ -370,14 +370,14 @@
 		6:.75rem
 	){
 		&#{$level}{
-			@include txt((p:var(--cp-font-size-p-#{$level})));
-			@each $h ,$role in (s:section,f:frame,i:item,c:cell){
-				--cp-#{$role}-padding:var(--cp-padding-b-#{$h}-#{$level});
-				--cp-#{$role}-margin:var(--cp-margin-b-#{$h}-#{$level});
+			@include txt((p:var(--cp-font-size-t-p-#{$level})));
+			@each $h ,$role in (b:block,f:frame){
+				--cp-padding-#{$h}:var(--cp-padding-#{$h}-#{$level});
+				--cp-margin-#{$h}:var(--cp-margin-#{$h}-#{$level});
 			}
 			@each $h ,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
-				--cp-#{$role}-margin:var(--cp-margin-t-#{$h}-#{$level},#{$default_value});
-				--cp-font-size-#{$h}:var(--cp-font-size-#{$h}-#{$level},#{$default_value});
+				--cp-margin-t-#{$h}:var(--cp-margin-t-#{$h}-#{$level},#{$default_value});
+				--cp-font-size-t-#{$h}:var(--cp-font-size-t-#{$h}-#{$level},#{$default_value});
 			}
 		}
 	}
