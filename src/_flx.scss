@@ -38,7 +38,7 @@
 			flex-direction:map-get($dvals,$val);
 		}
 		@if $key == g{
-			gap:szs($val);
+			gap:mg($val);
 		}
 		@if $key == c{
 			@if type-of($val) == 'list'{
