@@ -20,6 +20,7 @@
 	);
 	$fvals:(c:column,r:row,d:dense);
 	$jvals:(s:start,e:end,c:center,b:space-between,a:space-around,v:space-evenly);
+    $tvals:(s:subgrid,m:masonry);
 	display:-webkit-grid;
 	display:-ms-grid;
 	display:grid;
@@ -81,8 +82,9 @@
 		@if $key == g {
 			$val:mg($val);
 		}
-		@if $key == tc or $key == tr or
-			$key == ac or $key == ar
+		@if $key == tc or $key == tr 
+			{$val:replace_values($val,$tvals);$val:szs($val);}
+		@if $key == ac or $key == ar
 			{$val:szs($val);}
 		@if $key == j or $key == a or
 			$key == ji or $key == ai
