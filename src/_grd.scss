@@ -20,7 +20,7 @@
 	);
 	$fvals:(c:column,r:row,d:dense);
 	$jvals:(s:start,e:end,c:center,b:space-between,a:space-around,v:space-evenly);
-    $tvals:(s:subgrid,m:masonry);
+	$tvals:(s:subgrid,m:masonry);
 	display:-webkit-grid;
 	display:-ms-grid;
 	display:grid;
