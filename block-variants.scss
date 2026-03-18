@@ -344,19 +344,28 @@
 }
 
 .has-item-gap{
-	@each $size ,$h in (
-		x-small:xs,
-		small:s,
-		medium:m,
-		large:l,
-		x-large:xl
-	){
-		&-#{$size}{
-			--cp-item-gap:var(--cp-margin-g-#{$h});
+	--cp-item-gap:var(--cp-item-gap-block,0) var(--cp-item-gap-inline,0);
+	@include bnd((
+		g:var(--cp-item-gap)
+	));
+	@each $pos in (block,inline){
+		@each $size ,$h in (
+			x-small:xs,
+			small:s,
+			medium:m,
+			large:l,
+			x-large:xl,
+			custom:c
+		){
+			&-#{$pos}-#{$size}{
+				@if $size == custom {
+					--cp-item-gap-#{$pos}:var(--cp-item-gap-#{$pos}-custom);
+				}
+				@else{
+					--cp-item-gap-#{$pos}:var(--cp-size-s-#{$h});
+				}
+			}
 		}
-	}
-	&-custom{
-		--cp-item-gap:var(--cp-item-gap-custom);
 	}
 }
 
