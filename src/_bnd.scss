@@ -71,7 +71,7 @@
 	$ssavals:(n:none,s:start,e:end,c:center);
 	$sstvals:(n:none,m:mandatory,p:proximity);
 	$sbvals:(a:auto,s:smooth);
-	$ctnvals:(s:size,i:inline-size,n:normal);
+	$cntvals:(s:size,i:inline-size,n:normal);
 	
 	$abstractSize:(auto,min-content,max-content,fit-content);
 	@each $key,$val in $bnd{
@@ -86,10 +86,9 @@
 		@if $key == bi or $key == pbb or $key == pbi or $key == pba
 			{$val:map-get($bivals,$val);}
 		@if $key == pd{$val:pd($val);}
-		@if $key == mg{$val:mg($val);}
-		@if $key == w or $key == h or $key == x or $key == y or $key == g or 
+		@if $key == mg or $key == g{$val:mg($val);}
+		@if $key == w or $key == h or $key == x or $key == y or 
 			$key == l or $key == r or $key == t or $key == b or $key == i or 
-			$key == pd or $key == mg or
 			$key == pdt or $key == mgt or
 			$key == pdb or $key == mgb or
 			$key == pdl or $key == mgl or
@@ -193,11 +192,11 @@
 		@if $key == ssa{$val:replace_values($val,$ssavals);}
 		@if $key == sst{$val:replace_values($val,$sstvals);}
 		@if $key == sb{$val:replace_values($val,$sbvals);}
-		@if $key == ctn{
+		@if $key == cnt{
 			@if type-of($val) == 'list' {
 				@each $v in $val{
-					@if map-has-key($ctnvals,$v){
-						container-type:map-get($ctnvals,$v);
+					@if map-has-key($cntvals,$v){
+						container-type:map-get($cntvals,$v);
 					}
 					@else{
 						container-name:$v;
@@ -205,8 +204,8 @@
 				}
 			}
 			@else{
-				@if map-has-key($ctnvals,$val){
-					container-type:map-get($ctnvals,$val);
+				@if map-has-key($cntvals,$val){
+					container-type:map-get($cntvals,$val);
 				}
 				@else{
 					container-name:$val;
