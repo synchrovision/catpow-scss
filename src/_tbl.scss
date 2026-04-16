@@ -3,7 +3,7 @@
 	$r:0;
 	$lvals:(a:auto,f:fixed);
 	@each $key,$val in $tbl{
-		@if $key == s{$s:$val;}
+		@if $key == s{$s:mg($val);}
 		@if $key == r{
 			$r:$val;
 			@include round_table($val);
