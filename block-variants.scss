@@ -280,17 +280,20 @@
 }
 
 .has-font-size{
-	@each $size ,$default_value in (
-		x-small:.75rem,
-		small:.875rem,
-		medium:1rem,
-		large:1.25rem,
-		x-large:1.5rem,
-		custom:.875rem
+	@include txt((p:var(--cp-font-size)));
+	@each $size ,$h in (
+		x-small:xs,
+		small:s,
+		medium:m,
+		large:l,
+		x-large:xl
 	){
 		&-#{$size}{
-			--cp-font-size:var(--cp-font-size-#{$size},#{$default_value});
+			--cp-font-size:var(--cp-font-size-s-#{$h});
 		}
+	}
+	&-custom{
+		--cp-font-size:var(--cp-font-size-custom);
 	}
 }
 .has-text-role{
