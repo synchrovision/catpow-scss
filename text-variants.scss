@@ -1,70 +1,72 @@
 @charset "utf-8";
 
-.has-font-weight-thin{
-	@include txt((w:t));
-}
-.has-font-weight-extra-light{
-	@include txt((w:e));
-}
-.has-font-weight-light{
-	@include txt((w:l));
-}
-.has-font-weight-regular{
-	@include txt((w:r));
-}
-.has-font-weight-medium{
-	@include txt((w:m));
-}
-.has-font-weight-demi-bold{
-	@include txt((w:d));
-}
-.has-font-weight-bold{
-	@include txt((w:b));
-}
-.has-font-weight-ultra-bold{
-	@include txt((w:u));
-}
-.has-font-weight-heavy{
-	@include txt((w:h));
-}
+:root{
+	.has-font-weight-thin{
+		@include txt((w:t));
+	}
+	.has-font-weight-extra-light{
+		@include txt((w:e));
+	}
+	.has-font-weight-light{
+		@include txt((w:l));
+	}
+	.has-font-weight-regular{
+		@include txt((w:r));
+	}
+	.has-font-weight-medium{
+		@include txt((w:m));
+	}
+	.has-font-weight-demi-bold{
+		@include txt((w:d));
+	}
+	.has-font-weight-bold{
+		@include txt((w:b));
+	}
+	.has-font-weight-ultra-bold{
+		@include txt((w:u));
+	}
+	.has-font-weight-heavy{
+		@include txt((w:h));
+	}
 
-.has-text-align-left{
-	@include txt((a:l));
-}
-.has-text-align-center{
-	@include txt((a:c));
-}
-.has-text-align-right{
-	@include txt((a:r));
-}
+	.has-text-align-left{
+		@include txt((a:l));
+	}
+	.has-text-align-center{
+		@include txt((a:c));
+	}
+	.has-text-align-right{
+		@include txt((a:r));
+	}
 
-.has-font-safe-serif{
-	@include txt((f:$safe-serif));
-	&.has-font-weight-safe-bold{
-		@include txt((f:$safe-serif-bold,w:b));
+	.has-font-safe-serif{
+		@include txt((f:$safe-serif));
+		&.has-font-weight-safe-bold{
+			@include txt((f:$safe-serif-bold,w:b));
+		}
 	}
-}
-.has-font-safe-sans-serif{
-	@include txt((f:$safe-sans-serif));
-	&.has-font-weight-safe-bold{
-		@include txt((f:$safe-sans-serif-bold,w:b));
+	.has-font-safe-sans-serif{
+		@include txt((f:$safe-sans-serif));
+		&.has-font-weight-safe-bold{
+			@include txt((f:$safe-sans-serif-bold,w:b));
+		}
 	}
-}
-.has-font-safe-mono-spaced{
-	@include txt((f:$safe-mono-spaced));
-	&.has-font-weight-safe-bold{
-		@include txt((f:$safe-mono-spaced-bold,w:b));
+	.has-font-safe-mono-spaced{
+		@include txt((f:$safe-mono-spaced));
+		&.has-font-weight-safe-bold{
+			@include txt((f:$safe-mono-spaced-bold,w:b));
+		}
 	}
-}
-.has-font-safe-gohic{
-	@include txt((f:$safe-gothic));
-	&.has-font-weight-safe-bold{
-		@include txt((f:$safe-gothic-bold,w:b));
+	.has-font-safe-gohic{
+		@include txt((f:$safe-gothic));
+		&.has-font-weight-safe-bold{
+			@include txt((f:$safe-gothic-bold,w:b));
+		}
 	}
-}
-.has-font-safe-mincho{
-	@include txt((f:$safe-mincho));
-	&.has-font-weight-safe-bold{
-		@include txt((f:$safe-mincho-bold,w:b));
+	.has-font-safe-mincho{
+		@include txt((f:$safe-mincho));
+		&.has-font-weight-safe-bold{
+			@include txt((f:$safe-mincho-bold,w:b));
+		}
 	}
 }

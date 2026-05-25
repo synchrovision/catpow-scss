@@ -1,395 +1,397 @@
 @charset "utf-8";
 @import './text-placeholders.scss';
 
-.has-box-shadow{
-	@each $size ,$h in (
-		inset-large:il,
-		inset-medium:im,
-		inset-small:is,
-		small:os,
-		medium:om,
-		large:ol,
-	){
-		&-#{$size}{
-			@include shd((b:var(--cp-shadow-s-#{$h}) clr(shd)));
-		}
-	}
-}
-
-.has-text-shadow{
-	@include shd((t:var(--cp-text-shadow)));
-	--cp-text-shadow:var(--cp-text-shadow-offset-x,0) var(--cp-text-shadow-offset-y,0) var(--cp-text-shadow-blur,0) var(--cp-color-shd,rgba(0,0,0,.2));
-	@each $size ,$default_values in (
-		small:.1em .1em .05em,
-		medium:.2em .2em .1em,
-		large:.4em .4em .2em,
-		custom:.2em .2em .1em,
-	){
-		&-#{$size}{
-			--cp-text-shadow-offset-x-#{$size}:var(--cp-text-shadow-offset-x-#{$size},#{nth($default_values,1)});
-			--cp-text-shadow-offset-y-#{$size}:var(--cp-text-shadow-offset-y-#{$size},#{nth($default_values,2)});
-			--cp-text-shadow-blur-#{$size}:var(--cp-text-shadow-blur-#{$size},#{nth($default_values,3)});
-		}
-	}
-}
-
-
-.has-padding{
-	--cp-padding:var(--cp-padding-top,0) var(--cp-padding-inline,0) var(--cp-padding-bottom,0);
-	@include bnd((
-		pd:var(--cp-padding)
-	));
-	@each $pos in (top,bottom,inline){
+:root{
+	.has-box-shadow{
 		@each $size ,$h in (
-			x-small:xs,
-			small:s,
-			medium:m,
-			large:l,
-			x-large:xl,
-			custom:c
+			inset-large:il,
+			inset-medium:im,
+			inset-small:is,
+			small:os,
+			medium:om,
+			large:ol,
 		){
-			&-#{$pos}-#{$size}{
-				@if $size == custom {
-					--cp-padding-#{$pos}:var(--cp-padding-#{$pos}-custom);
-				}
-				@else{
-					--cp-padding-#{$pos}:var(--cp-size-s-#{$h});
-				}
+			&-#{$size}{
+				@include shd((b:var(--cp-shadow-s-#{$h}) clr(shd)));
 			}
 		}
 	}
-}
 
-.has-margin{
-	--cp-margin:var(--cp-margin-top,0) auto var(--cp-margin-bottom,0);
-	@include bnd((
-		mg:var(--cp-margin)
-	));
-	@each $pos in (top,bottom){
-		@each $size ,$h in (
-			x-small:xs,
-			small:s,
-			medium:m,
-			large:l,
-			x-large:xl,
-			custom:c
+	.has-text-shadow{
+		@include shd((t:var(--cp-text-shadow)));
+		--cp-text-shadow:var(--cp-text-shadow-offset-x,0) var(--cp-text-shadow-offset-y,0) var(--cp-text-shadow-blur,0) var(--cp-color-shd,rgba(0,0,0,.2));
+		@each $size ,$default_values in (
+			small:.1em .1em .05em,
+			medium:.2em .2em .1em,
+			large:.4em .4em .2em,
+			custom:.2em .2em .1em,
 		){
-			&-#{$pos}-#{$size}{
-				@if $size == custom {
-					--cp-margin-#{$pos}:var(--cp-margin-#{$pos}-custom);
-				}
-				@else{
-					--cp-margin-#{$pos}:var(--cp-size-s-#{$h});
-				}
+			&-#{$size}{
+				--cp-text-shadow-offset-x-#{$size}:var(--cp-text-shadow-offset-x-#{$size},#{nth($default_values,1)});
+				--cp-text-shadow-offset-y-#{$size}:var(--cp-text-shadow-offset-y-#{$size},#{nth($default_values,2)});
+				--cp-text-shadow-blur-#{$size}:var(--cp-text-shadow-blur-#{$size},#{nth($default_values,3)});
 			}
 		}
 	}
-}
 
-.has-content-width{
-	@include bnd((
-		w:var(--cp-size-c,min(90vw,60rem,100%)),
-		mgi:a
-	));
-	@each $size, $h in (
-		x-small:xs,
-		small:s,
-		medium:m,
-		large:l,
-		x-large:xl,
-	){
-		&-#{$size}{
-			--cp-size-c:var(--cp-size-c-#{$h});
-		}
-	}
-	@each $size ,$default_value in (
-		fit:'min(fit-content,100%)',
-		full:100%,
-		custom:'min(90vw,60rem,100%)',
-	){
-		&-#{$size}{
-			--cp-size-c:var(--cp-size-c-#{$size},#{$default_value});
-		}
-	}
-}
-.has-item-size{
-	@each $size ,$h in (
-		x-small:xs,
-		small:s,
-		medium:m,
-		large:l,
-		x-large:xl
-	){
-		&-#{$size}{
-			--cp-size-i:var(--cp-size-i-#{$h});
-		}
-	}
-	&-custom{
-		--cp-size-i:var(--cp-size-i-custom);
-	}
-}
 
-.has-clip-path{
-	$uy:calc(var(--cp-clip-shape-upper-height,40) * #{$size-unit});
-	$ux1:calc(50% - var(--cp-clip-shape-upper-width,40) * #{$size-unit} / 2);
-	$ux2:calc(50% + var(--cp-clip-shape-upper-width,40) * #{$size-unit} / 2);
-	$by:calc(100% - var(--cp-clip-shape-below-height,40) * #{$size-unit});
-	$bx1:calc(50% - var(--cp-clip-shape-below-width,40) * #{$size-unit} / 2);
-	$bx2:calc(50% + var(--cp-clip-shape-below-width,40) * #{$size-unit} / 2);
-	@include bnd((
-		pdt:calc((var(--cp-padding-top,0) + var(--cp-clip-shape-upper-height,40) * #{$size-unit})),
-		pdb:calc((var(--cp-padding-bottom,0) + var(--cp-clip-shape-below-height,40) * #{$size-unit})),
-		mgt:calc((var(--cp-margin-top,0) - var(--cp-clip-shape-upper-height,40) * #{$size-unit})),
-		mgb:calc((var(--cp-margin-bottom,0) - var(--cp-clip-shape-below-height,40) * #{$size-unit}))
-	));
-	&.has-clip-shape-ellipse{
-		$h1:calc(var(--cp-clip-shape-amount,50) * 0.1rem);
-		$h2:calc(var(--cp-clip-shape-amount,50) * 0.2rem);
-		$h3:calc(100% - var(--cp-clip-shape-amount,50) * 0.1rem);
-		clip-path: inset(0);
-		@supports(clip-path:shape(from 0 0,hline to 100%,vline to 100%,hline to 0%,close)){
-			&.has-clip-shape-both{
-				clip-path:shape(from 0% #{$h1}, arc by 100%  0% of 60% #{$h2} cw, vline to #{$h3}, arc by -100%  0% of 60% #{$h2} cw, close);
-			}
-			&.has-clip-shape-upper{
-				clip-path:shape(from 0% #{$h1}, arc by 100%  0% of 60% #{$h2} cw, vline to 100%, hline to 0%, close);
-			}
-			&.has-clip-shape-below{
-				clip-path:shape(from 0% 0%,hline to 100%,vline to #{$h3}, arc by -100%  0% of 60% #{$h2} cw, close);
-			}
-		}
-	}
-	&.has-clip-shape-slope{
-		clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-		&.has-clip-shape-below-left{
-			clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% #{$by});
-		}
-		&.has-clip-shape-below-right{
-			clip-path:polygon(0% 0%, 100% 0%, 100% #{$by}, 0% 100%);
-		}
-		&.has-clip-shape-upper-left{
-			clip-path:polygon(0% #{$uy}, 100% 0%, 100% 100%, 0% 100%);
-			&.has-clip-shape-below-left{
-				clip-path:polygon(0% #{$uy}, 100% 0%, 100% 100%, 0% #{$by});
-			}
-			&.has-clip-shape-below-right{
-				clip-path:polygon(0% #{$uy}, 100% 0%, 100% #{$by}, 0% 100%);
-			}
-		}
-		&.has-clip-shape-upper-right{
-			clip-path:polygon(0% 0%, 100% #{$uy}, 100% 100%, 0% 100%);
-			&.has-clip-shape-below-left{
-				clip-path:polygon(0% 0%, 100% #{$uy}, 100% 100%, 0% #{$by});
-			}
-			&.has-clip-shape-below-right{
-				clip-path:polygon(0% 0%, 100% #{$uy}, 100% #{$by}, 0% 100%);
-			}
-		}
-	}
-	&.has-clip-shape-arrow{
-		clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-		&.has-clip-shape-below-in{
-			clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%, 50% #{$by}, 0% 100%);
-		}
-		&.has-clip-shape-below-out{
-			clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 100% #{$by}, 50% 100%, 0% #{$by});
-		}
-		&.has-clip-shape-upper-in{
-			clip-path:polygon(0% 0%, 50% #{$uy}, 100% 0%, 100% 100%, 100% 100%, 0% 100%);
-			&.has-clip-shape-below-in{
-				clip-path:polygon(0% 0%, 50% #{$uy}, 100% 0%, 100% 100%, 100% 100%, 50% #{$by}, 0% 100%);
-			}
-			&.has-clip-shape-below-out{
-				clip-path:polygon(0% 0%, 50% #{$uy}, 100% 0%, 100% 100%, 100% #{$by}, 50% 100%, 0% #{$by});
-			}
-		}
-		&.has-clip-shape-upper-out{
-			clip-path:polygon(0% #{$uy}, 50% 0%, 100% #{$uy}, 100% 100%, 0% 100%);
-			&.has-clip-shape-below-in{
-				clip-path:polygon(0% #{$uy}, 50% 0%, 100% #{$uy}, 100% 100%, 50% #{$by}, 0% 100%);
-			}
-			&.has-clip-shape-below-out{
-				clip-path:polygon(0% #{$uy}, 50% 0%, 100% #{$uy}, 100% #{$by}, 50% 100%, 0% #{$by});
-			}
-		}
-	}
-	&.has-clip-shape-tail{
-		clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-		&.has-clip-shape-below-in{
-			clip-path:polygon(0% 0%, 100% 0%, 100% 100%, #{$bx2} 100%, 50% #{$by}, #{$bx1} 100%, 0% 100%);
-		}
-		&.has-clip-shape-below-out{
-			clip-path:polygon(0% 0%, 100% 0%, 100% #{$by}, #{$bx2} #{$by}, 50% 100%, #{$bx1} #{$by}, 0% #{$by});
-		}
-		&.has-clip-shape-upper-in{
-			clip-path:polygon(0% 0%, #{$ux1} 0%, 50% #{$uy}, #{$ux2} 0%, 100% 0%, 100% 100%, 100% 100%, 0% 100%);
-			&.has-clip-shape-below-in{
-				clip-path:polygon(0% 0%, #{$ux1} 0%, 50% #{$uy}, #{$ux2} 0%, 100% 0%, 100% 100%, 100% 100%, #{$bx2} 100%, 50% #{$by}, #{$bx1} 100%, 0% 100%);
-			}
-			&.has-clip-shape-below-out{
-				clip-path:polygon(0% 0%, #{$ux1} 0%, 50% #{$uy}, #{$ux2} 0%, 100% 0%, 100% 100%, 100% #{$by}, #{$bx2} #{$by}, 50% 100%, #{$bx1} #{$by}, 0% #{$by});
-			}
-		}
-		&.has-clip-shape-upper-out{
-			clip-path:polygon(0% #{$uy}, #{$ux1} #{$uy}, 50% 0%, #{$ux2} #{$uy}, 100% #{$uy}, 100% 100%, 0% 100%);
-			&.has-clip-shape-below-in{
-				clip-path:polygon(0% #{$uy}, #{$ux1} #{$uy}, 50% 0%, #{$ux2} #{$uy}, 100% #{$uy}, 100% 100%, #{$bx2} 100%, 50% #{$by}, #{$bx1} 100%, 0% 100%);
-			}
-			&.has-clip-shape-below-out{
-				clip-path:polygon(0% #{$uy}, #{$ux1} #{$uy}, 50% 0%, #{$ux2} #{$uy}, 100% #{$uy}, 100% #{$by}, #{$bx2} #{$by}, 50% 100%, #{$bx1} #{$by}, 0% #{$by});
-			}
-		}
-	}
-}
-
-.has-background-color{
-	@include bg((c:bx));
-	&-alt{@include bg((c:sx));}
-}
-.has-background-image{
-	@include bnd((p:r));
-	&::before{
-		content:'';
-		@include bnd((d:b,p:a,i:0,z:0));
-		@include bg((
-			i:var(--cp-background-image,'./images/bg.png'),
-			r:var(--cp-background-image-repeat,repeat),
-			p:var(--cp-background-image-position,center),
-			s:var(--cp-background-image-size,contain),
-			bm:var(--cp-background-image-background-blendmode,normal)
+	.has-padding{
+		--cp-padding:var(--cp-padding-top,0) var(--cp-padding-inline,0) var(--cp-padding-bottom,0);
+		@include bnd((
+			pd:var(--cp-padding)
 		));
-		@include trn((bm:var(--cp-background-image-blendmode,normal),o:var(--cp-background-image-opacity,1)));
-	}
-	&.has-background-image-fixed{
-		&::before{
-			@include bnd((p:f,w:100vw,h:100vh));
+		@each $pos in (top,bottom,inline){
+			@each $size ,$h in (
+				x-small:xs,
+				small:s,
+				medium:m,
+				large:l,
+				x-large:xl,
+				custom:c
+			){
+				&-#{$pos}-#{$size}{
+					@if $size == custom {
+						--cp-padding-#{$pos}:var(--cp-padding-#{$pos}-custom);
+					}
+					@else{
+						--cp-padding-#{$pos}:var(--cp-size-s-#{$h});
+					}
+				}
+			}
 		}
-		&:not(.has-clip-path){
-			@include clp((i:0));
-		}
 	}
-}
-.has-background-pattern{
-	@include bg((
-		i:var(--cp-background-pattern,'./images/bg.png'),
-		r:var(--cp-background-pattern-repeat,repeat),
-		p:var(--cp-background-pattern-position,repeat),
-		s:var(--cp-background-pattern-size,contain),
-		bm:var(--cp-background-pattern-background-blendmode,normal)
-	));
-}
 
-.has-font-size{
-	@include txt((p:var(--cp-font-size)));
-	@each $size ,$h in (
-		x-small:xs,
-		small:s,
-		medium:m,
-		large:l,
-		x-large:xl
-	){
-		&-#{$size}{
-			--cp-font-size:var(--cp-font-size-s-#{$h});
+	.has-margin{
+		--cp-margin:var(--cp-margin-top,0) auto var(--cp-margin-bottom,0);
+		@include bnd((
+			mg:var(--cp-margin)
+		));
+		@each $pos in (top,bottom){
+			@each $size ,$h in (
+				x-small:xs,
+				small:s,
+				medium:m,
+				large:l,
+				x-large:xl,
+				custom:c
+			){
+				&-#{$pos}-#{$size}{
+					@if $size == custom {
+						--cp-margin-#{$pos}:var(--cp-margin-#{$pos}-custom);
+					}
+					@else{
+						--cp-margin-#{$pos}:var(--cp-size-s-#{$h});
+					}
+				}
+			}
 		}
 	}
-	&-custom{
-		--cp-font-size:var(--cp-font-size-custom);
-	}
-}
-.has-text-role{
-	@each $h,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
-		&-#{$role}{
-			@extend %#{$role};
-		}
-	}
-}
-.has-border{
-	@include bdr((s:var(--cp-border-style,solid),w:var(--cp-border-width,.2rem)));
-	@each $size ,$default_value in (
-		thin:.1rem,
-		medium:.2rem,
-		bold:.4rem,
-		custom:.2rem
-	){
-		&-width-#{$size}{
-			--cp-border-width:var(--cp-border-width-#{$size},#{$default_value});
-		}
-	}
-	@each $style ,$value in (
-		solid:solid,
-		dotted:dotted,
-		dashed:dashed,
-		double:double,
-		ridge:ridge,
-		groove:groove
-	){
-		&-style-#{$style}{
-			--cp-border-style:$value;
-		}
-	}
-}
-.has-border-radius{
-	@include bdr((r:var(--cp-border-radius,1rem)));
-	@each $size ,$default_value in (
-		none:0,
-		small:.5rem,
-		medium:1rem,
-		large:3rem,
-		custom:.5rem
-	){
-		&-#{$size}{
-			--cp-border-radius:var(--cp-border-radius-#{$size},#{$default_value});
-		}
-	}
-	&-custom{
-		--cp-border-radius:var(--cp-border-radius-custom);
-	}
-}
 
-.has-item-gap{
-	--cp-item-gap:var(--cp-item-gap-block,0) var(--cp-item-gap-inline,0);
-	@include bnd((
-		g:var(--cp-item-gap)
-	));
-	@each $pos in (block,inline){
-		@each $size ,$h in (
+	.has-content-width{
+		@include bnd((
+			w:var(--cp-size-c,min(90vw,60rem,100%)),
+			mgi:a
+		));
+		@each $size, $h in (
 			x-small:xs,
 			small:s,
 			medium:m,
 			large:l,
 			x-large:xl,
-			custom:c
 		){
-			&-#{$pos}-#{$size}{
-				@if $size == custom {
-					--cp-item-gap-#{$pos}:var(--cp-item-gap-#{$pos}-custom);
+			&-#{$size}{
+				--cp-size-c:var(--cp-size-c-#{$h});
+			}
+		}
+		@each $size ,$default_value in (
+			fit:'min(fit-content,100%)',
+			full:100%,
+			custom:'min(90vw,60rem,100%)',
+		){
+			&-#{$size}{
+				--cp-size-c:var(--cp-size-c-#{$size},#{$default_value});
+			}
+		}
+	}
+	.has-item-size{
+		@each $size ,$h in (
+			x-small:xs,
+			small:s,
+			medium:m,
+			large:l,
+			x-large:xl
+		){
+			&-#{$size}{
+				--cp-size-i:var(--cp-size-i-#{$h});
+			}
+		}
+		&-custom{
+			--cp-size-i:var(--cp-size-i-custom);
+		}
+	}
+
+	.has-clip-path{
+		$uy:calc(var(--cp-clip-shape-upper-height,40) * #{$size-unit});
+		$ux1:calc(50% - var(--cp-clip-shape-upper-width,40) * #{$size-unit} / 2);
+		$ux2:calc(50% + var(--cp-clip-shape-upper-width,40) * #{$size-unit} / 2);
+		$by:calc(100% - var(--cp-clip-shape-below-height,40) * #{$size-unit});
+		$bx1:calc(50% - var(--cp-clip-shape-below-width,40) * #{$size-unit} / 2);
+		$bx2:calc(50% + var(--cp-clip-shape-below-width,40) * #{$size-unit} / 2);
+		@include bnd((
+			pdt:calc((var(--cp-padding-top,0) + var(--cp-clip-shape-upper-height,40) * #{$size-unit})),
+			pdb:calc((var(--cp-padding-bottom,0) + var(--cp-clip-shape-below-height,40) * #{$size-unit})),
+			mgt:calc((var(--cp-margin-top,0) - var(--cp-clip-shape-upper-height,40) * #{$size-unit})),
+			mgb:calc((var(--cp-margin-bottom,0) - var(--cp-clip-shape-below-height,40) * #{$size-unit}))
+		));
+		&.has-clip-shape-ellipse{
+			$h1:calc(var(--cp-clip-shape-amount,50) * 0.1rem);
+			$h2:calc(var(--cp-clip-shape-amount,50) * 0.2rem);
+			$h3:calc(100% - var(--cp-clip-shape-amount,50) * 0.1rem);
+			clip-path: inset(0);
+			@supports(clip-path:shape(from 0 0,hline to 100%,vline to 100%,hline to 0%,close)){
+				&.has-clip-shape-both{
+					clip-path:shape(from 0% #{$h1}, arc by 100%  0% of 60% #{$h2} cw, vline to #{$h3}, arc by -100%  0% of 60% #{$h2} cw, close);
 				}
-				@else{
-					--cp-item-gap-#{$pos}:var(--cp-size-s-#{$h});
+				&.has-clip-shape-upper{
+					clip-path:shape(from 0% #{$h1}, arc by 100%  0% of 60% #{$h2} cw, vline to 100%, hline to 0%, close);
+				}
+				&.has-clip-shape-below{
+					clip-path:shape(from 0% 0%,hline to 100%,vline to #{$h3}, arc by -100%  0% of 60% #{$h2} cw, close);
+				}
+			}
+		}
+		&.has-clip-shape-slope{
+			clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+			&.has-clip-shape-below-left{
+				clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% #{$by});
+			}
+			&.has-clip-shape-below-right{
+				clip-path:polygon(0% 0%, 100% 0%, 100% #{$by}, 0% 100%);
+			}
+			&.has-clip-shape-upper-left{
+				clip-path:polygon(0% #{$uy}, 100% 0%, 100% 100%, 0% 100%);
+				&.has-clip-shape-below-left{
+					clip-path:polygon(0% #{$uy}, 100% 0%, 100% 100%, 0% #{$by});
+				}
+				&.has-clip-shape-below-right{
+					clip-path:polygon(0% #{$uy}, 100% 0%, 100% #{$by}, 0% 100%);
+				}
+			}
+			&.has-clip-shape-upper-right{
+				clip-path:polygon(0% 0%, 100% #{$uy}, 100% 100%, 0% 100%);
+				&.has-clip-shape-below-left{
+					clip-path:polygon(0% 0%, 100% #{$uy}, 100% 100%, 0% #{$by});
+				}
+				&.has-clip-shape-below-right{
+					clip-path:polygon(0% 0%, 100% #{$uy}, 100% #{$by}, 0% 100%);
+				}
+			}
+		}
+		&.has-clip-shape-arrow{
+			clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+			&.has-clip-shape-below-in{
+				clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%, 50% #{$by}, 0% 100%);
+			}
+			&.has-clip-shape-below-out{
+				clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 100% #{$by}, 50% 100%, 0% #{$by});
+			}
+			&.has-clip-shape-upper-in{
+				clip-path:polygon(0% 0%, 50% #{$uy}, 100% 0%, 100% 100%, 100% 100%, 0% 100%);
+				&.has-clip-shape-below-in{
+					clip-path:polygon(0% 0%, 50% #{$uy}, 100% 0%, 100% 100%, 100% 100%, 50% #{$by}, 0% 100%);
+				}
+				&.has-clip-shape-below-out{
+					clip-path:polygon(0% 0%, 50% #{$uy}, 100% 0%, 100% 100%, 100% #{$by}, 50% 100%, 0% #{$by});
+				}
+			}
+			&.has-clip-shape-upper-out{
+				clip-path:polygon(0% #{$uy}, 50% 0%, 100% #{$uy}, 100% 100%, 0% 100%);
+				&.has-clip-shape-below-in{
+					clip-path:polygon(0% #{$uy}, 50% 0%, 100% #{$uy}, 100% 100%, 50% #{$by}, 0% 100%);
+				}
+				&.has-clip-shape-below-out{
+					clip-path:polygon(0% #{$uy}, 50% 0%, 100% #{$uy}, 100% #{$by}, 50% 100%, 0% #{$by});
+				}
+			}
+		}
+		&.has-clip-shape-tail{
+			clip-path:polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+			&.has-clip-shape-below-in{
+				clip-path:polygon(0% 0%, 100% 0%, 100% 100%, #{$bx2} 100%, 50% #{$by}, #{$bx1} 100%, 0% 100%);
+			}
+			&.has-clip-shape-below-out{
+				clip-path:polygon(0% 0%, 100% 0%, 100% #{$by}, #{$bx2} #{$by}, 50% 100%, #{$bx1} #{$by}, 0% #{$by});
+			}
+			&.has-clip-shape-upper-in{
+				clip-path:polygon(0% 0%, #{$ux1} 0%, 50% #{$uy}, #{$ux2} 0%, 100% 0%, 100% 100%, 100% 100%, 0% 100%);
+				&.has-clip-shape-below-in{
+					clip-path:polygon(0% 0%, #{$ux1} 0%, 50% #{$uy}, #{$ux2} 0%, 100% 0%, 100% 100%, 100% 100%, #{$bx2} 100%, 50% #{$by}, #{$bx1} 100%, 0% 100%);
+				}
+				&.has-clip-shape-below-out{
+					clip-path:polygon(0% 0%, #{$ux1} 0%, 50% #{$uy}, #{$ux2} 0%, 100% 0%, 100% 100%, 100% #{$by}, #{$bx2} #{$by}, 50% 100%, #{$bx1} #{$by}, 0% #{$by});
+				}
+			}
+			&.has-clip-shape-upper-out{
+				clip-path:polygon(0% #{$uy}, #{$ux1} #{$uy}, 50% 0%, #{$ux2} #{$uy}, 100% #{$uy}, 100% 100%, 0% 100%);
+				&.has-clip-shape-below-in{
+					clip-path:polygon(0% #{$uy}, #{$ux1} #{$uy}, 50% 0%, #{$ux2} #{$uy}, 100% #{$uy}, 100% 100%, #{$bx2} 100%, 50% #{$by}, #{$bx1} 100%, 0% 100%);
+				}
+				&.has-clip-shape-below-out{
+					clip-path:polygon(0% #{$uy}, #{$ux1} #{$uy}, 50% 0%, #{$ux2} #{$uy}, 100% #{$uy}, 100% #{$by}, #{$bx2} #{$by}, 50% 100%, #{$bx1} #{$by}, 0% #{$by});
 				}
 			}
 		}
 	}
-}
 
-.is-level{
-	@each $level ,$default_value in (
-		1:2rem,
-		2:1.5rem,
-		3:1.25rem,
-		4:1rem,
-		5:.875rem,
-		6:.75rem
-	){
-		&#{$level}{
-			@include txt((p:var(--cp-font-size-t-p-#{$level})));
-			@each $h ,$role in (b:block,f:frame){
-				--cp-padding-#{$h}:var(--cp-padding-#{$h}-#{$level});
-				--cp-margin-#{$h}:var(--cp-margin-#{$h}-#{$level});
+	.has-background-color{
+		@include bg((c:bx));
+		&-alt{@include bg((c:sx));}
+	}
+	.has-background-image{
+		@include bnd((p:r));
+		&::before{
+			content:'';
+			@include bnd((d:b,p:a,i:0,z:0));
+			@include bg((
+				i:var(--cp-background-image,'./images/bg.png'),
+				r:var(--cp-background-image-repeat,repeat),
+				p:var(--cp-background-image-position,center),
+				s:var(--cp-background-image-size,contain),
+				bm:var(--cp-background-image-background-blendmode,normal)
+			));
+			@include trn((bm:var(--cp-background-image-blendmode,normal),o:var(--cp-background-image-opacity,1)));
+		}
+		&.has-background-image-fixed{
+			&::before{
+				@include bnd((p:f,w:100vw,h:100vh));
 			}
-			@each $h ,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
-				--cp-margin-t-#{$h}:var(--cp-margin-t-#{$h}-#{$level},#{$default_value});
-				--cp-font-size-t-#{$h}:var(--cp-font-size-t-#{$h}-#{$level},#{$default_value});
+			&:not(.has-clip-path){
+				@include clp((i:0));
+			}
+		}
+	}
+	.has-background-pattern{
+		@include bg((
+			i:var(--cp-background-pattern,'./images/bg.png'),
+			r:var(--cp-background-pattern-repeat,repeat),
+			p:var(--cp-background-pattern-position,repeat),
+			s:var(--cp-background-pattern-size,contain),
+			bm:var(--cp-background-pattern-background-blendmode,normal)
+		));
+	}
+
+	.has-font-size{
+		@include txt((p:var(--cp-font-size)));
+		@each $size ,$h in (
+			x-small:xs,
+			small:s,
+			medium:m,
+			large:l,
+			x-large:xl
+		){
+			&-#{$size}{
+				--cp-font-size:var(--cp-font-size-s-#{$h});
+			}
+		}
+		&-custom{
+			--cp-font-size:var(--cp-font-size-custom);
+		}
+	}
+	.has-text-role{
+		@each $h,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
+			&-#{$role}{
+				@extend %#{$role};
+			}
+		}
+	}
+	.has-border{
+		@include bdr((s:var(--cp-border-style,solid),w:var(--cp-border-width,.2rem)));
+		@each $size ,$default_value in (
+			thin:.1rem,
+			medium:.2rem,
+			bold:.4rem,
+			custom:.2rem
+		){
+			&-width-#{$size}{
+				--cp-border-width:var(--cp-border-width-#{$size},#{$default_value});
+			}
+		}
+		@each $style ,$value in (
+			solid:solid,
+			dotted:dotted,
+			dashed:dashed,
+			double:double,
+			ridge:ridge,
+			groove:groove
+		){
+			&-style-#{$style}{
+				--cp-border-style:$value;
+			}
+		}
+	}
+	.has-border-radius{
+		@include bdr((r:var(--cp-border-radius,1rem)));
+		@each $size ,$default_value in (
+			none:0,
+			small:.5rem,
+			medium:1rem,
+			large:3rem,
+			custom:.5rem
+		){
+			&-#{$size}{
+				--cp-border-radius:var(--cp-border-radius-#{$size},#{$default_value});
+			}
+		}
+		&-custom{
+			--cp-border-radius:var(--cp-border-radius-custom);
+		}
+	}
+
+	.has-item-gap{
+		--cp-item-gap:var(--cp-item-gap-block,0) var(--cp-item-gap-inline,0);
+		@include bnd((
+			g:var(--cp-item-gap)
+		));
+		@each $pos in (block,inline){
+			@each $size ,$h in (
+				x-small:xs,
+				small:s,
+				medium:m,
+				large:l,
+				x-large:xl,
+				custom:c
+			){
+				&-#{$pos}-#{$size}{
+					@if $size == custom {
+						--cp-item-gap-#{$pos}:var(--cp-item-gap-#{$pos}-custom);
+					}
+					@else{
+						--cp-item-gap-#{$pos}:var(--cp-size-s-#{$h});
+					}
+				}
+			}
+		}
+	}
+
+	.is-level{
+		@each $level ,$default_value in (
+			1:2rem,
+			2:1.5rem,
+			3:1.25rem,
+			4:1rem,
+			5:.875rem,
+			6:.75rem
+		){
+			&#{$level}{
+				@include txt((p:var(--cp-font-size-t-p-#{$level})));
+				@each $h ,$role in (b:block,f:frame){
+					--cp-padding-#{$h}:var(--cp-padding-#{$h}-#{$level});
+					--cp-margin-#{$h}:var(--cp-margin-#{$h}-#{$level});
+				}
+				@each $h ,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
+					--cp-margin-t-#{$h}:var(--cp-margin-t-#{$h}-#{$level},#{$default_value});
+					--cp-font-size-t-#{$h}:var(--cp-font-size-t-#{$h}-#{$level},#{$default_value});
+				}
 			}
 		}
 	}
