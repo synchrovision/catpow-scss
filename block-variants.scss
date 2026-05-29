@@ -297,6 +297,34 @@
 			--cp-font-size:var(--cp-font-size-custom);
 		}
 	}
+	.has-font-size-relative{
+		@include txt((p:var(--cp-font-size-relative)));
+		@each $size ,$h in (
+			x-small:xs,
+			small:s,
+			medium:m,
+			large:l,
+			x-large:xl
+		){
+			&-#{$size}{
+				--cp-font-size-relative:var(--cp-font-size-r-#{$h});
+			}
+		}
+	}
+	.has-font-weight{
+		@include txt((w:var(--cp-font-weight)));
+		@each $weight ,$h in (
+			x-light:xl,
+			light:l,
+			regular:r,
+			bold:b,
+			x-bold:xb
+		){
+			&-#{$weight}{
+				--cp-font-weight:var(--cp-font-weight-s-#{$h});
+			}
+		}
+	}
 	.has-text-role{
 		@each $h,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
 			&-#{$role}{
