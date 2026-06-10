@@ -1,0 +1,11 @@
+@mixin anc($anc){
+	$keys:(
+		n:anchor-name,s:anchor-scope,
+	);
+	$svals:(a:all,n:n one);
+	
+	@each $key,$val in $anc{
+		@if $key == s{$val:replace_values($val,$svals);}
+		@if map-has-key($keys,$key){#{map-get($keys,$key)}:$val;}
+	}
+}
