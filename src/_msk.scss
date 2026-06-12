@@ -1,5 +1,5 @@
 @mixin msk($msk){
-	$keys:(i:mask-image,b:mask-border,m:mask-mode,c:mask-composite,p:mask-position,r:mask-repeat,s:mask-size);
+	$keys:(i:mask-image,g:mask-image,b:mask-border,m:mask-mode,c:mask-composite,p:mask-position,r:mask-repeat,s:mask-size);
 	$mvals:(a:alpha,l:luminance,m:match-source);
 	$cvals:(a:add,s:intersect,i:intersect,e:exclude);
 	$pvals:(l:left,c:center,r:right,t:top,b:bottom);
@@ -7,6 +7,26 @@
 	$svals:(i:contain,c:cover);
 	@each $key,$val in $msk{
 		@if $key == i{$val:img($val);}
+		@if $key == g{
+			$t:nth($val,1);
+			@if $t == l{
+				$deg:nth($val,2);
+				$args:();
+				@for $i from 3 through length($val) {
+					@if $i % 4 < 2 {
+						$args:append($args,(#ffff nth($val,$i)),comma);
+					}
+					@else{
+						$args:append($args,(#0000 nth($val,$i)),comma);
+					}
+				}
+				$val:linear-gradient(#{$deg},#{$args});
+			}
+			@else if $t == r{
+				$args:slice($val,2);
+
+			}
+		}
 		@if $key == m{$val:replace_values($val,$mvals);}
 		@if $key == c{$val:replace_values($val,$cvals);}
 		@if $key == p{$val:replace_values($val,$pvals);}
