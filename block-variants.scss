@@ -130,6 +130,19 @@
 		}
 	}
 
+	.has-align-content{
+		@each $align,$h in (
+			start:s,
+			center:c,
+			space-between:sb,
+			end:e
+		){
+			&-#{$align}{
+				@include bnd((ac:$h));
+			}
+		}
+	}
+
 	.has-clip-path{
 		$uy:calc(var(--cp-clip-shape-upper-height,40) * #{$size-unit});
 		$ux1:calc(50% - var(--cp-clip-shape-upper-width,40) * #{$size-unit} / 2);
