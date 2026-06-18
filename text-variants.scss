@@ -1,32 +1,55 @@
 @charset "utf-8";
 
 :root{
-	.has-font-weight-thin{
-		@include txt((w:t));
+	.has-text-color-text{
+		@include txt((c:tx));
 	}
-	.has-font-weight-extra-light{
-		@include txt((w:e));
+	.has-text-color-highlight{
+		@include txt((c:hx));
 	}
-	.has-font-weight-light{
-		@include txt((w:l));
+	.has-text-color-gradient{
+		@include bnd((d:ib));
+		@include txt((c:n));
+		@include bg((g:l 90deg hx oklch(from #{clr(hx)} l c calc(h + 90)),cl:t));
 	}
-	.has-font-weight-regular{
-		@include txt((w:r));
+
+	@each $size,$h in (
+		x-small:xs,
+		small:s,
+		medium:m,
+		large:l,
+		x-large:xl,
+	){
+		.has-font-size-relative-#{$size}{
+			@include txt((p:var(--cp-font-size-r-#{$h})));
+		}
 	}
-	.has-font-weight-medium{
-		@include txt((w:m));
+
+	@each $weight,$h in (
+		thin:t,
+		extra-light:e,
+		light:l,
+		regular:r,
+		medium:m,
+		demi-bold:d,
+		bold:b,
+		ultra-bold:u,
+		heavy:h
+	){
+		.has-font-weight-#{$weight}{
+			@include txt((w:$h));
+		}
 	}
-	.has-font-weight-demi-bold{
-		@include txt((w:d));
-	}
-	.has-font-weight-bold{
-		@include txt((w:b));
-	}
-	.has-font-weight-ultra-bold{
-		@include txt((w:u));
-	}
-	.has-font-weight-heavy{
-		@include txt((w:h));
+	@each $weight,$h in (
+		x-light:xl,
+		light:l,
+		regular:r,
+		bold:b,
+		x-bold:xb,
+	){
+		.has-font-weight-specific-#{$weight}{
+			@include txt((w:var(--cp-font-weight-s-#{$h})));
+		}
 	}
 
 	.has-text-align-left{
@@ -37,6 +60,19 @@
 	}
 	.has-text-align-right{
 		@include txt((a:r));
+	}
+
+	@each $family,$h in (
+		gohic:f-g,
+		mincho:f-m,
+		english:f-e,
+		code:f-c,
+		decoration:f-d,
+		script:f-s
+	){
+		.has-font-family-#{$family}{
+			@include txt((f:var(--cp-font-family-#{$h})));
+		}
 	}
 
 	.has-font-safe-serif{
