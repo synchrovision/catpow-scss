@@ -1,3 +1,16 @@
+@function cp-gradient($type,$prm,$colors...){
+	$color-stops:();
+	@each $color in $colors{
+		$color-stops:append($color-stops,clr($color),comma);
+	}
+	@if $type == l{
+		@return linear-gradient($prm,$color-stops);
+	}
+	@else if $type == r{
+		@return radial-gradient($prm,$color-stops);
+	}
+}
+
 @mixin gradient($colorA:#666,$colorB:#888,$orientation:vertical){
 	@if($orientation==vertical or $orientation==v){
 		@include linear-gradient(180deg,$colorA,$colorB);
