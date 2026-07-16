@@ -387,6 +387,9 @@
 			--cp-border-radius:var(--cp-border-radius-custom);
 		}
 	}
+	.has-border-image{
+		@include bdr((s:s,i:var(--cp-border-image),r:n));
+	}
 
 	.has-item-gap{
 		--cp-item-gap:var(--cp-item-gap-block,0) var(--cp-item-gap-inline,0);
