@@ -427,7 +427,6 @@
 			6:.75rem
 		){
 			&#{$level}{
-				@include txt((p:var(--cp-font-size-t-p-#{$level})));
 				@each $h ,$role in (b:block,f:frame){
 					--cp-padding-#{$h}:var(--cp-padding-#{$h}-#{$level});
 					--cp-margin-#{$h}:var(--cp-margin-#{$h}-#{$level});
