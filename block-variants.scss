@@ -258,6 +258,7 @@
 
 	.has-background-color{
 		@include bg((c:bx));
+		&-none{@include bg((c:n));}
 		&-alt{@include bg((c:sx));}
 	}
 	.has-background-image{
@@ -386,6 +387,11 @@
 		&-custom{
 			--cp-border-radius:var(--cp-border-radius-custom);
 		}
+	}
+	.has-border-color{
+		@include bdr((c:lx));
+		&-none{@include bdr((c:n));}
+		&-alt{@include bdr((c:mx));}
 	}
 	.has-border-image{
 		@include bdr((s:s,i:var(--cp-border-image),r:n));
