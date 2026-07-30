@@ -13,6 +13,36 @@
 		@include bg((g:l 90deg hx oklch(from #{clr(hx)} l c calc(h + 90)),cl:t));
 	}
 
+	.has-text-effect{
+		&-glow{
+			@include shd((t:n));
+			@include trn((shd:(0 0 .05em clr(ix),0 0 .2em clr(ix))));
+		}
+		&-stroke{
+			$shd:();
+			@for $i from 0 to 8{
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.05em) calc(cos(#{$i * 45deg}) * 0.05em) clr(ix),$separator: comma);
+			}
+			@include shd((t:n));
+			@include trn((shd:$shd));
+		}
+		&-double-stroke{
+			$shd:();
+			@for $i from 0 to 8{
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.05em) calc(cos(#{$i * 45deg}) * 0.05em) clr(ix),$separator: comma);
+			}
+			@for $i from 0 to 8{
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.05em) calc(cos(#{$i * 45deg}) * 0.05em) clr(mx),$separator: comma);
+			}
+			@include shd((t:n));
+			@include trn((shd:$shd));
+		}
+		&-emboss{
+			@include shd((t:n));
+			@include trn((shd:(.05em .05em .05em clr(shd),-.05em -.05em .05em clr(lst))));
+		}
+	}
+
 	@each $size,$h in (
 		x-small:xs,
 		small:s,
