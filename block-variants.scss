@@ -18,18 +18,13 @@
 	}
 
 	.has-text-shadow{
-		@include shd((t:var(--cp-text-shadow)));
-		--cp-text-shadow:var(--cp-text-shadow-offset-x,0) var(--cp-text-shadow-offset-y,0) var(--cp-text-shadow-blur,0) var(--cp-color-shd,rgba(0,0,0,.2));
-		@each $size ,$default_values in (
-			small:.1em .1em .05em,
-			medium:.2em .2em .1em,
-			large:.4em .4em .2em,
-			custom:.2em .2em .1em,
+		@each $size ,$h in (
+			small:os,
+			medium:om,
+			large:ol,
 		){
 			&-#{$size}{
-				--cp-text-shadow-offset-x-#{$size}:var(--cp-text-shadow-offset-x-#{$size},#{nth($default_values,1)});
-				--cp-text-shadow-offset-y-#{$size}:var(--cp-text-shadow-offset-y-#{$size},#{nth($default_values,2)});
-				--cp-text-shadow-blur-#{$size}:var(--cp-text-shadow-blur-#{$size},#{nth($default_values,3)});
+				@include shd((t:var(--cp-shadow-s-#{$h}-ns) clr(shd)));
 			}
 		}
 	}
@@ -334,15 +329,15 @@
 			bold:b,
 			x-bold:xb
 		){
-			&-#{$weight}{
+			&-#{$weight},&.has-font-weight-#{$weight}{
 				--cp-font-weight:var(--cp-font-weight-s-#{$h});
 			}
 		}
 	}
-	.has-text-role{
-		@each $h,$role in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
-			&-#{$role}{
-				@extend %#{$role};
+	.has-text-type{
+		@each $h,$type in (h:heading,l:lead,u:ui,p:paragraph,c:caption){
+			&-#{$type},&.has-text-type-#{$type}{
+				@extend %#{$type};
 			}
 		}
 	}
