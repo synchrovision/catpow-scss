@@ -27,7 +27,14 @@
 			$tf:append($tf,(map-get($tfncs,$key) + '(' + $val + ')'));
 		}
 		@if map-has-key($ffncs,$key){
-			$fl:append($fl,(map-get($ffncs,$key) + '(' + $val + ')'));
+			@if list-separator($val) == comma {
+				@each $v in $val{
+					$fl:append($fl,(map-get($ffncs,$key) + '(' + $v + ')'));
+				}
+			}
+			@else{
+				$fl:append($fl,(map-get($ffncs,$key) + '(' + $val + ')'));
+			}
 		}
 		@if $key == 'clr'{
 			@if function-exists('extract_color_tone') {
