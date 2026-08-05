@@ -29,7 +29,20 @@
 		}
 	}
 
-
+	.has-spacing-type{
+		@each $type,$h in (block:b,frame:f){
+			&-#{$type}{
+				@include bnd((pd:var(--cp-padding-#{$h}),mg:var(--cp-margin-#{$h})));
+			}
+		}
+	}
+	.has-margin-type{
+		@each $type,$h in (block:b,frame:f){
+			&-#{$type}{
+				@include bnd((mg:var(--cp-margin-#{$h})));
+			}
+		}
+	}
 	.has-padding{
 		--cp-padding:var(--cp-padding-top,0) var(--cp-padding-inline,0) var(--cp-padding-bottom,0);
 		@include bnd((
