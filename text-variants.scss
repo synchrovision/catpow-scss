@@ -21,7 +21,10 @@
 		&-stroke{
 			$shd:();
 			@for $i from 0 to 8{
-				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.05em) calc(cos(#{$i * 45deg}) * 0.05em) clr(ix),$separator: comma);
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.04em) calc(cos(#{$i * 45deg}) * 0.04em) clr(ix),$separator: comma);
+			}
+			@for $i from 0 to 8{
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.02em) calc(cos(#{$i * 45deg}) * 0.02em) clr(ix),$separator: comma);
 			}
 			@include shd((t:n));
 			@include trn((shd:$shd));
@@ -29,10 +32,16 @@
 		&-double-stroke{
 			$shd:();
 			@for $i from 0 to 8{
-				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.05em) calc(cos(#{$i * 45deg}) * 0.05em) clr(ix),$separator: comma);
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.04em) calc(cos(#{$i * 45deg}) * 0.04em) clr(ix),$separator: comma);
 			}
 			@for $i from 0 to 8{
-				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.05em) calc(cos(#{$i * 45deg}) * 0.05em) clr(mx),$separator: comma);
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.02em) calc(cos(#{$i * 45deg}) * 0.02em) clr(ix),$separator: comma);
+			}
+			@for $i from 0 to 8{
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.04em) calc(cos(#{$i * 45deg}) * 0.04em) clr(mx),$separator: comma);
+			}
+			@for $i from 0 to 8{
+				$shd:append($shd,calc(sin(#{$i * 45deg}) * 0.02em) calc(cos(#{$i * 45deg}) * 0.02em) clr(mx),$separator: comma);
 			}
 			@include shd((t:n));
 			@include trn((shd:$shd));
