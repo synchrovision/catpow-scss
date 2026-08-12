@@ -175,7 +175,7 @@
 			}
 		}
 		@if $key == c{
-			@if(is-unitless($val) and $val > 20){$val:szs($val);}
+			@if(type-of($val) == number and is-unitless($val) and $val > 20){$val:szs($val);}
 			-webkit-columns:$val;
 			   -moz-columns:$val;
 					columns:$val;
