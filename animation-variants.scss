@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+.has-animation{
+	--cp-transition-container-delay:0s;
+	--cp-transition-part-delay:0s;
+}
+@scope (.has-animation) to (.has-animation,.has-no-animation){
+	.is-primary-part,.is-secondary-part,.is-tertiary-part{
+		@include trn((t:(
+			tf var(--cp-transition-duration,1s) var(--cp-transition-part-delay,0s) var(--cp-transition-easing,linear),
+			o var(--cp-transition-duration,1s) var(--cp-transition-part-delay,0s) linear,
+		),o:1));
+	}
+	:scope:not(.is-visible){
+		.is-primary-part,.is-secondary-part,.is-tertiary-part{
+			@include trn((t:(tf 0s .4s linear,o .4s linear),o:0));
+		}
+	}
+	.is-primary-part,.is-primary-part-container{
+		--cp-transition-part-delay:calc(var(--cp-transition-base-delay,0s) + var(--cp-transition-container-delay) + var(--cp-transition-delay,0.4s));
+	}
+	.is-secondary-part,.is-secondary-part-container{
+		--cp-transition-part-delay:calc(var(--cp-transition-base-delay,0s) + var(--cp-transition-container-delay) + var(--cp-transition-delay,0.4s) * 2);
+	}
+	.is-tertiary-part,.is-tertiary-part-container{
+		--cp-transition-part-delay:calc(var(--cp-transition-base-delay,0s) + var(--cp-transition-container-delay) + var(--cp-transition-delay,0.4s) * 3);
+	}
+	.is-listed-part{
+		--cp-transition-part-delay:calc(var(--cp-transition-base-delay,0s) + var(--cp-transition-container-delay) + var(--cp-transition-delay,0.4s) * var(--index,0) * 0.4);
+	}
+	:scope.has-animation-type-slide{
+		--cp-transition-slide-amount:calc(var(--cp-transition-amount,30) * 0.1em * var(--cp-transition-coef,1));
+		.is-primary-part,.is-secondary-part,.is-tertiary-part{
+			@include trn((y:0));
+		}
+		&:not(.is-visible){
+			&.has-animation-type-slide-up{
+				.is-primary-part,.is-secondary-part,.is-tertiary-part{
+					@include trn((y:var(--cp-transition-slide-amount)));
+				}
+			}
+			&.has-animation-type-slide-down{
+				.is-primary-part,.is-secondary-part,.is-tertiary-part{
+					@include trn((y:calc(var(--cp-transition-slide-amount) * -1)));
+				}
+			}
+			&.has-animation-type-slide-left{
+				.is-primary-part,.is-secondary-part,.is-tertiary-part{
+					@include trn((x:calc(var(--cp-transition-slide-amount) * -1)));
+				}
+			}
+			&.has-animation-type-slide-right{
+				.is-primary-part,.is-secondary-part,.is-tertiary-part{
+					@include trn((x:var(--cp-transition-slide-amount)));
+				}
+			}
+		}
+	}
+	:scope.has-animation-type-zoom{
+		--cp-transition-zoom-amount:calc(var(--cp-transition-amount,30) * var(--cp-transition-coef,1));
+		.is-primary-part,.is-secondary-part,.is-tertiary-part{
+			@include trn((s:1));
+		}
+		&:not(.is-visible){
+			&.has-animation-type-zoom-in{
+				.is-primary-part,.is-secondary-part,.is-tertiary-part{
+					@include trn((s:calc(1 - var(--cp-transition-zoom-amount) / 100)));
+				}
+			}
+			&.has-animation-type-zoom-out{
+				.is-primary-part,.is-secondary-part,.is-tertiary-part{
+					@include trn((s:calc(1 + var(--cp-transition-zoom-amount) / 50)));
+				}
+			}
+		}
+	}
+}
+
+:root{
+	@each $size,$h in (
+		x-fast:xf,
+		fast:f,
+		normal:n,
+		slow:s,
+		x-slow:xs,
+	){
+		.has-animation-speed-#{$size}{
+			--cp-transition-duration:var(--cp-animation-s-#{$h});
+		}
+	}
+	@each $size,$h in (
+		x-short:xs,
+		fast:f,
+		normal:n,
+		long:l,
+		x-long:xl,
+	){
+		.has-animation-interval-#{$size}{
+			--cp-transition-delay:var(--cp-animation-i-#{$h});
+		}
+	}
+	@each $size,$h in (
+		x-small:xs,
+		small:s,
+		medium:m,
+		large:l,
+		x-large:xl,
+	){
+		.has-animation-amount-#{$size}{
+			--cp-transition-amount:var(--cp-animation-a-#{$h});
+		}
+	}
+	@each $size,$h in (
+		linear:l,
+		ease:e,
+		bound:b,
+		jump:j,
+	){
+		.has-animation-easing-#{$size}{
+			--cp-transition-easing:#{ease($h)};
+		}
+	}
+	.has-animation-easing-jump{
+		--cp-transition-coef:0.1;
+	}
+}
