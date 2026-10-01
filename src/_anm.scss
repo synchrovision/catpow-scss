@@ -8,12 +8,14 @@
 		t:animation-timeline,
 		i:animation-iteration-count,
 		f:animation-fill-mode,
-		p:animation-play-state
+		p:animation-play-state,
+		r:animation-range
 	);
 	$avals:(i:infinite,r:reverse,a:alternate,e:ease,l:linear,f:forwards,b:backwards,v:view(),s:scroll());
 	$fvals:(f:forwards,b:backwards);
 	$ivals:(i:infinite);
 	$tvals:(v:view(),s:scroll());
+	$rvals:(c:cover,i:contain,e:entry,ec:entry-crossing,x:exit,xc:exit-crossing,s:scroll);
 	
 	@each $key,$val in $trn{
 		@if $key == 'a'{$val:replace_values($val,$avals);}
@@ -21,6 +23,7 @@
 		@if $key == 'i'{$val:replace_values($val,$ivals);}
 		@if $key == 'f'{$val:replace_values($val,$fvals);}
 		@if $key == 't'{$val:replace_values($val,$tvals);}
+		@if $key == 'r'{$val:replace_values($val,$rvals);}
 		@if map-has-key($keys,$key){#{map-get($keys,$key)}:$val;}
 	}
 }
