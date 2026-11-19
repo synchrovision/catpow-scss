@@ -1,4 +1,4 @@
-@mixin wp_admin_color($b:b,$m:m,$a:a,$t:t,$i:i){
+@mixin wp-admin-color($b:b,$m:m,$a:a,$t:t,$i:i){
 	
 	$body-background:clr($b) !global;
 	
