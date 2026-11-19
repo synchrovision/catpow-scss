@@ -1,0 +1,5 @@
+@mixin dk{
+	@media (prefers-color-scheme: dark){
+		@content;
+	}
+}
