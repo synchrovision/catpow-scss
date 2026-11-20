@@ -115,6 +115,14 @@
 	
 	@return $ease;
 }
+@function anm($from,$to,$duration:1,$delay:0){
+	$diff:$to - $from;
+	@return calc(#{$from} + clamp(
+		0,
+		(var(--cp-animation-progress) - #{$delay}) / #{$duration},
+		1
+	) * #{$diff});
+}
 
 @function replace-values($vals,$dct){
 	@if type-of($vals) == 'list' or type-of($vals) == 'arglist'{
