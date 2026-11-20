@@ -44,6 +44,13 @@
 		}
 	}
 }
+@mixin define-animation-properties{
+	@property --cp-animation-progress{
+		syntax:"<number>";
+		inherits: true;
+		initial-value:1;
+	}
+}
 
 @mixin clear-float(){
 	content:"";display:block;clear:both;height:0;margin:0;padding:0;line-height:0;
